@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>深拷贝</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+	var deepCopy=function(){
+		//创建对象
+		var temp={};
+		//复制属性并判断是否为引用类型
+		for(var k in this){
+			if(typeof this[k]==="object"){
+				temp[ k ]=this[ k ].deepCopy();
+			}
+			else{
+				temp[ k ]=this[ k ];
+			}
+		}
+		//返回新对象
+         return temp;
+	}
+	var car={
+		name:"法拉利"
+	}
+	var p={
+		name:"ki",
+		age:29,
+		car:car
+	}
+	p.deepCopy=deepCopy;
+	car.deepCopy=deepCopy;
+
+	var p1=p.deepCopy();//拷贝
+	p1.name="hu";
+	p1.age=23;
+	console.log(p.name+"和"+p.age);
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	window.onload = function(){
+		var $usr = document.getElementsByName('username')[0];
+		$usr.onblur = function(){
+			var $msg = document.createElement('strong');
+			$msg.innerText = 'illegal enter';
+			if(!/^\w{6,}$/i.test(this.value)){
+				// alert('error');
+				this.parentNode.insertBefore($msg,this.nextElementSibling);
+			}else{
+				this.parentNode.removeChild($msg);
+			}
+		}
+		var $search = document.getElementsByName('search')[0];
+		$search.onkeyup = function(event){
+			if(event.keyCode == 13){
+				alert('2');
+			}
+		}
+	}
+	window.onresize = function(event){
+		alert(event);
+	}
+	window.onscroll = function(event){
+
+		console.log(event);
+	}
+	var date =new Date();
+	date.setFullYear(2017,07,30);
+	date = date.toString();
+	console.log(date);
+	</script>
+</head>
+<body>
+usename: <input type="text" name='username'><br>
+<textarea onselect="alert(this.value)"></textarea><br>
+serach: <input type="search" placehoder="hello" name="search"><br>
+<button>submit</button>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</body>
+</html>

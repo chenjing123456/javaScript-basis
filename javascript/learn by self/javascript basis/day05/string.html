@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>String 对象</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+	var str1="stakoverflow是一个网站";
+	var str2=new String("STERA 风景画");
+	console.log(str1.length,str2.length);
+	console.log(str1.toUpperCase());
+	var str3=str2.toLowerCase();
+	console.log(str3);
+	console.log(str1.charAt(2));
+	console.log(str3.charCodeAt(3));
+
+    console.log(str1.indexOf("a",0));
+    console.log(str3.lastIndexOf("画"));//返回-1，没有找到
+    var str4="fghuigruijvnvn";
+    console.log(str4.substring(2,4));
+
+    var str5="goodwill";
+    var str6=str5.replace("oo","ff");
+    console.log(str6);
+
+    var str="23456577";
+    var str7=str.split(",");//数组长度是1
+    console.log(str7);
+
+    var str9="一,二,三,四,五,六,日";
+    var strArray=str9.split(",",2);
+    // var strArray=str9.split(",");
+    console.log(strArray);//分割的的次数 得到的数组长度为2
+
+    var str0="i,am, huang, qi";
+    console.log(str0.split(""));//长度是13 每一个都会分割
+    console.log(str0.split(","));//长度是13 每一个都会分割
+</script>
+</body>
+</html>

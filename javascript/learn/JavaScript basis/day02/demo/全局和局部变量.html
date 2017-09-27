@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>全局变量和局部变量</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		var a =12;
+		console.log(a);
+		function eat(){
+			console.log(a);//undefined 变量声明提前 当内部没有a的时候会去找外部的全局变量，如果外部也没有，则报错
+
+			// console.log(b);报错 此时b还没有声明，只有用var声明的变量才能变量提升
+			var a =34;
+			b =15;
+			console.log(a);
+			console.log(b);
+		}
+		console.log(a);
+		eat();
+		console.log(b);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

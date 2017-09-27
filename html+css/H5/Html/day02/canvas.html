@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>canvas 画布</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	function clearMap(){
+		context.clearRect(125,50,250,100);
+	}
+</script>
+</head>
+
+<body>
+<canvas id="myCanvas" width="500px" height="400px" style="border:1px solid #000;border-box:box-sizing"></canvas>
+<script type="text/javascript">
+	var c=document.getElementById('myCanvas');
+	var context=c.getContext('2d');
+	//绘制矩形
+	//方法一:用fill表示填充
+	context.fillStyle='pink';
+	context.fillRect(125,50,250,100);
+	//方法二:用stroke表示轮廓
+    context.strokeStyle='yellow';
+    context.strokeRect(0,0,100,50);
+	//绘制直线
+	context.moveTo(0,0);
+	//context.lineTo(0,0);如果前面没有定义moveTo方法，则lineTo方法等同于moveTo方法。
+	context.lineTo(500,400);
+	context.stroke();
+	//绘制圆形
+    context.fillStyle="red";
+    context.beginPath();//开始绘制路径
+    context.arc(100,200,50,0,2*Math.PI,true);//绘制圆形
+    context.closePath();//结束绘制路径
+    context.fill();
+    //绘制弧线
+    // for(var i=0;i<=10;i++){
+    // context.strokeStyle="red";
+    // context.beginPath();
+    // context.arc(0,150,i*10,0,Math.PI*3/2,true);
+    // context.stroke();
+    // }
+    //
+</script>
+<input type="button" value="清空" onclick="clearMap();">
+</body>
+</html>

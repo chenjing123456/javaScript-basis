@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>join</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	/*
+		功能：把数组转换为指定分隔符的字符串
+		参数：数组和分隔符 [1,2,4,5,6,7]
+		返回值：返回分隔后的字符串
+	*/
+
+		Array.prototype.myJoin = function(sep){
+			var result ="";
+			for(var i=0;i<this.length-1;i++){
+				result += this[i]+sep;
+			}
+			if(i == this.length-1){
+				result += this[i];
+			}
+			return result;
+		}
+		//eg:
+		var arr =[1,2,3,4,5];
+		var result = arr.myJoin("u");
+		console.log(result);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

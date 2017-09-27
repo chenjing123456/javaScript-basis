@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>array2</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		var arr = [1,2,5,0];
+		arr[7] = "terry";
+		/*
+		for(var key in arr){
+			console.log(key,arr[key]);
+		}
+		console.log("length:",arr.length);
+		*/
+		/*
+		for(var i=0;i<arr.length;i++){
+			console.log(i,arr[i]);
+		}
+		*/
+		var i=0;
+		// while(i<arr.length){
+		// 	console.log(i,arr[i]);
+		// 	i++;
+		// }
+		do{
+			console.log(i,arr[i]);
+			i++;
+		}while(i<arr.length);
+		function test(){
+			console.log(arguments instanceof Array);
+			console.log(Array.isArray(arguments));
+			// arguments.sort();报错 不是数组的实例
+		}
+		test();
+		console.log(arr.toString(),arr.length);
+		console.log(arr.join('ss'),arr.length);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>深复制和浅复制</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	window.onload = function(){
+		var $div = document.getElementsByTagName('div')[0];
+		// var $divCopy = $div.cloneNode(true);
+		var $divCopy = $div.cloneNode(false);
+		$divCopy.innerHTML = 'hello';
+		$div.appendChild($divCopy);
+	}
+	</script>
+</head>
+<body>
+	<div onclick="alert(2);">
+		<p>你好</p>
+	</div>
+</body>
+</html>

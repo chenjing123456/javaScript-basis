@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>func声明</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		console.log(test);
+
+		test();
+		test=2;
+		foo=2;
+		// foo();
+		console.log(foo);
+		function test(){
+			console.log("aaa");
+		}
+		// test();
+		console.log(test);
+		foo="dsf";
+		// foo();
+		console.log(foo);
+		var foo=function(){
+			console.log("bbb");
+		}
+		console.log(foo);
+		foo();
+
+		var a=1;
+		run(a);
+		function run(foo){
+			console.log(foo);
+			function foo(){
+				console.log("ddd");
+			}//函数声明不管在哪个地方都是有效的，只要在使用foo之前没有改变foo的值，访问foo时为function
+			foo=2;
+			console.log(foo);
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

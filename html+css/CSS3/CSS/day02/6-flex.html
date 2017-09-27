@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>12栅栏Flex布局 布局有错</title>
+    <style>
+        .container{
+            width: 990px;
+            border:1px solid red;
+
+        }
+        .row{
+            /* width: 87.6%; */
+            border:1px solid blue;
+            display: flex;
+            padding-right: 10px;  
+            /* margin-top:1%; */
+            /* justify-content: space-around;    */
+        }
+        div.container .row div{    
+            height: 30px;
+            border:1px solid pink;
+             margin-left:10px;  
+        }
+        .col-md-1{
+            width: 70.5px;
+        }
+        .col-md-2{
+            width: 153px;
+        }
+        .col-md-3{
+             width: 235px; 
+        }
+        .col-md-4{
+            width: 318px;
+        }
+        .col-md-5{
+            width: 483px;
+        }  
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-4"></div>
+            <!-- <div class="col-md-3"></div> -->
+        </div>
+        
+    </div>
+</body>
+</html>

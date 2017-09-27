@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>fuc</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	//函数声明：不仅提升了还加载了函数。执行代码前会先提升函数并加载函数声明，
+		// function sayHello(){
+		// 	console.log("hello");
+		// }
+		/*
+		var sayHello = function(){
+			console.log("hello");
+		}
+		var result=sayHello();
+		console.log(result);
+		*/
+		var a=1;
+		function sayHello(){
+		 	var a=2;
+		 	console.log("hello",this.a);
+		}
+		sayHello();
+		var obj={
+		 	a:3,
+		 	sayHello:sayHello
+		}
+		obj.sayHello();
+		var o={
+			a:4
+		}
+		sayHello.call(o);
+		sayHello.apply(obj);
+		sayHello.apply();
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

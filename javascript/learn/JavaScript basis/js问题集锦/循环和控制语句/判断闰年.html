@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>判断闰年</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	//闰年:能被4整除不能被100整除的，能被400整除的
+		function isLeap(year){
+			var flag;
+			if(( year%4==0 && year%100!=0) || (year%400==0)){
+				flag=true;
+			}else{
+				flag=false;
+			}
+			return flag;
+		}
+		var leap =isLeap(2018);
+		console.log(leap);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

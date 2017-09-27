@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>form表单 </title>
+	<meta charset="utf-8">
+</head>
+<body>
+<form action="www.baidu.com" method="get" autocomplete>
+	用户名：<input type="text" name="na" autofocus><br>
+	密码：<input type="password" name="pwd"><br>
+	性别：<input type="radio" name="radio" value="male">男
+	      <input type="radio" name="radio" value="remale">女<br>
+	年龄:<input type="number" name="age" max="45" min="18" step="1"><br>
+	邮箱：<input type="email" name="email"><br>
+	籍贯：
+	<select>
+		<option value="nc">山东</option>
+		<option value="jx">江西</option>
+		<option value="sr">北京</option>
+	</select><br>
+    长度：<input type="range" max="45" min="2" step="2" value="5"><br>
+    日期：<input type="datetime"><br>
+    <input type="submit" name="sum">
+    <input type="reset" name="reset"><br>
+</form>
+</body>
+</html>

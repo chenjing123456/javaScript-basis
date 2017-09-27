@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	    var arr = [1,2,3,4,5];
+		Array.prototype.myReverse = function(){
+			var newArr = [];
+			// var j = 0;
+			for(var i=this.length-1;i>=0;i--){
+				//newArr[i] = this[j++];//把原数组的第一项赋值给新数组的最后一项
+				newArr[newArr.length] = this[i];//把原数组的最后一项赋值给新数组的第一项
+			}
+			for(var j=0;j<newArr.length;j++){
+				this[j] = newArr[j];//改变原数组的每一项
+			}
+	    }
+	    arr.myReverse();
+	    console.log(arr);
+	</script>
+</body>
+</html>

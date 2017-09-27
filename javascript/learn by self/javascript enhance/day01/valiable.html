@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+//最简单的继承的方法，混入（Mix）
+	function mix(o1,o2){
+		for(var j in o2){//遍历o2
+			o1[j]=o2[j];
+		}
+	}
+	var o1={name:"fhfur"};
+	var o2={age:15};
+	mix(o1,o2);
+//面向对象进行开发
+//1.先找对象，
+//2.任何操作都应该交给对象做
+
+//传统面向过程方法
+   	// var div=document.createElement("div");
+   	// document.body.appendChild(div);
+   	// div.style.border="1px dotted green";
+   	// div.style.width="400px";
+   	// div.style.height="300px";
+
+
+//面向对象方式
+//1.抽取对象（名词提炼）div body
+//2.分析属性和方法(动词提炼)：加到，设置样式
+  //创建div的构造函数
+   	function DivTag(){
+   		this.DOM=document.createElement("div");//构造函数内部应该创建dom对象div,同时将其设置为属性
+   		this.appendTO=function (node){
+   			node.appendChild(this.DOM);
+   		}		
+        // this.css=function (name,value){
+        // 	this.DOM.style[name]=value;
+        // }
+        this.css=function (option){
+        	for(var k in option){
+        		this.DOM.style[k]=option[k];
+        	}
+        }
+   	}
+   	var div=new DivTag();
+   	div.appendTO(document.body);
+   	// div.css("border","1px solid green");
+   	// div.css("height","100px");
+   	// div.css("width","200px");
+   	div.css({
+   		"border":"1px solid green",
+   		"width":"300px",
+   		"height":"400px"
+   	});
+    for(var i=0;i<100;i++){
+      console.log(i);
+    } 
+</script>
+</body>
+</html>

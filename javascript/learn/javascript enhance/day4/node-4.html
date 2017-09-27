@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>node</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	window.onload = function(){
+		var $div = document.getElementsByTagName('div')[0];
+		var $attr = $div.getAttribute('style');
+		var $attr1 = $div.getAttribute('onclick');
+		console.log($attr);//background-color:blue;width:110px;height:100px;
+		console.log($attr1);
+		console.log(typeof $attr);//string
+
+		var $attrs = $div.attributes;
+		console.log($attrs[1]);//style="background-color:blue;width:110px;height:100px;" 
+		console.log($attrs[2]);
+		// console.log($attrs[2]());//error
+		console.log(typeof $attrs[1]); //object
+	}
+	</script>
+</head>
+<body>
+<div class="one" style="background-color:blue;width:110px;height:100px;" onclick="alert(1)"></div>
+</body>
+</html>

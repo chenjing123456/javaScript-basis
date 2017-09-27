@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>99乘法表</title>
+	<style type="text/css">
+	span{
+		width:80px;
+		background-color: pink;
+		display:inline-block;
+		margin:1px;
+		text-align: left;
+	}
+	</style>
+	<script type="text/javascript">
+		//正三角
+		for(var i=1;i<=9;i++){
+			
+			for(var j=1;j<=i;j++){
+				document.write("<span>"+j+"*"+i+"="+i*j+"</span>");
+			}
+			document.write("<br>");
+		}
+		document.write("<hr />");
+		//正三角
+		for(var i=9;i>=1;i--){
+			for(var j=1;j<=i;j++){
+				document.write("<span>"+j+"*"+i+"="+i*j+"</span>");
+			}
+			document.write("<br>");
+		}
+		document.write("<hr />");
+		//倒三角
+		for(var i=1;i<=9;i++){
+			for(var k=8;k>=i;k--){
+				document.write("<span>"+" "+"</span>");
+			}
+			for(var j=1;j<=i;j++){
+				document.write("<span>"+j+"*"+i+"="+i*j+"</span>");
+			}
+			document.write("<br />");
+		}
+		document.write("<hr />");
+
+		//倒三角
+		for(var i=9;i>=1;i--){
+			for(var k=8;k>=i;k--){
+				document.write("<span>"+" "+"</span>");
+			}
+			for(var j=1;j<=i;j++){
+				document.write("<span>"+j+"*"+i+"="+i*j+"</span>");
+			}
+			document.write("<br>");
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

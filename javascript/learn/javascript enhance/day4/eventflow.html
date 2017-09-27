@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>目标对象</title>
+	<meta charset = 'utf-8'>
+	<style type="text/css">
+		div{
+			border-radius: 50%;
+			border:1px solid #ccc;
+		}
+		div.outer{
+			float:left;			
+		}
+		div.inner{
+			width:100px;
+			height:100px;
+			margin:50px;
+			line-height: 100px;
+			text-align: center;
+		}
+		div.center{
+			margin:50px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var $outer = document.getElementsByClassName('outer')[0];
+			
+			var $center = document.getElementsByClassName('center')[0];
+			
+			var $inner = document.getElementsByClassName('inner')[0];
+			/*
+			$inner.onclick = function(){
+				alert('inner');
+			};
+			$center.onclick = function(){
+				alert('center');
+			};
+			$outer.onclick = function(){
+				alert('outer');
+			};
+			*/
+			
+			$outer.addEventListener('click',function(event){
+				console.log('outer',event.target,event.currentTarget,this);
+			},false);
+
+			// $outer.addEventListener('click',hander,true);
+			// var hander = function(){
+			// 	console.log('outer');
+			// };
+			//$outer.removeEventListener('click',hander,true);
+			$center.addEventListener('click',function(event){
+				console.log('center',event.target,event.currentTarget,this);//event.target is really the obj what i option
+			},false);
+			$inner.addEventListener('click',function(event){
+				console.log('inner',event.target,event.currentTarget,this);
+			},false);
+			
+			/*
+			var $form = document.forms[0];
+			$form.onsubmit = function(event){
+				event = event ||window.event;
+				var $username = document.getElementsByName('username')[0].value;
+				// alert($username);
+				if(!/^\w{6,}$/i.test($username)){
+					alert('输入有误');
+					// event.preventDefault(); 非IE
+					return false;//通用的兼容的写法，IE和非IE都可用
+				}
+
+			}
+			*/
+		}
+	</script>
+</head>
+<body>
+	<a href="http://www.baidu.com"></a>
+	<form action="http://www.baidu.com">
+		<input	type="text" name="username">
+		<button type="submit">提交</button>
+	</form>
+	<div class="outer">
+		<div class="center">
+			<div class="inner">click me</div>
+		</div>
+	</div>
+</body>
+</html>

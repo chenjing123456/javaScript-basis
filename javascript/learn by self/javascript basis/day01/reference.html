@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	//两种变量交换的方式
+
+      var n1=50;
+      var n2=60;
+      //定义一个转换变量
+      // var temp=n1;
+      // n1 =n2;
+      // n2 =temp;
+      // console.log(n1,n2);
+
+
+      //不定义转换变量时
+      n1 =n1+n2;
+      n2 =n1-n2;
+      n1 =n1-n2;
+      console.log(n1,n2);
+	</script>
+</head>
+<body>
+<script type="text/javascript">
+//当值为NaN，null,undefined,0,和空字符串时，布尔类型都转换为false;否则为true.
+
+//此方法可以用来判断变量是否有值
+	var meg="";
+	if(meg){
+        console.log(meg);
+	}
+	else{
+        console.log("please enter a number!");
+	}
+//两个短路运算符
+// &&(当第一个为false则不用判断下一个)
+// ||((当第一个为true则不用判断下一个))
+//如果两个操作数都不是布尔类型时
+  //&& 如果第一个操作数为false,则返回第一个操作数
+    // 如果第一个为true,则返回第二个操作数
+  //|| 如果第一个操作数为true,则返回第一个操作数
+    // 如果第一个为false,则返回第二个操作数
+    var value1=undefined&&"fhj";
+    console.log(value1);
+    var value2="egf"&&"dhf";
+    console.log(value2);
+
+    var con="fhd"||undefined;
+    console.log(con);
+    var cond="dgfg"||"df";
+    console.log(cond);
+//if语句 判断大小等
+    var score=87;
+    if(score>90){
+       console.log("A");
+    }
+    else if(score>80){
+    	console.log("B");
+    }
+    else if(score>70){
+    	console.log("C");
+    }
+    else if(score>60){
+    	console.log("D");
+    }
+    else{
+    	console.log("E");
+    }
+//switch 语句
+   var score1=89;
+   score1=parseInt(score1/10);
+   switch(score1){
+   	case 10:
+   	case 9:
+   	  console.log("A");
+      break;
+   case 8:
+   	  console.log("B");
+      break;
+   case 7:
+   	  console.log("C");
+      break;
+   case 6:
+   	  console.log("D");
+      break;
+   default:
+      console.log("E");
+      break;
+   }
+
+</script>
+</body>
+</html>

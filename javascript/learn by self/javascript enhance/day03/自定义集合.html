@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>自定义集合</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+	function ItCastCollection(){};
+	//要定义数组的方法为其添加成员
+	ItCastCollection.prototype=[];
+	//一般情况下，开发中尽量少修改内置的系统对象
+	// ItCastCollection.prototype=Array.prototype;//性能比上面好，但是会污染系统对象
+	var arr=new ItCastCollection();
+	arr.push('2','d','f','4');
+	//自定义集合的目的是让其向数组一样使用，但是同时有一些数组无法实现的方法
+	ItCastCollection.prototype.sum=function(){};
+	console.log([].sum);//undefined
+</script>
+</body>
+</html>

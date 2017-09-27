@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>undefined</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		//1.定义了未赋值
+		var a;
+		console.log(a);//undefined
+		console.log(typeof(a));//undefined
+		//2.把变量显示声明为undefined 
+		var b=undefined;
+		console.log(b);
+		console.log(typeof(b));
+
+		// console.log(c);报错
+
+		//3.没有定义变量时
+		console.log(typeof c);//不报错
+
+		var stu =new Object();
+		console.log(stu instanceof Object);
+
+		function eat(){
+
+		}
+		console.log(eat instanceof Function);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

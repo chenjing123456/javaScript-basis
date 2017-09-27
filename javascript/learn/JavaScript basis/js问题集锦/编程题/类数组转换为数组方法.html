@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>类数组转换为数组的方法</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	//本质是找一个数组来调用slice方法，但是this指向可以通过call等显示指向类数组对象。
+
+	//方法1
+		function arrTest1(){
+			console.log(arguments);
+
+			// var a = [];
+			var a = [1,2,3,4];
+			var res1 = a.slice.apply(arguments,[0]);
+			console.log(res1);
+		}
+		arrTest1(1,2,3,4,5);
+
+	//方法2
+		function arrTest2(){
+			console.log(arguments);
+			// var a = [1,2,3,4];
+			var a = [];
+			var res2 = a.slice.call(arguments,0);
+			console.log(res2);
+		}
+		arrTest2(1,2,3,4,5,6,7);
+	//方法3
+		function arrTest3(){
+			console.log(arguments);
+			var res3 = Array.prototype.slice.call(arguments,0);
+			console.log(res3);
+		}
+		arrTest3(3,4,5,5);
+	//方法4
+		function arrTest4(){
+			console.log(arguments);
+
+			var res4 = Array.prototype.slice.apply(arguments,[0]);
+			console.log(res4);
+		}
+		arrTest4(3,4,5,5,'3',4);
+
+	//方法5
+	function arrTest4(){
+			console.log(arguments);
+			var temp = [];
+			for(var i=0;i<arguments.length;i++){
+				// temp[temp.length] = arguments[i];
+				temp.push(arguments[i]);
+			}
+			return temp;
+			
+	}
+	var res = arrTest4(5,5,'3',4);
+	console.log(res);
+	
+	//方法五 Array.from()
+	//作用：把类数组转换为数组；把字符串转换为数组；
+	function f(){
+		//直接改变原类数组
+		return Array.from(arguments);
+	}
+	console.log(f(1,2,3));
+
+	// var m = new Map([[1,2],[2,4],[4,8],[8,6]]);
+	// console.log(Array.from(m));
+
+	console.log(Array.from('foo'));//把字符串转换数组 'foo'.split('');
+	</script>
+</head>
+<body>
+
+</body>
+</html>

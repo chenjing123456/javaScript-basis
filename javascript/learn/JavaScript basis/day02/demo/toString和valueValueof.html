@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>toString和valueOf</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		var a ={
+			name:"ls",
+			age:12,
+			eat:function(){
+				console.log();
+			}
+		}
+		var b =[1,2,4];
+		function getBlue(){
+			console.log("blue");
+		}
+		var d =new Date();
+		var e =new RegExp();
+		console.log(a.toString());
+
+		console.log(a.hasOwnProperty("name"));
+		console.log(a.propertyIsEnumerable("name"));
+		console.log(Array.prototype.isPrototypeOf(b));
+		console.log(a.toLocaleString());
+		console.log(b.toLocaleString());
+		console.log(d.toLocaleString());
+
+		console.log(b.toString());
+		console.log(getBlue.toString());
+		console.log(d.toString());
+		console.log(e.toString());
+
+		console.log(a.valueOf());
+		console.log(b.valueOf());
+		console.log(getBlue.valueOf());
+		console.log(d.valueOf());
+		console.log(e.valueOf());
+	</script>
+</head>
+<body>
+
+</body>
+</html>

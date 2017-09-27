@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>param</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+	//javascript语言中没有 重载（名字相同，参数不同）
+	//js中下面定义相同名字的函数会把前面的覆盖
+	function f1(a,b){
+       return a+b;
+	}
+	function f1(a,b,c){
+		return a+b+c;
+	}
+	console.log(f1(2,5));//会调用第二个
+//函数定义的两种方式
+	//1.函数声明
+    console.log(fun(1,2));
+	function fun(a,b){
+		return a+b;
+	}
+	// console.log(fun(1,2));
+	//2.函数表达式
+		//报错原因：只把var value;声明提前，并没有赋值所以报错
+		//var value;
+		//console.log(value(1,2));
+		//value=function (a,b){
+		// 	return a+b;
+		// }
+
+	// console.log(value(1,2));
+	// var value=function (a,b){
+	// 	return a+b;
+	// }
+	// console.log(value(1,2));
+
+
+
+	 /**
+    全局作用域：
+    //预解析：
+        function f3(){
+		var a=b=c=9;
+		console.log(a);
+		console.log(b);
+		console.log(c);
+	}
+	//解析执行
+	  f3();进入局部作用域
+
+	  预解析：
+        var a;
+      执行
+        a=b=c=9;//b,c是全局作用域，没有用var声明
+        console.log(a);
+		console.log(b);
+		console.log(c);
+     局部作用域执行完毕，继续执行全局作用域  
+	//console.log(a);
+	  console.log(b);
+	  console.log(c);
+    */
+	f3();
+	function f3(){
+		var a=b=c=9;//a是局部变量，bc是全局变量
+		console.log(a);
+		console.log(b);
+		console.log(c);
+	}
+		console.log(c);
+		console.log(b);
+		console.log(a);
+  
+
+	f4();
+	function f4(){
+		var a,b,c;
+	    a=b=c=10;//a,b,c是局部变量.局部作用域解析过程中a,b,c的声明全部被提前
+		console.log(a);
+		console.log(b);
+		console.log(c);
+	}
+		console.log(c);
+		console.log(b);
+		console.log(a);
+</script>
+</body>
+</html>

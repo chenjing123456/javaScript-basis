@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>闭包</title>
+	<meta charset='utf-8'>
+</head>
+<body>
+<script type="text/javascript">
+	// var fn=null;
+	// function foo(){
+	// 	var a=2;
+	// 	function innerFoo(){
+	// 		console.log(a);
+	// 	}
+	// 	fn=innerFoo;
+	// }
+	// function bar(){
+	// 	fn();
+	// }
+	// foo();
+	// bar();
+
+	function fo(){
+		console.log('this is test');
+	}
+	var timer=setTimeout(fo,1000);
+	// console.log(timer);
+	clearTimeout(timer);
+
+
+//闭包应用setTimeout函数的循环
+	for ( var i=1;i<=5;i++){
+		setTimeout(function timer(){
+			console.log(i);
+		},i*1000);
+	}//打印5个6.因为这个函数会在for循环函数执行完之后（i=6）在调用
+
+	for(var j=1;j<=5;j++){
+		(function(j){
+			setTimeout(function timer(){
+			console.log(j);
+		},i*1000)
+		})(j);
+	}//打印12345
+</script>
+</body>
+</html>

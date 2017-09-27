@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset='UTF-8'>
+	<script type="text/javascript">
+		/*
+		function Foo() {
+			//在函数内部声明的局部变量是可以再函数内部被访问的一个变量，不可以通过Foo.getName();调用，在下面举例说明
+			getName = function () { console.log(1); };  //全局的函数 但是只有当函数Foo运行后，声明的全局函数才会被创建，或者覆盖原有的getName()
+			//var getName = function () { console.log(1); }; 一个局部变量
+		  	return this;
+	 	}
+		Foo.getName = function () { console.log(2);};
+		Foo.prototype.getName = function () { console.log(3);};
+		var getName = function () { console.log(4);};
+		function getName() { console.log(5);}
+		
+		Foo.getName();		//2
+		getName();			//4 
+		Foo().getName();	//1   
+		getName();			//1
+		new Foo.getName();	//1
+		new Foo().getName();	//3 
+		*/
+
+		/*
+		function Foo() {
+			//在函数内部声明的局部变量是可以再函数内部被访问的一个变量，不可以通过Foo.getName();调用，在下面举例说明
+			
+			var getName = function () { console.log(1); }; //一个局部变量
+		  	return this;
+	 	}
+		Foo.getName = function () { console.log(2);};
+		Foo.prototype.getName = function () { console.log(3);};
+		var getName = function () { console.log(4);};
+		function getName() { console.log(5);}
+		
+		Foo.getName();		//2
+		getName();			//4 
+		Foo().getName();	//4   
+		getName();			//4
+		new Foo.getName();	//2
+		new Foo().getName();	//3 
+		*/
+
+		function Foo() {
+			//在函数内部声明的局部变量是可以再函数内部被访问的一个变量，不可以通过Foo.getName();调用，在下面举例说明
+			//可以通过对象来调用函数内部的局部变量（变量或者函数），不能通过函数本身调用
+			function getName() { console.log(1); }; //一个局部变量
+		  	return this;
+	 	}
+		Foo.getName = function () { console.log(2);};
+		Foo.prototype.getName = function () { console.log(3);};
+		var getName = function () { console.log(4);};
+		function getName() { console.log(5);}
+		
+		Foo.getName();		//2
+		getName();			//4 
+		Foo().getName();	//4   
+		getName();			//4
+		new Foo.getName();	//2
+		new Foo().getName();	//3 
+		
+
+		//测试代码
+		function test(){
+			var a =1;
+			var func = function(){
+
+			}
+		}
+		// test.func() ; 
+		// 显然是会报错的，只有函数的实例或者用一个对象去调用函数内部的变量
+		//函数内部的变量是不能通过函数调用的，而是通过对象来调用。
+		var obj = {};
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

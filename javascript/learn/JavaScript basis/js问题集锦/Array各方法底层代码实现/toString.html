@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>toString</title>
+	<meta charset="UTF-8">
+	<script type="text/javascript">
+	/*
+		功能：把数组变成以逗号分隔的字符串
+		参数：数组  [1,2,4,5,6]
+		返回值：返回以逗号分隔的字符串1,2,3,4,5,6
+	*/
+		Array.prototype.myToString = function(){
+			var result="";
+			for(var i=0;i<this.length-1;i++){
+				result+=this[i]+",";
+			}
+			if(i == this.length-1){
+				result+=this[i];
+			}
+			return result;
+		}
+
+		//eg:
+		var arr =[1,2,3,4,5];
+		var result = arr.myToString();
+		console.log(result);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,1787 @@
+上课以理解为主，笔记是附。面试官水平跟你半斤八两，不用紧张
+按步骤解题
+
+
+#复习
+
+1.面向对象
+    1）创建对象的封装
+        1.工厂模式
+            function factory(name,age){
+                return {
+                    name:name,
+                    age:age
+                }
+            }
+            var f1 = factory("ls",12);
+        2.构造函数模式
+            function Person(name,age){
+                this.name = name;
+                this.age = age;
+                this.sayName = function(){}
+            }
+            var p1 = new Person("ls",12);
+
+        3.原型模式
+            function Person(name,age){
+                this.name = name;
+                this.age = age;
+                
+            }
+            Person.prototype.sayName=function(){
+
+            }
+            var p1 = new Person("ls",12);
+            var result = p1 instanceof Person;
+
+    2）继承(原型基础上)
+            1.属性继承：借用构造函数继承（经典继承）
+                function Animal(id,name){
+                    this.id = id;
+                    this.name = name;
+                }
+                Animal.prototype.sayName=function(){
+                    cosnole.log(this.name);
+                }
+                function Dog(id,name,color){
+                    Animal.call(this,id,name);//this指向的是构函创建的内存中的新对象
+                }
+            2.方法继承：构造函数的原型
+                Dog.prototype = new Animal();
+                Dog.prototype.constructor = Dog;
+                var d = new Dog(1,"tom","yellow");
+                d.sayName();//d可以调用Dog原型中的方法和Animal原型中,Object原型中的方法
+            3.属性和方法组合函数
+
+    3）API:应用程序编程接口(application programing interface)
+            js:官方API标准（别人写好的构函和构函原型，里面有方法和属性）
+            java:官方API标准，自定义API
+            CommonJS(模块化开发)
+    
+    4）学前的几个问题：
+      * 与对象的区别和联系？
+            联系：对象和数组都是由逗号分隔，并且最后一个属性后面不用逗号,创建数组和创建对象的方式差不多
+
+            区别：属性名不一样，对象的属性名是自定义的字符串类型，而数组的属性名是从0开始的有序数值列表
+            对象的访问obj["name"]和数组的访问arr[0];访问方式都是 对象/数组[属性名]。对象的属性和数组的索引实质是一个意思
+
+
+      * 变量重名问题  后面的覆盖了前面的变量
+      
+      * 数组调用时的this指向    
+            假设 var arr = [1,"terry",function(){
+                console.log(this.length);
+            }];
+            console.log(arr[2]());//length = 3,this --> arr
+            arr[2]();//跟对象调用一样 arr.2(); 2表示方法名，那么arr就是this的指向。
+
+
+
+####Array:构函,有个原型Array.prototype
+            * 目前学习数组构函原型中的共有方法
+            * 原型中存储着共有的方法供构造函数创建的实例使用
+
+            * 构造函数的方法不能被实例调用：Array构函中的方法通过Array.调用，而不能实例对象.调用
+            * Array的实例arr可以调用Array.prototype中的方法
+
+            1)实例对象的创建方式
+
+                1.用构造函数创建
+                    var arr = new Array();/[]
+                    参数的三种情况： 无参 :相当于空数组[]
+                                    一个整数 : 创建指定长度length的数组，每一个数组的值都是undefined  new Array(20);若为小数报错
+                                    多个值 :创建一个数组并且使用实参进行初始化数组   new Array(1,2,"fff");
+                2.字面量
+                    var arr = [1,2];用逗号分隔，但是最后一个元素的后面不能放逗号
+
+            2)数组的访问
+                arr[索引]
+                    索引可以超过数组的边界 超过的部分为undefined
+            
+            3)数组的遍历
+                1.for(var i=0;i<arr.length;i++){
+                    console.log(i,arr[i]);//为undefined的也会被打印出来
+                }
+                2.while(){}
+
+                3.do{}while()
+                4.for(var key in arr){
+                    key ：索引 ; arr[key]:值
+                    //for in循环中当改变length之后那些为undefined的值不会被打印出来
+                }
+                5.数组中的迭代方法：下面的几个方法。
+
+            4)数组检测
+
+                1.Array（构函）可以调用的方法isArray方法，是声明在构造函数中的。
+                    Array.isArray(arr)判断指定变量是否是数组
+            
+                2.instanceof方法 检测实例对象是否是某构函创建的实例 arr instanceof Array;
+            
+            5)数组的属性
+                length 长度（数组中拥有元素的个数）
+                    length 可读可写(可以改变)
+                    arr.length = 4;
+
+            6)数组对象可以调用的方法（数组原型中的方法）
+                var arr = new Array();
+
+                1.数组序列化（数组转换为字符串）：分隔符不管是几个单词组成都占1个长度；为undefined的项不会被序列化为字符串
+
+                    1)toString() 默认的将数组项用逗号分隔 
+                        var arr = [1,2,5,0];
+                        arr[7] = "terry";
+                        console.log(arr.toString(),"length:"+arr.length);//1,2,5,0,,,,terry  length:8
+                    
+                    2)join() 传参之后可以自定义分隔项，以你定义的参数为准
+                        var arr = [1,2,5,0];
+                        arr[7] = "terry";
+                        console.log(arr.join('ss'),"length:"+arr.length);//1ss2ss5ss0ssssssssterry length:8
+
+                2.栈: 先进后出(改变原数组)
+                    
+                    1)入栈push()
+                        功能：可接受任意类型的参数，将他们逐个添加到数组尾部，并返回数组长度
+                        参数 ：可多个
+                        返回值：返回新数组长度 
+                            var arr = [1,2,3];
+                            console.log(arr.push("larry",1));//5
+                    2)弹栈pop()
+                        功能：从数组的末尾移除最后一项，减少数组的长度，并返回这个移除的项
+                        参数：无
+                        返回值：返回移除项
+                            var arr = ["larry","teerr","jack"];
+                            var result =arr.pop(); // result为方法的返回值
+                            console.log("result:",result);//jack
+                            console.log("arr:",arr);//["larry","teerr"]
+                3.队列：(改变原数组)
+
+                    1)入队unshift
+                        功能：在数组最添加任意项，并且返回新数组的长度
+                        参数：任意个
+                        返回值：返回新数组长度
+                            var arr = [1,true,null];
+                            var result = arr.unshift("larry");
+                            console.log("result:",result);//4
+                            console.log("arr:",arr);//["larry",1,true,null]
+                    2)出队shift
+                        功能：移除数组中的第一项，减少数组长度，并且返回移除项的值
+                        参数：无
+                        返回值：返回移除项
+                            var arr = ["larry",1,true,null];
+                            var result = arr.shift();
+                            console.log("result:",result);//larry
+                            console.log("arr:",arr);//[1,true,null]
+                4.排序
+
+                    1)翻转reverse():改变原数组
+                            功能：翻转数组项
+                            参数：无
+                            返回值：返回了翻转后的新数组
+                                var arr = [1,2,3,4];
+                                console.log("before:",arr);//[1,2,3,4]
+                                var result = arr.reverse();
+                                console.log("after:",arr);//[4,3,2,1]
+                                console.log("返回值:",result);//[4,3,2,1]
+
+                    2)排序sort():
+                        默认排序：方法会调用每个数组项的toString()方法 把每项转换成字符串，然后按照字符编码表的顺序排序
+
+                        自定义排序：方法可以接受一个比较函数作为参数，比较函数有两个参数
+                                a.如果第一个参数位于第二个参数之前，返回负数
+                                b.如果第一个参数位于第二个参数之后，返回正数 
+                            1.降序
+                            if(a>b){
+                                return -1;//降序
+                            }else if(a<b){
+                                return 1;
+                            }else{
+                                return 0;
+                            }    
+                            2.升序
+                            if(a>b){
+                                return 1;//升序
+                            }else if(a<b){
+                                return -1;
+                            }else{
+                                return 0;
+                            }
+                5.截取方法
+                        1.concat()：不改变原数组
+                            功能：数组拼接，先创建当前数组的副本，然后将接收到的数组添加到副本的末尾，返回拼接后的副本
+                            参数：一个或者多个数组或者一部分参数列表
+                            返回值：返回拼接后数组
+                                var arr1 = [1,2,3];
+                                var arr2 = [4,5,6];
+                                console.log("before:",arr1,arr2);
+                                var result = arr1.concat(arr2);
+                                console.log("before:",arr1,arr2);
+                                console.log("result:",result);//[1,2,3,4,5,6]
+                        2.slice():不改变原数组
+                            功能：数组切割，可接受一个或两个参数（起始位置，结束位置），返回数组切割后的子字符串
+                            参数：当一个参数时，从该参数指定位置开始到当前数组的末尾的所有项；
+                                当两个参数时，表示起始到结束位置之间的项，不包括结束位置的项。
+                            返回值：返回切割后的子字符串
+                                var arr = [1,2,3,4,5,6,7,8,9];
+                                console.log("after:",arr);
+                                var result1 = arr.slice(5);// [6,7,8,9]
+                                var result2 = arr.slice(2,4);//[3,4]
+                                console.log("after:",arr);
+                                console.log("result:",result);
+
+                        3.splice():改变原数组
+                            功能：向数组中部插入数据将始终返回一个数组。该返回数组中包含从原始数组中删除的项
+                            
+                            参数：
+                                删除：指定两个参数（删除的起始位置，要删除的个数）
+                                插入：指定三个参数（起始位置，0，插入的任意数量的项）
+                                替换：指定三个参数（起始位置，要删除的项，要插入的任意数量的项）
+                            返回值：从原始数组中删除的项/截取的子字符串（第二种参数情况返回0）
+                    
+                6.索引方法:查找元素的索引
+                        1.indexOf()：返回索引
+                            功能：从数组开头向后查找，使用全等操作符，找不到该元素返回-1。
+                            参数：第一个参数为要查找的项（元素），第二个参数（可选）为查找索引的开始位置（把-1看成最后一项算）
+                                    第二个参数可为正负数，
+                                            正数表示从前从后找到索引位置，再进行从前从后算元素所在索引位置；
+                                            负数表示从后往前找到索引所在位置，再进行从前从后算元素所在索引位置。
+                            返回值：元素对应的索引
+
+                        2.lastIndexOf()
+                            功能：从数组末尾向前查找，使用全等操作符，找不到该元素返回-1。
+                            参数：第一个参数为要查找的项（元素），第二个参数（可选）为索引开始位置（查找的索引开始位置）
+                                 第二个参数可为正负数，
+                                            正数表示从前从后找到开始索引位置，再进行从后往前算元素所在索引位置；
+                                            负数表示从后往前找到开始索引所在位置，再进行从后往前算元素所在索引位置。
+                            返回值：元素对应的索引
+
+                7.迭代方法(底层代码是循环语句) 每次循环遍历后调用一次匿名函数
+        ????????????????1.forEach() 
+                            功能：对数组中的每一项运行给定的函数，没有返回值，常用于遍历元素
+                            参数：回调函数
+                            返回值：无
+                            arr.forEach(function(item,index,arr){
+                                //item 项  index:下标 arr:当前正在遍历的数组
+                            })
+
+                            var arr = '12434'.split("");
+                                arr.forEach(function(item,index,arr){
+                                    // +arr[index];
+                                    arr[index]+1;
+                            })??????????
+
+
+                        2.map():不改变原数组
+                            功能：对数组的每一项运行给定的函数，返回值为每次调用函数结果的新数组.对数组复制一份然后对这个复制的数组进行函数运算，再返回复制的改变后的数组
+                            参数：回调函数 
+                                map(function(item,index,arr){
+                                    return item;
+                                })
+                            返回值：返回调用回调函数后组成的新数组
+
+                        3.filter()：过滤
+                            功能：对数组中的每一项运行给定的函数，会返回满足该函数的项组成的数组
+                            参数：匿名函数
+
+                            返回值：返回值是true的 组成的新数组
+                                var result = arr.filter(function(item,index,arr){
+                                    return item<2;//布尔表达式
+                                });
+                                console.log(result); // [11, 5, 23, 7, 4, 9]
+
+                        4.some()：一些(或)
+                            功能：对数组中的每一运行给定的函数，如果该函数对任一项都返回true,则返回true  
+                            参数：匿名函数
+                            返回值：返回布尔值true或者false.
+                            
+                                var result = arr.every(function(item,index,arr){
+                                    return item <2;
+                                });
+                                console.log(result); //true,
+
+                        5.every()：每一(并)
+                            功能：对数组中的每一运行给定的函数，如果该函数对每一项都返回true,则该函数返回true
+                            参数： 每一项上运行的匿名函数；运行该函数的作用域对象（可选）
+                            返回值：返回值：返回布尔值true或者false.
+                            
+                                var arr = [11,5,23,7,4,1,9,1];
+                                var result = arr.every(function(item,index,arr){
+                                    return item <2;
+                                });
+                                console.log(result); //false
+
+
+####Function:函数的构造函数
+
+    ##函数
+    
+        1.在js中，使用Function可以实例化函数对象，也就是说在js中函数与普通对象一样，也是一个对象类型。
+        2.函数是对象，就可以使用对象的动态特性
+        3.函数是对象，就有构造函数创建函数
+        3.函数是函数，可以创建其他对象
+        4.函数是唯一可以限定变量作用域的结果
+        5.要解决的问题
+
+          * Function如何使用
+          * Function与函数的关系
+          * 函数的原型链结构
+
+    ###函数(普通函数和构造函数)是 Function的实例
+
+        1.语法
+        ```
+        new Function(arg0,arg1,arg2,arg3,...argn,body);
+        ```
+
+        2.Function中的参数全部都是字符串
+        3.该构造函数参数的作用是将参数连接起来组成函数
+
+          * 如果参数只有一个，表示函数体
+          * 如果参数有多个，那么最后一个表示函数体，前面的所有参数表示函数的参数
+          * 如果没有参数，表示创建一个空函数
+                ```
+                //只带一个参数的情况
+                // 传统的函数 
+                  function foo(){
+                    console.log("你好");
+                  }
+
+                  //Function构函
+                  var fuc=new Function('console.log("你好");');
+                  foo();
+                  fuc();
+                  //功能是一样的
+                ```
+                
+                ```
+                //没有任何参数的
+                var foo=new Function();
+                ```
+                ```
+                //带有参数的
+                var foo=new Function("num","console.log(num)";);
+                ```
+
+    4.例题：写一个函数，实现输出三个数中的最大数
+        ```
+        传统实现方法
+           function sum( a , b , c ){
+            var reg = a 大于 b ? a : b;
+            reg = reg 大于 c ? reg : c;
+            return reg;
+           }
+           console.log(sum(123,234,4));
+        用Function构函实现
+           var sum=new Function("a","b","c","var reg = a > b ? a : b;reg = reg > c ? reg : c;return reg;")
+           console.log(sum(123,234,4));
+        ```
+        
+
+
+####RegExp正则表达式：是一个描述字符模式的对象
+    
+    * 网站：hackerrank.com(做题)和regexr.com(查询)
+    
+    * RegExp()构造函数，由构函创建的实例可以调用RegExp.prototype原型中的方法。
+
+        1. 创建
+            1）构造函数创建：
+            var pattern = new RegExp("正则表达式","修饰符");  
+
+            var pattern = new RegExp("hello","gi");
+            console.log(pattern);//   /hello/gi
+
+            2）正则字面量：
+            var pattern =/正则/修饰符;
+
+            var pattern = /hello/gi; 
+            console.log(pattern);//  /hello/gi（正则表达式）
+
+                &修饰符：不是出现在两条斜线之间，而是出现在第二条斜线之后的。
+
+                    i   ignoreCase 不区分大小写
+                    g   global      全局检索，找到所有的匹配，而不是找到第一个之后就停止
+                    m   multiline   多行
+                        eg: /java/im 这个模式可以匹配不区分大小写和多行里的java
+        
+        2.(实例原型)属性
+            *lastIndex:下一次匹配的开始位置,是正则表达式的属性。
+            如果模式带有修饰符g时，这个属性存储在整个字符串中下一次检索的开始位置。
+                
+                var str = "javascript is good ,it is easy than ja";
+                var pattern3 =/java/g;
+                var result = pattern3.exec(str);
+                console.log(result); //["java"]
+                console.log(pattern3); //java/gi
+                
+                console.log(pattern3.lastIndex); //(第一次匹配java后，下一次匹配的开始位置) 4
+
+                var result = pattern3.exec(str);
+                console.log(result); // null
+                console.log(pattern3); //java/gi
+                
+                console.log(pattern3.lastIndex);//0
+
+
+            *source :正则表达式的文本 ，是一个只读字符串
+                var pattern = /hello/gi;
+                console.log(pattern.source); //hello是正则的文本
+
+            *global :布尔值，表明这个正则表达式是否带有g修饰符
+                console.log(pattern.global);//true
+
+            *ignoreCase：布尔值，表明这个正则表达式是否带有i修饰符
+                console.log(pattern.ignoreCase);//true
+
+            *multiline:布尔值，表明这个正则表达式是否带有m修饰符
+                console.log(pattern.multiline);//false
+
+        3.模式（正则实例对象）的方法(在RegExp.prototype中的方法)
+            RegExp 原型中的方法，是js提供的，实例可以调用
+            
+            * 模式.方法(字符串);
+
+            1) test(str) ：测试
+                作用： 测试传入的参数是否匹配正则
+                参数： 待检测的字符串
+                返回值：boolean,如果匹配返回true,否则返回false
+
+                    var pattern = /hello/i;
+                    var res = pattern.test("dgh hello fd");
+                    console.log(res);//true
+
+            2) exec(str) ：查找
+                （全局匹配时每次调用都会修改一次模式 pattern的lastIndex），需要循环调用
+                
+                作用： 执行检索操作
+                
+                参数： 待检测的字符串
+                
+                返回值: 
+                    *数组，数组中第一项保存的是匹配到的文本，后面的项保存的是子表达式（子类()），
+                    *[整体匹配的内容,第一项分组匹配的内容，第二项分组...]
+                    *每次调用此方法匹配的文本都不是同一个，index值是不一样的。
+
+                        1.返回数组的属性：
+                            数组.index  数组中匹配字符串出现的起始位置
+                            数组.input  原字符串内容
+                        2.实例对象pattern会被影响
+                        如果是全局检索，会维护lastIndex，用来标识下一次检索开始的位置。
+                        3.如果没有匹配到任何结果，将lastIndex重置为0,返回值结果为null.
+                            var str = "javascript is good ,it is easy than ja";
+                            var pattern3 =/java/g;
+                            //如果不加g修饰符，则每次循环查找到的子字符串都是一样的，并且找到第一个就停止查找。
+                            var res;
+                            while(res = pattern3.exec(str)){//当pattern3.exec(str)为null时不会进入while循环
+                                console.log(res);
+                                console.log(pattern3.lastIndex);
+                            }
+                            //当循环结束后在查看lastIndex,他们的值都为0;因为pettern3是同一个对象
+            
+            3)toString() :将正则转换为字符串
+                var res = pattern.toString();
+                console.log(res);//  '/^\d{3,}/g'
+
+        4.字符串的方法（字符串对正则的支持）
+            
+            * 字符串.方法(模式)；
+
+            1)match()方法
+                与exec()方法类似
+                    功能：检索
+                    参数：正则表达式
+                    返回值：
+                        
+                        * 当正则不用g修饰符时，返回值是一个 第一项为查找的子字符串，后面的项为子类（子表达式）组成的数组，和exec()方法返回值一样。
+                    
+                        * 但是当正则用g修饰符时，返回值为查找到的所有匹配的项组成的数组（子模式（子表达式）的内容不会出现）
+                
+                console.log('1 pius 2 equals 3'.match(/\d+/));
+                //不加g跟exec返回值差不多,也有input和Index属性
+                //["1",...(子串) index: 0, input: "1 pius 2 equals 3"]
+
+                console.log('1 pius 2 equals 3'.match(/\d+/g));//["1", "2", "3"]
+
+            2)serach() 查找并返回索引
+                功能：
+                    * 不支持全局检索，它会忽略修饰符g。
+                    * 在遇到第一个匹配的子串时就会返回它的起始位置;遍历完所有，找不到就会返回-1。
+                    * 如果参数不是正则表达式，则首先会通过RegExp构函将它转换为正则表达式。
+                参数：一个正则表达式或者其他字符串。
+                返回值：索引，返回第一个与之匹配的子串的起始位置，如果找不到将返回-1.
+
+                    console.log('javascript'.search(/script/i));//4
+                    console.log('javascript'.search('script'));//4
+
+            3)replace() 检索并替换
+                功能：
+                    * 对调用它的字符串进行检索并替换，使用指定模式来匹配，不会对原文本进行改变
+                    * 如果正则表达式设置了g,则进行全局检索并替换;如果没有g,则只替换第一个被找到的子串。
+                    * 如果第一个参数不为正则表达式，则将直接搜索这个字符串，而不是像search一样转换为正则。
+
+                参数：第一个参数是正则表达式，第二个参数是要进行替换的字符串
+                
+                返回值：返回替换之后的文本。
+                    
+                    var txt = 'javascript is good,java is more';
+                    var res = txt.replace(/java/gi,'Java');
+                    var res1 = txt.replace('java','Java');
+                        
+                    console.log(res);  //Javascript is good,Java is more
+                    console.log(res1); //Javascript is good,java is more 只找到第一个字符串并替换。
+                    console.log(txt); //javascript is good,java is more不改变原值
+            
+            4)split():
+                功能：将调用它的字符串拆分为数组，分隔符是split的参数
+                参数：分隔符
+                返回值：数组
+                    var res = '1.2.3.4.5'.split(/\./g);//将字符串按照你给的参数进行字符串分割
+                    console.log(res);//["1", "2", "3", "4", "5"]
+
+        2. 正则表达式的匹配
+            1) 字符直接量（只能匹配一个）
+                abc 字符串
+                .   所有字符
+                \.  匹配特殊字符'.'
+                \w  [a-zA-Z0-9_]
+                \W  [^a-zA-Z0-9_]
+                \s  [\n\t\f\r]
+                \S  [^\n\t\f\r]
+                \d  [0-9]
+                \D  [^0-9]
+                要匹配其他的直接量等只需加转义符\
+
+            2) 字符类：将直接量字符单独放在方括号内就组成了一个字符类（只能匹配一个）
+
+                [a-z]
+                [0-9]
+                [a|b]
+                [abcd] 匹配包含a|b|c|d其中一个的一个字符
+
+            3) 数量（默认是贪婪匹配的）
+
+                字符/字符/分组{数量}
+                {n}
+                {n,m}
+                {n,}
+                ? 匹配0-1次 {0,1}
+                * 匹配0-多次 {0,}
+                + 匹配1-多次 {1,}
+
+            4) 贪婪匹配（默认）与非贪婪匹配
+                非贪婪匹配只需在表示数量的后面加?
+                {数量}?
+                /\d+?/gi 匹配一次
+
+            5) 边界匹配
+                ^ 开始边界： ^abc    如果用在字符类[]内，表示非
+
+                $ 结束边界  \w$
+                (?=p) 零宽正向先行断言，要求接下来的字符都与p匹配
+                    /[jJ]ava([Ss]cript)?(?=\:)/
+                    可以匹配"javascript:the defined duide"
+                    不能匹配"java in a nutshell"
+
+                (?!p) 零宽负向先行断言，要求接下来的字符不与p匹配
+                    /java(?! script)([A-Z]\w*)/
+                    可以匹配带script，也可以不匹配
+
+            6) 选择匹配 ：|（或者）
+                /a|b|c|d|e|f/
+                /[a-f]/
+
+
+            7) 分组 ：()
+                1.把单独项组成子表达式，以便可以像处理一个独立单元一样用? * 等对单元项进行处理
+                    var pattern = /Java(script)?/gi; //可以匹配java/javascript
+                2.在完整的模式中定义子模式
+
+                3.允许在同一正则表达式后部引用前面的子表达式,通过\数字调用前面的子表达式
+
+            8) 引用 ：\数字
+                对正则表达式中前一个表达式的引用
+                var pattern = /['"][^'"]*['"]/g;
+                var pattern = /(['"])[^'"]/gi;//使用引用,引用的是第一个子类
+
+###内置对象（数组和正则都是）
+
+#### 包装器数据类型:String  Boolean  Number
+    
+    *为了便于操作基本数据类型，ECMAScript提供了三个特殊的引用类型String Boolean Number。每当读取一个基本数据类型值的时候，后台就会创建一个对应的基本包装类型对象，从而可以使我们调用这些对象的原型的方法实现一些操作。
+
+    *后台自动完成的操作
+     eg: var s = "briup;
+         s.substring(2);
+         自动完成三个步骤：
+            a.创建String类型的一个实例
+            b.在实例上调用指定的方法
+            c.销毁这个实例
+    
+    * object() 构函会像工厂方法一些，它会根据传入的值的类型返回相应基本包装器类型的实例
+        var obj1 = new Object();//不传参的时候默认是Object的实例（东西）
+        console.log(obj1 instanceof Object);//true
+        
+        var obj2 = new Object("briup");//传参时就会根据参数的类型创建相应的包装器实例对象，可以调用相应构函的原型的方法
+        console.log(obj2 instanceof String);//true
+        console.log(obj2 instanceof Object);//true
+        
+        var obj3 = new Object(12);
+        console.log(obj3 instanceof Number);//true
+    
+    *使用new调用基本包装类型的构造函数创建实例对象和直接调用同名的构造转换函数不一样
+        var a = 123;
+        var c =Number(a);//直接调用构造函数进行数据类型转换 number类型
+        var b = new Number(123);//用new 来调用构造函数创建实例对象 Object类型
+        
+        console.log(a==b);//true
+        console.log(a===b);//false
+        console.log(a===c);//true
+
+        console.log(typeof a);//number
+        console.log(typeof b);//object
+        console.log(typeof c);//number
+
+        console.log(b instanceof Number);//true
+
+    * 基本包装数据类型：不包括null和undefined
+
+        1.Boolean
+        2.Number
+            不建议直接使用这两种包装器类型
+
+        3.String类型
+
+            * var str = 'hello';
+            // 根据自动完成操作，str会是String的一个实例，String.prototype定义的方法 str实例都可以调用
+
+            * 与数组中的属性和方法联系起来
+
+            1)属性:(String.prototype中的)
+                length:获取给定字符串的字符长度
+
+            2)方法:(String.prototype中的)
+                
+                * charAt(i) （英译:在哪个下标的字符）
+                 返回给定位置的字符
+
+                * charCodeAt() 返回给定位置的字符的字符编码(ASCII)
+                    例如:
+                    var s = "helloworld";
+                    s.charAt(1);       //e
+                    s.charCodeAt(1); //101
+                
+                * indexOf(英译:谁的下标)
+                从前往后查找指定字符所在位置,与数组方法类似，可以传两个参
+                
+                * lastIndexOf();  从后往前查找字符串所在位置，可以有第二个参数，代表从符串中哪个位置开始查找。与数组方法类似
+                
+                * concat() ：不改变原有的字符串
+                将一个或多个字符串拼接起来，返回拼接得到的新字符串，但是大多使用"+"拼接
+
+                * slice() :不改变原有的字符串
+                截取字符串（开始位置，结束位置），第二个参数不给时则截取到最后位置。
+                
+                * substring()：不改变原有的字符串
+                截取字符串（开始位置，结束位置）第二个参数不给时则截取到最后位置。
+                
+                * substr() ：截取字符串（开始位置，返回字符个数）,跟数组中splice有不一样的，substr必须给两个参数
+                    
+                    var s = "helloworld";
+                    s.slice(3,7);    //lowo
+                    s.substr(3,7);   //loworld
+                    s.substring(3,7);//lowo
+                    s.substring(3);//loworld
+                
+                * trim() :不改变原字符串
+                删除前置以及后置中的所有空格（最左和最右的空格，不会去掉中间的），返回结果
+                    var str = " javascript is good ";
+                    var result = str.trim();
+                    console.log(result);//"javascript is good"
+                    console.log(str);//" javascript is good "
+                
+                * toLowerCase():转换为小写
+                
+                * toUpperCase() :转换为大写
+                    var str = "java";
+                    var result = str.toUpperCase();
+                    console.log(result);//JAVA
+                    console.log(str);//java
+            
+            后面四个方法具体参照正则表达式的方法解析(P832页)
+                * split
+                    在指定的分隔符字符串或者正则表达式处断开，将一个字符串分割为由字符串组成的数组。
+                    参数是分隔符，表示的是将这个字符串按照字符串中有的字符来进行分隔成数组，数组的每项依然的字符串。
+
+                        console.log('1226'.split(','));//['1226'] 字符串中没有逗号，则把整个字符串变成数组唯一项
+                        console.log('1236'.split(''));//["1","2","3","6"]
+                * replace
+                    使用正则表达式执行查找和替换操作，如果第一个参数不是正则而是普通字符串，那么将找到第一个匹配的字符串并替换。
+                * serach
+                    不支持全局检索，找到符合的第一个就返回它的起始索引，否则就返回-1.
+                * match
+                    使用正则进行模式匹配，如果不是全局则与exec方法一样，如果是全局那么将返回找到的所有的子串组成的数组。
+
+####Math对象
+    没有构造函数，只是单纯的对象。包含一些数学函数(方法)和常量(属性)。
+        属性：
+            Math.E   数学常数 E
+            Math.LN10 数学常数 log e(下标) 10==ln10
+            Math.PI  数学常数 PI
+
+        方法：
+        1)常用方法
+            1.比较方法
+                Math.min()  求一组数中的最小值
+                Math.max()  求一组数中的最大值
+                    Math.min(1,2,19,8,6);   //1
+            2.将小数值舍入为整数的几个方法：
+                Math.ceil()  向上舍入
+                Math.floor() 向下舍入
+                Math.round() 四舍五入
+
+                    console.log(Math.ceil(12.41));  //13
+                    console.log(Math.floor(12.41)); //12
+                    console.log(Math.round(12.3));  //12
+                    console.log(Math.round(12.5));  //13
+            3.随机数
+                Math.random() 返回大于0小于1的一个随机数
+
+        2)其他方法  
+            abs(num)        返回num绝对值
+            exp(num)        返回Math.E的num次幂
+            log(num)        返回num的自然对数
+            
+            pow(num,power)  返回num的power次幂
+            sqrt(num)       返回num的平方根
+            
+            scos(x)         返回x的反余弦值
+            asin(x)         返回x的反正弦值
+            atan(x)         返回x的反正切值
+            atan2(y,x)      返回y/x的反正切值
+            cos(x)          返回x的余弦值
+            sin(x)          返回x的正弦值
+            tan(x)          返回x的正切值
+
+
+####Date
+
+    1.Date对象，是操作日期和时间的对象。Date对象对日期和时间的操作只能通过方法。
+    
+    2.属性:
+        无；Date对象对日期和时间的操作只能通过方法。
+
+ 
+    3.创建Date对象(Date()构造函数)
+      * 不使用new关键字创建
+        console.log(Date());
+        consoel.log(typeof Date());  //string
+
+            区别：
+            不使用new 关键字创建的是基本数据类型
+            用new关键字创建的是date对象，引用数据类型
+
+      * 使用new关键字创建
+      
+        1)new Date() ：返回当前的本地日期和时间
+
+            参数：无
+
+            返回值： {Date} 返回一个表示本地日期和时间的Date对象。
+
+                示例：
+                    
+                var dt = new Date(); 
+                consoel.log(typeof new Date()); //object
+                console.log(dt); // 返回一个表示本地日期和时间的Date对象
+
+ 
+        2) new Date(milliseconds) ：把毫秒数转换为Date对象
+
+            参数：milliseconds {int} ：毫秒数；表示从'1970/01/01 00:00:00'为起点，开始叠加的毫秒数。
+
+            注意：起点的时分秒还要加上当前所在的时区，北京时间的时区为东8区，起点时间实际为：'1970/01/01 08:00:00'
+
+            返回值：{Date} 返回一个叠加后的Date对象。
+
+                示例：
+                    
+                var dt = new Date(1000 * 60 * 1); // 前进1分钟的毫秒数
+                console.log(dt); // {Date}:1970/01/01 08:01:00
+                dt = new Date(-1000 * 60 * 1); // 倒退1分钟的毫秒数
+                console.log(dt); //  {Date}:1970/01/01 07:59:00
+
+ 
+        3)new Date(dateStr) ：把字符串转换为Date对象
+
+            参数： ①dateStr {string} ：可转换为Date对象的字符串(可省略时间)；这里的年月日都是按照写的来算，不按照0开始计算.
+            字符串的格式主要有两种：
+
+                1) yyyy/MM/dd HH:mm:ss （推荐）：若省略时间，返回的Date对象的时间为 00:00:00。
+
+                2) yyyy-MM-dd HH:mm:ss ：若省略时间，返回的Date对象的时间为 08:00:00(加上本地时区)。若不省略时间，此字符串在IE中会转换失败!
+                
+                3)也可以直接传一个由Date()创建的时间字符串进去，可以把它转换为对象
+                    new Date(Date());//get the local time
+
+            返回值：{Date} 返回一个转换后的Date对象。
+
+                示例：
+                    
+                var dt = new Date('2014/12/25'); // yyyy/MM/dd
+                console.log(dt); //  {Date}:2014/12/25 00:00:00
+                dt = new Date('2014/12/25 12:00:00'); // yyyy/MM/dd HH:mm:ss
+                console.log(dt); // {Date}:2014/12/25 12:00:00
+                 
+                dt = new Date('2014-12-25'); // yyyy-MM-dd
+                console.log(dt); //  {Date}:2014-12-25 08:00:00 (加上了东8区的时区)
+                
+                dt = new Date('2014-12-25 12:00:00'); // yyyy-MM-dd HH:mm:ss (注意：此转换方式在IE中会报错！)
+                console.log(dt); // {Date}:2014-12-25 12:00:00
+
+                var date = new Date(Date());
+                console.log(date);//Sun Sep 03 2017 09:28:44 GMT+0800 (中国标准时间)
+
+        4) new Date(year, month, opt_day, opt_hours, opt_minutes, opt_seconds, opt_milliseconds) ：把年月日、时分秒转换为Date对象
+
+            参数：(最少传两个参数，如果参数是一个时，会显示1970/1/1 8:00:00)
+
+                ①year {int} ：年份；4位数字。如：1999、2014
+
+                ②month {int} ：月份；2位数字。从0开始计算，0表示1月份、11表示12月份。
+
+                ③opt_day {int} 可选：号； 2位数字；从1开始计算，1表示1号。
+
+                ④opt_hours {int} 可选：时；2位数字；取值0~23。
+
+                ⑤opt_minutes {int} 可选：分；2位数字；取值0~59。
+
+                ⑥opt_seconds {int} 可选：秒；2未数字；取值0~59。
+
+                ⑦opt_milliseconds {int} 可选：毫秒；取值0~999。
+
+            返回值：{Date} 返回一个转换后的Date对象。
+
+                示例：
+                var date = new Date(2012);//Thu Jan 01 1970 08:00:02 GMT+0800 (中国标准时间)  
+
+                var dt = new Date(2014, 11); // 2014年12月(这里输入的月份数字为11)
+                console.log(dt); //  {Date}:2014/12/01 00:00:00
+                dt = new Date(2014, 11, 25); // 2014年12月25日
+                console.log(dt); //  {Date}:2014/12/25 00:00:00
+                dt = new Date(2014, 11, 25, 15, 30, 40); // 2014年12月25日 15点30分40秒
+                console.log(dt); //  {Date}:2014/12/25 15:30:40
+                dt = new Date(2014, 12, 25); // 2014年13月25日(这里输入的月份数字为12，表示第13个月，跳转到第二年的1月)
+                console.log(dt); //  {Date}:2015/01/25
+
+ 
+    4. 实例方法(实例对象可以调用的)
+
+        Date对象的实例方法主要分为2种形式：本地时间和UTC时间。同一个方法，一般都会有此2种时间格式操作(方法名带UTC的，就是操作UTC时间)，这里主要介绍对本地时间的操作。
+
+ 
+        3.1 get方法
+            3.1.1 getFullYear() ：返回Date对象的年份值；4位年份。
+            
+        *** 3.1.2 getMonth()：返回Date对象的月份值。从0开始，所以真实月份=返回值+1 。
+            
+            3.1.3 getDate() ：返回Date对象的月份中的日期值；值的范围1~31 。
+            
+            3.1.4 getHours() ：返回Date对象的小时值。
+            
+            3.1.5 getMinutes() ：返回Date对象的分钟值。
+            
+            3.1.6 getSeconds() ：返回Date对象的秒数值。
+            
+            3.1.7 getMilliseconds() ：返回Date对象的毫秒值。
+            
+        *** 3.1.8 getDay() ：返回Date对象的一周中的星期值；0为星期天，1为星期一、2为星期二，依此类推
+            
+            3.1.9 getTime() ：返回Date对象与'1970/01/01 00:00:00'之间的毫秒值(北京时间的时区为东8区，起点时间实际为：'1970/01/01 08:00:00') 。
+
+                示例：
+                    
+                dt.getFullYear(); // 2014：年
+                dt.getMonth(); // 11：月；实际为12月份(月份从0开始计算)
+                dt.getDate(); // 25：日
+                dt.getHours(); //  15：时
+                dt.getMinutes(); //  30：分
+                dt.getSeconds(); //  40：秒
+                dt.getMilliseconds(); //  333：毫秒
+                dt.getDay(); //  4：星期几的值 :真实星期 = 返回值 +1 
+                dt.getTime(); //  1419492640333 ：返回Date对象与'1970/01/01 00:00:00'之间的毫秒值(北京时间的时区为东8区，起点时间实际为：'1970/01/01 08:00:00')
+
+ 
+        3.2 set方法
+            3.2.1 setFullYear(year, opt_month, opt_date) ：设置Date对象的年份值；4位年份。
+            3.2.2 setMonth(month, opt_date) ：设置Date对象的月份值。0表示1月，11表示12月。
+            3.2.3 setDate(date) ：设置Date对象的月份中的日期值；值的范围1~31 。
+            3.2.4 setHours(hour, opt_min, opt_sec, opt_msec) ：设置Date对象的小时值。
+            3.2.5 setMinutes(min, opt_sec, opt_msec) ：设置Date对象的分钟值。
+            3.2.6 setSeconds(sec, opt_msec) ：设置Date对象的秒数值。
+            3.2.7 setMilliseconds(msec) ：设置Date对象的毫秒值。
+                示例：
+                    
+                var dt = new Date();
+                dt.setFullYear(2014); // 2014：年
+                dt.setMonth(11); // 11：月；实际为12月份(月份从0开始计算)
+                dt.setDate(25); //  25：日
+                dt.setHours(15); // 15：时
+                dt.setMinutes(30); //  30：分
+                dt.setSeconds(40); //  40：秒
+                dt.setMilliseconds(333); // 333：毫秒
+                console.log(dt); // 2014年12月25日 15点30分40秒 333毫秒
+
+ 
+        3.3 其他方法
+            3.3.1 toString() ：将Date转换为一个'年月日 时分秒'字符串
+            3.3.2 toLocaleString() ：将Date转换为一个'年月日 时分秒'的本地格式字符串
+            3.3.3 toDateString() ：将Date转换为一个'年月日'字符串
+            3.3.4 toLocaleDateString() ：将Date转换为一个'年月日'的本地格式字符串
+            3.3.5 toTimeString() ：将Date转换为一个'时分秒'字符串
+            3.3.6 toLocaleTimeString() ：将Date转换为一个'时分秒'的本地格式字符串
+            3.3.7 valueOf() ：与getTime()一样， 返回Date对象与'1970/01/01 00:00:00'之间的毫秒值(北京时间的时区为东8区，起点时间实际为：'1970/01/01 08:00:00') 
+                示例：
+    
+                    var dt = new Date();
+                    console.log(dt.toString()); // = Tue Dec 23 2014 22:56:11 GMT+0800 (中国标准时间) ：将Date转换为一个'年月日 时分秒'字符串
+                    console.log(dt.toLocaleString()); // = 2014年12月23日 下午10:56:11  ：将Date转换为一个'年月日 时分秒'的本地格式字符串
+                     
+                    console.log(dt.toDateString()); // = Tue Dec 23 2014 ：将Date转换为一个'年月日'字符串
+                    console.log(dt.toLocaleDateString()); // = 2014年12月23日 ：将Date转换为一个'年月日'的本地格式字符串
+                     
+                    console.log(dt.toTimeString()); // = 22:56:11 GMT+0800 (中国标准时间) ：将Date转换为一个'时分秒'字符串
+                    console.log(dt.toLocaleTimeString()); // = 下午10:56:11 ：将Date转换为一个'时分秒'的本地格式字符串
+ 
+                    console.log(dt.valueOf()); // = 返回Date对象与'1970/01/01 00:00:00'之间的毫秒值(北京时间的时区为东8区，起点时间实际为：'1970/01/01 08:00:00')
+
+ 
+    4. 静态方法(构造函数Date()可以调用的)
+        4.1 Date.now()
+
+            说明：返回当前日期和时间的Date对象与'1970/01/01 00:00:00'之间的毫秒值(北京时间的时区为东8区，起点时间实际为：'1970/01/01 08:00:00') 
+
+            参数：无
+
+            返回值：{int} ：当前时间与起始时间之间的毫秒数。
+
+            示例：
+                
+            console.log(Date.now()); // = 1419431519276
+
+  
+        4.2 Date.parse(dateStr)
+
+            说明：把字符串转换为Date对象 ，然后返回此Date对象与'1970/01/01 00:00:00'之间的毫秒值(北京时间的时区为东8区，起点时间实际为：'1970/01/01 08:00:00')
+
+            参数：①dateStr {string} ：可转换为Date对象的字符串(可省略时间)；字符串的格式主要有两种：
+
+            1) yyyy/MM/dd HH:mm:ss （推荐）：若省略时间，返回的Date对象的时间为 00:00:00。
+
+            2) yyyy-MM-dd HH:mm:ss ：若省略时间，返回的Date对象的时间为 08:00:00(加上本地时区)。若不省略时间，此字符串在IE中返回NaN(非数字)!
+
+            返回值：{int} 返回转换后的Date对象与起始时间之间的毫秒数。
+
+                示例：
+                    
+                console.log(Date.parse('2014/12/25 12:00:00')); // = 1419480000000
+                console.log(Date.parse('2014-12-25 12:00:00')); // = 1419480000000  (注意：此转换方式在IE中返回NaN！)
+                 
+5. 实际操作
+    5.1 获取倒计时
+
+    说明：计算当前时间离目的时间相差多少天时分。
+
+        示例：
+            
+        /**
+        * 返回倒计时
+        * @param dt {Date}：目的Date对象
+        * @return {Strin} ：返回倒计时：X天X时X分
+        */
+        function getDownTime(dt) {
+            // 1.获取倒计时
+            var intervalMsec = dt - Date.now(); // 目的时间减去现在的时间，获取两者相差的毫秒数
+            var intervalSec = intervalMsec / 1000; // 转换成秒数
+            var day = parseInt(intervalSec / 3600 / 24); // 天数
+            var hour = parseInt((intervalSec - day * 24 * 3600) / 3600); // 小时
+            var min = parseInt((intervalSec - day * 24 * 3600 - hour * 3600) / 60); // 分钟
+         
+            // 2.若相差的毫秒小于0 ,表示目的时间小于当前时间，这时的取的值都是负的：-X天-时-分，显示时，只显示天数前面为负的就行。
+            if (intervalMsec < 0) {
+                hour = 0 - hour;
+                min = 0 - min;
+            }
+         
+            // 3.拼接字符串并返回
+            var rs = day + '天' + hour + '时' + min + '分';
+            return rs;
+        }
+         
+        // 当前时间：2014/12/28 13:26
+        console.log(getDownTime(new Date('2015/06/01'))); // =154天10时33分
+        console.log(getDownTime(new Date('2014/01/01'))); // = -361天13时26分
+
+         
+    5.3 比较2个Date对象的大小
+
+        说明：可以对比2者的与起始时间的毫秒数，来区分大小。
+
+        示例：
+            
+        var dt1 = new Date('2015/12/01');
+        var dt2 = new Date('2015/12/25');
+        console.log(dt1 大于 dt2); // = false
+
+
+####JSON文件里的格式：
+        对象
+            {
+                "name":"terry",
+                "age":12
+            }
+        数组
+            ["terrt",12,{
+                "name":"terry"
+            }]
+    JSON文件里的对象和数组在js中的格式
+        对象
+            '{
+                "name":"terry",
+                "age":12
+            }'
+        数组
+            '["terrt",12,{
+                "name":"terry"
+            }]'
+
+
+            
+#DOM
+    * DOM是针对HTML和XML文档的一个API（应用程序编程接口）,DOM描绘了一个层次化的节点树，允许开发人员通过js操纵节点树，动态的添加，移除，修改页面的某一部分，实现局部更新。
+
+    * DOM可以将任何HTML或XML文档描绘成一个由多层节点构成的结构。
+        节点分为几种不同的类型nodeType，每种类型分别表示文档中不同的信息或标记。
+        每个节点拥有各自的特点，数据和方法，另外也有与其他节点存在某种关系。
+        节点之间的关系构成了层次，所有页面标记则表现为一个以特定节点document为根节点的树形结构。
+    
+    * 我们一般不创建node节点，浏览器内存中会自动给我们加载节点对象，所以一般我们只需获取节点即可。
+                
+    * node的构造函数原型链：
+                Object
+                
+                Node
+
+        (12种节点类型)Document(文档节点 nodeType 9)   Element(元素节点 nodeType 1)    TextNode(文本节点 nodeType 3)   Comment(注释节点 nodeType 8) Attribute(属性节点 2)
+
+        HTMLDocument            HTMLElement/...   
+
+        document (根节点)           div
+    具体看图
+
+
+    * document节点对象映射一个页面,整个文档的父元素
+
+    * 详解节点的原型链
+
+     (一)Node类型
+            1.js中所有的节点类型(12种)都继承自Node类型，Node.prototype中定义的属性和方法，所有的节点都可以使用
+
+            2.属性(所有节点都可用)
+                1)nodeType:节点类型(12种)
+                    常见的几种节点类型：
+                        
+                        元素节点  1    Element: div/span..
+                        属性节点  2    Attribute: id/name...
+                        文本节点  3    TextNode: text/"hello"（空白节点也是）
+                        注释节点  8    Comment: 注释
+                        文档节点  9    Document: document.nodeType ==9
+
+                2)nodeName:节点名称,根据节点类型而定
+
+                3)nodeValue:节点值,根据节点的类型而定
+                    nodeType      nodeName      nodeValue   
+                      1             Div             null
+                      2             
+                      3             #text           文本内容
+                      9             #document       null
+                      8             #comment        注释内容
+            ****访问节点：
+                4)childNodes:保存一个NodeList对象，NodeList是一种类数组对象用来保存一组有序的节点，表示当前节点的所有子节点(节点都是，与children区分)。它实际上是基于 DOM结构动态执行查询的结果，因此 DOM 结构的变化能够自动反映在 NodeList 对象中，有一个属性length
+                 console.log(div.childNodes);//NodeList[所有子节点]
+
+                  * 如何访问保存在NodeList中的对象:
+                    方法一：[]访问
+                        div.childNodes[0] 
+                    方法二：item()方法
+                        div.childNodes.item(0);//方法内放下标
+                    技巧：将 NodeList 对象转换为数组。
+                        var nodes = Array.prototype.slice.call(div.childNodes,0);
+                        console.log(nodes);//[text,p,div,span...]
+                 
+                  * children和childNodes的区别：两者都是Node的属性，都可以被任何节点调用,访问的两种方法都可用。
+                    
+                    console.log(document.childNodes);//类数组NodeList [DocumentType,<html>] 保存所有子节点（不只是元素节点）
+                    console.log(document.children);//类数组HTMLCollection [<html] 保存所有的元素子节点
+                
+                5)parentNode:指向文档树中的父节点。包含在childNodes列表中所有的节点都具有相同的父节点，每个节点之间都是同胞/兄弟节点。
+                <body>
+                    <div class="one">
+                        <p>first</p>
+                    </div>
+                </body 
+                    
+                    console.log($div.parentNode);//body
+
+                6)previousSibling: 兄弟节点中的前一个节点
+                   div是body里唯一一个子元素节点
+                   console.log($div.previousSibling);//#text
+                   console.log($div.previousElementSibling);//null
+
+                7)nextSibling:  兄弟节点中的下一个节点
+                    div是body里唯一一个子元素节点
+                    console.log($div.nextSibling);//#text
+                    console.log($div.nextElementSibling);//null
+               
+                8)firstChild: childNodes列表中的第一个节点
+                    console.log($div.firstChild);//text
+                    console.log($div.firstElementChild);//p
+
+                9)lastChild: childNodes列表中的最后一个节点
+                    console.log($div.lastChild);//text
+                    console.log($div.lastElementChild);//p
+               
+                10)ownerDocument :指向表示整个文档的文档节点document。任何节点都属于它所在的文档，任何节点都不能同时存在于两个或更多个文档中。
+                   console.log($div.ownerDocument);//[HTMLDocument]
+            
+            3.方法：
+
+                1)hasChildNodes() 在包含一个或多个子节点的情况下返回true
+                    console.log($div.hasChildNodes());//true
+            
+            ****操纵节点的四种方法：下面四种方法都需要父节点进行调用。
+                2)appendChild()：追加节点
+                    向childNodes列表末尾(所有子节点的末尾，也就是最后一个空白节点的后面)添加一个节点。返回值为新增的节点，关系更新
+
+                        * 如果参数节点已经为文档的一部分，位置更新而不插入（原来参数节点的位置到最后一个，并且原来参数节点的位置不在）
+                            
+                            dom树可以看做是由一系列的指针连接起来的，任何DOM节点不能同时出现在文档中的多个位置 
+   
+                            (1)//直接把原有的节点追加至最后
+                            var $one1 = document.getElementsByTagName('p')[0];//页面已有节点
+                            $div.appendChild($one1);//会把原有节点放到最后
+
+                        * 如果不是原有节点，则可以通过创建新节点或者克隆已有节点在最后追加
+                            (2)//创建新节点并追加至最后一个节点
+                            var $p = document.createElement('p');
+                            $p.style ='background-color:blue;height:100px;';
+                            $div.appendChild($p);
+                            (3)//克隆原有的节点追加至最后
+                            var $one_new = $div.firstElementChild.cloneNode(true);
+                            $div.appendChild($one_new);
+
+                3)insertBefore()
+                    第一个参数：要插入的节点；第二个参数：作为参照的节点；被插入的节点会变成参照节点的前一个同胞节点,返回插入节点。
+
+                    如果第二个参数为null将会将该节点追加在NodeList后面（即跟appendChild追加到最后是一样的）
+                    
+                        $div.insertBefore($p,$div.firstChild);////插入到第一个节点(#text)之前
+                        $div.insertBefore($p,null);//追加到最后一个节点
+                        $div.insertBefore($p,$div.lastChild);//插入到最后一个节点(#text)前
+                        $div.insertBefore($p,$div.lastElementChild);//插入到最后一个元素节点前
+
+                4)replaceChild() 替换节点
+                    第一个参数：要插入的节点；第二个参数：要替换的节点；
+
+                    要替换的节点将由这个方法返回并从文档树中被移除，同时由要插入的节点占据其位置
+                        $div.replaceChild($p,$div.lastElementChild);
+
+                5)removeChild() 移除节点
+                    一个参数，即要移除的节点。移除的节点将作为方法的返回值。
+                    任何节点对象都可以调用。
+                        $div.removeChild($div.lastElementChild);
+
+
+            ****其他方法:
+                
+                6)cloneNode() :不管深复制还是浅复制，复制后返回的节点副本属于文档所有，但并没有为它指定父节点。必须通过前面三个操纵节点的方法appendChild等添加到文档中。
+
+                    * 用于创建调用这个方法的节点的一个完全相同的副本。
+                    
+                    * 有一个参数为布尔类型参数为true时，表示深复制，即复制节点以及整个子节点数。
+                    参数为false的时候，表示浅复制，只复制节点本身。
+
+                    * 不管是深复制还是浅复制，事件都会被复制，但是子节点只有深复制才会被复制。
+                    
+                    * 该方法不会复制添加到DOM节点中的JavaScript属性，例如事件处理程序等。
+                    * 该方法只复制特定,子节点，其他一切都不复制。
+                    但是IE中可以复制，建议标准相同，在复制之前，移除所有事件处理程序。
+                    
+                7)normalize() 
+                    * 处理文档树中的文本节点，由于解析器的实现或DOM操作等原因，可能会出现文本节点不包含文本，或者接连出现两个文本节点，
+                    * 当在某个节点上调用了该方法，会删除空白节点，会找到相邻的两个文本节点，并将他们合并为一个文本节点。
+
+
+     (二)Document类型
+
+            1.通过使用Document类型表示文档。在浏览器中，document对象是HTMLDocument的一个实例，表示整个HTML页面。document对象是window对象的一个属性，因此可以直接调用。HTMLDocument继承自Document。
+               window.ducument 当前文档
+
+            2.下面学的是写在Document.prototype中的属性和方法，documnet实例对象都可以调用。
+
+            3.属性：
+                1)documentElement   始终指向HTML页面中的html元素。根节点ducument的子节点
+                2)body        直接指向body元素
+                3)doctype     访问<!DOCTYPE, 浏览器支持不一致，很少使用
+                4)title       获取文档的标题
+                5)URL         取得完整的URL
+                6)domain      取得域名，并且可以进行设置，在跨域访问中经常会用到。
+                7)referrer    取得链接到当前页面的那个页面的URL，即来源页面的URL
+                
+                8)images      获取所有的img对象，返回HTMLCollection类数组对象
+                9)forms       获取所有的form对象，返回HTMLCollection类数组对象
+                10)links      获取文档中所有带href属性的a标签
+                返回HTMLCollection类数组对象
+
+            3.方法：
+                查找元素的方法：
+
+                * 后面有Elements的方法：是一个数组，若是要使用类数组中的某一个元素时，必须要加下标[数值]
+                如果只需获得这个类数组的集合可以不用
+                    var $div = document.getElementsByTagName('div');//不加下标表示的是类数组对象，后面要选中就需要加索引
+                    var $img = document.getElementsByTagName('img')[0];//加下标表示的是类数组中的第几个
+                    console.log($img.src);
+                    console.log($div[0].className);
+
+                    1)getElementById() 
+                     参数为要取得元素的ID，如果找到返回该元素，否则返回null如果页面中多个元素的ID值相同，只返回文档中第一次出现的元素。如果某个表单元素的name值等于指定的ID，该元素也会被匹配。
+                    
+                    2)getElementsByTagName()
+                     参数为要取得元素的标签名，返回包含另个或者多个元素的NodeList，在HTML文档中该方法返回的是HTMLCollection对象，与NodeList非常类似。可以通过[index/name],item(),namedItem(name)访问
+                    
+                    3)getElementsByName() 
+                     参数为元素的name,返回符合条件的HTMLCollection类数组对象
+                    
+                    4)getElementsByClassName() 
+                     参数为一个字符串，可以由多个空格隔开的标识符组成。当元素的class属性值包含所有指定的标识符时才匹配。HTML元素的class属性值是一个以空格隔开的列表，可以为空或包含多个标识符。
+
+                其他方法：
+                    5)createElement()创建新节点,创建后要添加到文档中（document的方法）,参数是标签名
+                
+                        var $p = document.createElement('p');
+                        $p.style ='background-color:blue;height:100px;';
+                        $div.appendChild($p);
+
+                        * HTMLCollection对象：是一个类数组对象，与NodeList对象类似，NodeList对象是通过 任意标签.childNodes来返回的，而HTMLCollection对象是通过document.get..方法调用或者document.links等来返回的。两者都可以通过数组的slice转换成数组
+
+                    6)write()
+                    7)writeln()
+                    8)open
+                    9)close
+                    10)createTextNode():创建文本节点，参数为要插入节点中的文本
+                        var $txt = document.createTextNode('hello');//文本节点，通过appendChild追加到父元素中；通过appendData()追加文本的内容等
+                    11)createAttribute():创建属性节点并传入特性的名称可以创建新的特性节点。
+                        例如，要为元素添加 align 特性，可以使用下列代码：
+                        var attr = document.createAttribute("align");
+                        attr.value = "left";
+     (三)Element类型
+
+            1.属性：每个元素类型的实例对象都可直接调用。
+
+              *快速获取属性：直接点语法访问下面的核心属性即可
+              所有的HTML元素都由HTMLElement类型或者其子类型表示。每个HTML元素都应具有如下一些属性以及html元素特有的属性。
+                id          元素在文档中的唯一标识符
+                title       有关元素的附加说明信息
+                className   与元素class特性对应
+                lang        元素内容的语言代码，很少使用！
+                dir         语言方向，ltr,rtl 左到右，右到左、
+
+                src         img元素具有的属性
+                alt         img元素具有的属性
+
+                var $div = document.getElementsByTagName('div')[0];
+                console.log($div.className);
+                //e.id   e.title e.className
+              *每个元素都有一个或者多个特性，这些特性的用途是给出相应元素或内容的附加信息。
+                可以通过属性访问到该属性对应的值,特性的名称是不区分大小写的，即"id""ID"表示相同的特性
+                另外需要注意的是，根据HTML5规范，自定义特性应该加上data-前缀，以便验证。
+              
+              * attributes:返回一个类数组对象NamedNodeMap，得到某个元素的所有属性和属性值。可以通过[]和item(0)两种方式访问
+                
+                var $attrs = $div[0].attributes;
+                console.log($attrs);//NamedNodeMap [ class="nae", name="hs"]  
+
+                console.log($div[0].attributes[0]);//class:myClass
+                console.log($div[0].attributes[0].nodeName);//calss
+                console.log($div[0].attributes[0].nodeValue);//myClass
+            2.方法
+                1)获取属性：getAttribute()
+                    alert(div.getAttribute("id")); //"myDiv"
+                    alert(div.getAttribute("class")); //"bd" 
+
+                2)设置属性:setAttribute()或者 直接点访问设置或修改
+
+                   * setAttribute() ：两个参数，第一个参数为要设置的特性名，第二个参数为对应的值。如果该值存在，替换
+                   * 当你设置class时，会出现把原来的所有calss类全部替换掉的问题，最好不要设。
+
+                    $div[0].setAttribute('title','nihao');
+                    // $div.title = 'nihao ';
+                    console.log($div[0].title);
+
+                3)移除属性:removeAttribute()
+                    div.removeAttribute("class"); 
+
+
+            3.特殊特性： ？？？？？
+                style 通过getAttribute()访问时，返回的style特性值中包含的是CSS文本，而通过属性来访问返回一个对象，由于style属性是用于以编程方式访问元素样式的，因此并没有直接映射到style特性
+                    <div class="one" style="background-color:blue;width:110px;height:100px;" onclick="alert(1)"></div
+                    var $div = document.getElementsByTagName('div')[0];
+                    var $attr = $div.getAttribute('style');
+                    console.log($attr);
+                    //background-color:blue;width:110px;height:100px;
+                    console.log(typeof $attr);//string
+
+                    var $attrs = $div.attributes;
+                    console.log($attrs[1]);
+                    //style="background-color:blue;width:110px;height:100px;" 
+                    console.log(typeof $attrs[1]); //object
+                
+                onclick类似的事件处理程序 通过getAttribute()访问时，返回相应代码字符串；访问onclick属性时，返回一个javascript函数
+                    var $attr1 = $div.getAttribute('onclick');
+                    console.log($attr1);//alert(1)
+
+                    var $attrs = $div.attributes;
+                    console.log($attrs[2]);//onclick='alert(1)' //object
+
+            4.元素的子节点在不同浏览器中的问题
+                <ul>
+                    <li>item1</li>
+                    <li>item2</li>
+                </ul
+                ie8及以下版本浏览器 2个子节点
+                其他浏览器 5个子节点
+
+            5.作为文档树的文档有另一套的API特性和方法
+                将文档看做是Element对象树，忽略文档Text,Comment节点。
+
+                1)Element中的属性(所有的节点都能用，写在Element.prototype中的，所有的元素节点都可以使用，但是document这个节点另外，也可以用)
+
+                    children 类似于childNodes,返回NodeList对象，但是该对象中仅包含Element对象
+                    
+                    firstElementChild 第一个孩子元素节点
+                    
+                    lastElementChild 最后一个孩子元素节点
+                    
+                    nextElementSibling 下一个兄弟元素节点
+                    
+                    previousElementSibling 上一个兄弟元素节点
+                    
+                    childElementCount 子元素的数量，返回值和children.length值相等
+
+                2) 元素内容(text)
+                innerHTML和innerText的区别：
+                   *获取值时：
+                        <p> <strong>hello</strong> wrold </p
+                        console.log($p.innerText);//hello wrold  返回文本
+                        console.log($p.innerHTML);//<strong>hello</strong  wrold返回文本和包含的元素
+                   *设置（赋值）时：
+                        $p.innerHTML = '<strong>你<strong>好'; //标签会被解析出来。"你"会被加粗
+                        $p.innerText = '<strong>你<strong>好';//标签会被直接当成字符串打印出来，//<strong> 你 <strong 好
+
+                textContent:非ie使用；innerText:ie使用（可以写一个兼容函数）
+                    if($dom.inner){
+                        consoel.log($dom.innerText);
+                    }else if($dom.textContext){
+                        consoel.log($dom.textContent);
+                    }else{
+                     console.log('更换浏览器');
+                    }
+
+        (三)Text类型：文本节点。包含的是可以按照字面解释的存文本内容。
+            
+            是文本节点（对象）可以调用的属性和方法，这些属性和方法一般是对文本节点内部的文本进行操作。而Node类型的方法主要是对文本节点进行操作。
+            
+            * 先获取文本对象在再使用文本对象调用属性和方法（一般文本在元素的内部）
+            
+                length //文本长度
+                
+                假设txt是获取的文本对象（文本节点里保存的文本）
+
+                txt.appendData(text) //追加文本
+                txt.deleteData(beginIndex,count) //删除文本
+                txt.insertData(beginIndex,text) //插入文本
+                txt.replaceData(beginIndex,count,text) //替换文本
+                txt.splitText(beiginIndex) //从beginIndex位置将当前文本节点分成两个文本节点
+                
+                var txt = document.createTextNode() //创建文本节点，参数为要插入节点中的文本
+                
+                txt.substringData(beiginIndex,count) //从beginIndex开始提取count个字符串
+            
+            *例子：
+                var $h = document.getElementsByTagName('h1')[0];//获取父元素
+                var $txt = $h.childNodes[0];//获取文本对象，父元素中的子元素
+                $txt.appendData('hello');//必须由文本对象调用
+                $父元素.appendChild($txt);//追加文本节点到父元素
+        (四)Comment类型
+
+            <div id = "myDiv"><!--a comment--></div 
+
+            <!--a comment--   Comment类型（注释节点）
+
+
+
+####循环的几个题目
+    hackerrank题目.另一个网站
+    数组的作业：几种重写方法
+    正则作业（身份证号，邮箱..）和正则第二天的视频
+    数组中的实例（视频中有）数组第二天视频
+    动态表格和网页重构
+
+    
+    #事件
+        1. javascript与HTML之间的交互是通过事件实现的。事件就是文档或浏览器窗口中发生的一些特定的交互瞬间。
+
+        2.事件三要素：
+         事件源（event target）绑定事件的对象
+                事件源：发生的事件与之相关联或与之相关的对象
+                获取：dom对象
+         事件处理程序（event handler）
+                处理或相应事件的函数
+                匿名函数：当触发绑定事件的时候执行该函数
+
+         事件对象（event object）event对象
+                与特定事件相关且包含有关该事件详细信息的对象
+                非IE:function(event){
+
+                }
+                IE:window.event
+
+        3.事件流：描述的是从页面中接收事件的顺序
+          *早期IE认为事件流是事件冒泡规范，而NETscape认为事件流是事件捕获，所以就产生了DOM2级事件规范。
+
+          *DOM2中规定事件流分为三个阶段：事件捕获，事件处理程序和事件冒泡。
+
+            1.事件捕获：从最不特定事件目标开始接收事件，直到最特定事件目标(事件接受)
+                由外而内，outer - center - inner
+                当给这三个或者其中几个设置了与鼠标操作对象的同名事件时，会依次捕获。           
+            2.目标处理阶段：执行事件处理程序
+            
+            3.事件冒泡：从最特定事件目标开始，逐级传播到最不特定事件目标，(事件传播)
+               由内而外，inner - cneter -outer
+               当给这三个或者其中几个设置了与鼠标操作对象的同名事件时，会依次冒泡。
+        
+          *IE8以及以下版本只支持事件冒泡（IE8不支持DOM2级事件处理程序）
+
+
+        4.事件处理程序：（原生）
+
+            * 包括事件的绑定和解除。
+
+            * 事件就是用户或浏览器自身执行的某种动作，响应某个事件的函数为事件处理程序，事件处理程序以"on"开头(onclick,onload)
+            
+            * 事件处理程序类别
+
+                1)HTML事件处理程序:
+                    * 某个元素支持的每种事件，都可以使用一个与相应事件处理程序同名的HTML特性来指定。这个特性的值应该是能够执行的JavaScript代码。
+                        <input type="button" value="clickMe" onclick = "alert('is clicked')">
+                        <input type="button" value="clickMe" onclick = "showMsg()">
+                        <script type="text/javascript">
+                        function showMsg(){
+                        alert("is clicked");
+                        }
+                        </script 
+                    
+
+                    * 通过这种方式注册的事件只能注册一个，遵循覆盖原则，
+                      不会传入event对象，
+                      this指向window对象而不是触发事件的dom对象。
+
+                2)DOM0级事件处理程序:
+                   * 通过javascript制定事件处理程序的传统方式，将一个函数赋值给一个事件处理程序属性。特点是简单，跨浏览器。
+                        var btn = document.getElementById("btn");
+                        btn.onclick = function(){
+                        alert('cliked');
+                        }
+                   
+                   * 兼容比较好，简单
+                        $dom.onxxx = handler;
+                   
+                   * 同名的事件也只能注册一个，遵循覆盖原则。
+                     dom0级所有浏览器都支持，事件被触发时会默认传入event对象。
+                     是元素的方法，因此这个时候时间处理程序是在元素的作用域中运行，this指向当前元素。
+                        btn.onclick = null; //解除事件处理程序
+
+                3)DOM2级事件处理程序(IE8不支持DOM2级规范)
+                    *事件处理函数需要把它提取出来，放在外面，方便移除。
+
+                    1.1)非IE事件处理程序
+
+                         * this指向当前的对象
+                         * 事件绑定:addEventListener() 
+                                参数：(3个)
+                                    要绑定的事件名
+                                    作为事件处理的函数
+                                    布尔值：true在捕获阶段调用事件处理程序;
+                                            false在冒泡阶段调用
+                        
+                         * 事件解绑：removeEventListener() 
+                                参数：(3个)
+                                    要删除的事件名
+                                    作为事件处理的函数
+                                    布尔值：true在捕获阶段调用事件处理程序;
+                                            false在冒泡阶段调用
+                        
+                         *
+                            可以添加多个事件处理程序，并且按照添加她们的顺序触发。
+
+                            移除事件传入的参数与添加处理程序时使用的参数相同，添加事件时如果使用匿名函数将无法删除.所以需要把匿名函数单独放出来给变量名。再传入两个方法中。
+
+                         *非IE版本
+                            $dom.addEventListener('xxx',handler,boolean);
+                            $dom.removeEventListener('xxx',handler,boolean);
+                    
+                    1.2)IE事件处理程序:
+
+                         * 事件处理程序会在全局作用域中运行，因此 this指向window对象。为一个对象添加两个相同的事件，事件处理程序的顺序是按照添加相反顺序进行处理
+                         * attachEvent() 事件绑定
+                                参数：(2个)
+                                    事件处理程序名称
+                                    事件处理函数
+                         * detachEvent() 事件移除
+                                参数：(2个)
+                                    事件处理程序名称
+                                    事件处理函数
+                                
+                         * 事件处理程序都被添加到冒泡阶段(IE只有冒泡)
+
+                         * IE低版本
+                                $dom.attachEvent('on'+xxx,hanlder);
+                                $dom.detachEvent('on'+xxx,handler);
+
+                    1.3)事件绑定和解绑的兼容函数(封装))
+                        //通过EventUtil.on($outer,click,hander);
+
+                        var EventUtil = {
+                            on:function(source,event,hander){
+                                if(source.addEventListener){
+                                    source.addEventListener(event,hander);
+                                }else if(source.attachEvent){
+                                    source.attachEvent('on'+event,hander);
+                                }else{
+                                    source['on'+click] = hander;
+                                }
+                            }
+                            off:function(source,event,hander){
+                                if(source.removeEventListener){
+                                    source.removeEventListener(event,hander);
+                                }else if(source.detachEvent){
+                                    source.detachEvent('on'+click,hander);
+                                }else{
+                                    source['on'+click]=hander;
+                                }
+                            }
+                        }
+
+
+        5.事件绑定(框架 jquery，非原生)
+            $('#one').on('click',function(event){
+                //event.preventDefault(); 
+            });
+
+        6.事件对象(event对象)
+
+            1)事件对象的分类
+                
+                低版本 IE：event是作为window对象的一个属性存在，所以需要通过window.event来实现
+                
+                非IE:兼容DOM的浏览器默认会将 event对象传入到事件处理函数function中。
+
+                    兼容：event = event || document.event;
+            2)event的属性：
+                
+                *非IE版本中event对象的属性和方法：
+                    bubbles      Boolean 事件是否冒泡
+                    
+                    cancelable   Boolean 是否可取消事件默认行为
+                    
+                    currentTarget Element 事件处理程序当前正在处理事件的那个元素
+                    
+                    eventPhase   Integer 调用事件处理程序的阶段;1捕获 2处于目标 3冒泡
+                    
+                    target     Element 事件真正目标
+                    
+                    type     String事件类型，需要一个函数，处理多个事件时，可使用该属性。
+                    
+                    preventDefault()  Function 取消事件的默认行为
+                    
+                    stopPropagation()  Function 取消事件的进一步捕获或者冒泡
+
+                *低版本 IE中的event对象属性：
+                    cancelBubble Boolean 是否取消事件冒泡,值为true取消冒泡,类似stopPropagation()
+
+                    returnValue Boolean 取消事件默认行为,值为false阻止,类似preventDefault()
+                    
+                    srcEvent Element   事件的目标 target
+                    
+                    type String    被触发的事件的类型
+
+            3)event对象的常见兼容处理：
+
+                1.阻止标签默认行为：例如 a(跳转) form (自动提交)
+
+                    *兼容：return false;//通用的兼容的写法，IE和非IE都可用
+
+                    * IE低版本: event.returnValue = false;
+                    
+                    ** 非IE: event.preventDefault();或者直接return false;
+
+                        var $form = document.forms[0];
+                        $form.onsubmit = function(event){
+                            event = event ||window.event;
+                            var $username = document.getElementsByName('username')[0].value;
+                            if(!/^\w{6,}$/i.test($username)){
+                                alert('输入有误');
+                                // //event.preventDefault(); 非IE
+                                return false;//通用的兼容的写法，IE和非IE都可用
+                            }
+
+                        }
+
+                2.阻止冒泡
+                    * IE低版本: event.cancelBubble = true;
+                    
+                    ** 非IE: event.stopProPagation();
+                        
+                        if(event.cancelBubble){
+                            event.cancelBubble = true;
+                        }else if(event.stopProPagation){
+                            event.stopProPagation();
+                        }
+
+                3.event对象的获取
+                   兼容：event = event || document.event; 
+                        event = event?event : window.event;
+            
+            
+            4)目标对象:target,currentTarget,和this的区别
+                
+                target(IE中srcEvent):操作的dom对象(鼠标(点击或者其他操作)真正点击的目标对象)
+                currentTarget:当前目标 绑定事件的对象
+                this:当前目标  绑定事件的对象
+
+                *
+                target 指的是你真正的操作对象，即使后面经过冒泡，target会一直指向你点击的目标对象
+                而 currentTarget在冒泡时它的值是会跟随你的事件绑定的对象改变而改变
+        
+        7.事件类型
+            UI事件：
+                load：当页面完全加载后再window上触发，当所有框架加载完时在框架集上触发，当图像加载完毕时在img元素上触发，当嵌入的内容加载完时在<object 触发
+                
+                unload：当页面完全卸载后再window上触发，当所有框架都卸载后在框架集上触发，当嵌入的内容卸载完毕后再<object 上触发,(firefox不支持)
+                
+                select：当用户选择文本框（<input>,<textarea）中用户输入的一个或多个字符时
+                
+                resize：当浏览器窗口被调整到一个新的高度或者宽度时，会触发
+                
+                scroll：当用户滚动带滚动条的元素中的内容时，在该元素上触发resize,scroll会在变化期间重复被激发，尽量保持代码简单
+
+            焦点事件：
+                blur 元素失去焦点的时候触发
+                
+                focus 元素获得焦点的时候触发，不支持冒泡//IE支持
+                
+                focusin 与focus等价，支持冒泡
+                
+                focusout 与blur等价，支持冒泡
+
+            鼠标与滚轮事件：
+                click： 点击主鼠标按钮或者按下回车按键的时候触发。只有在一个元素上相继发生mousedown,mouseup事件，才会触发click事件
+                
+                dblclick： 双击主鼠标按钮时触发.只有在一个元素上相继触发两次click事件才会触发dbclick事件
+
+                mousedown 任意鼠标按钮按下时触发
+                mouseup 释放鼠标按钮触发
+
+                mousemove 鼠标在元素内部移动的时候重发触发
+                mousewheel 滚轮事件
+
+              **mouseover 鼠标位于元素外部，将其首次移入另一个元素边界之内时触发
+                【支持子元素】
+              **mouseout 在位于元素上方的鼠标光标移入到另外一个元素中。
+                【支持子元素】在被选元素上与mouseleave效果相同
+
+                mouseenter 鼠标光标从元素外部首次移动到元素范围内激发，不冒泡。
+                【不支持子元素】,不能事件代理
+                mouseleave 在位于元素上方的鼠标光标移动到元素范围之外时触发，
+                不冒泡【不支持子元素】,不能事件代理
+
+            键盘与文本事件：
+                keydown 按下键盘任意键时触发，如果按住不放会重复触发此事件
+                keypress 按下键盘字符键时触发，如果按住不放会重复触发此事件
+               
+                keyup 释放键盘上键时触发，当键盘事件发生时，event对象的keyCode属性中会包含一个代码与键盘上的特定键对应，对数字字母键,keyCode属性的值与ASCII码中对应的小写字母和数字编码相同
+
+        8.事件代理（委托）
+            根据事件冒泡的规则，把事件添加到目标事件的父元素上，当点击目标事件的时候会触发绑定的事件，可以通过event.target来获取目标事件。
+            优点：可以支持动态添加元素
+                可以减少事件绑定次数，优化代码，提高效率
+
+            举例：动态表格
+        
+#BOM
+
+#jquery
+    
+    前端开发
+    核心 html + css + js
+    框架
+        jQuery
+        mvvm(vue/react/angularJS)
+
+    js框架
+            对原生js的封装
+            简化代码
+            兼容性
+            ...
+    
+    jQuery
+        1) 获取框架
+            jQuery.js(源文件)
+            jQuery.min.js(部署文件)
+        2) 框架使用
+            <head>
+                <script src="jQuery.min.js"></script>
+            </head>
+        3) 编写js文件
+            函数 jQuery 简写 $
+            1. jQuery函数
+                jQuery();
+                =>
+                $()
+                参数：
+                    1) 匿名函数
+                    $(function(){
+                        //等页面主体架构加载完毕后执行
+                    });
+                    2) 选择器
+                    核心选择器
+                        *
+                        .
+                        #
+                        div
+                    层次
+                        s1 s2
+                        s1>s2
+                        s1+s2
+                        ...
+                    伪类
+                        :
+                    $("div")
+                        jQuery对象，类数组对象，元素是dom对象
+
+                    <div>one</div>
+                    <div>two</div>
+                    <div>three</div>
+                        $("div");//  类数组对象(jQuery对象) jQuery[div,div,div]  ，可以调用JQuery对象中定义的方法。
+
+                        $('div')[0]; //dom对象，可以调用DOM中dom对象的方法
+                    

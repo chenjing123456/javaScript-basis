@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+    .active{
+    	background-color: yellow;
+    } 
+    div{
+      	width: 200px;
+      	height: 200px;
+      	background-color: blue;
+      	display: none;
+      }
+	</style>
+	<script type="text/javascript">
+       window.onload=function(){
+       	var inputs=document.getElementsByTagName('input');
+       	var divs=document.getElementsByTagName('div');
+        for(var i=0;i<inputs.length;i++){
+        	inputs[i].index=i;
+            inputs[i].onclick=function(){
+            	for(var i=0;i<inputs.length;i++){
+            		inputs[i].className='';//把所有的按钮都还原成默认没有背景色状态
+            		divs[i].style.display='none';
+            	}
+                this.className='active';//给被单击的按钮添加背景
+                divs[this.index].style.display='block';
+               
+            }
+         }
+       }
+	</script>
+</head>
+<body>
+
+	<input type="button" value="体育" class="active">
+    <input type="button" value="政治">
+    <input type="button" value="教育">
+    <input type="button" value="思想">
+
+	<div style="display:block;">1111</div>
+    <div>2222</div>
+    <div>3333</div>
+    <div>4444</div>
+
+</body>
+</html>

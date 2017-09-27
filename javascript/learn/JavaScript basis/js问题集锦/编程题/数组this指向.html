@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>this</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		length = 8;
+		function fn(){
+		    console.log(this.length)
+		};
+		var obj = {
+		    length: 2,
+		    method: function(fn) {
+			//this == obj
+		        fn();//   this指向window   8
+		        arguments[0]();
+		        // arguments.0()  this指向arguments 那么arguments.length == 1(只有一个实参)
+		        console.log(this.length); //2
+		    }
+		};
+
+		obj.method(fn);
+		var arr= [fn,fn,fn,fn];
+		arr[2]();  //arr.2()  this指向arr  4
+	</script>
+</head>
+<body>
+
+</body>
+</html>

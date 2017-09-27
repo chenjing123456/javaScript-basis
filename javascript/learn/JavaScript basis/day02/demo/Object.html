@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>object</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	var student={
+		name:"ls",
+		age:12,
+		fan:function(){
+			console.log("eat fan");
+			// return 1;
+		}
+	}
+	console.log(student.age);
+	console.log(student.fan());
+
+	var stu2 =new Object();
+	stu2.name="we";
+	console.log(stu2.name);
+
+	stu2.eat=function(){
+		console.log("hello");
+	}
+	stu2.eat();
+
+	console.log(stu2.eat.constructor);
+	console.log(stu2.constructor);
+	console.log(stu2.toString());
+
+	var arr =[1,2,3];
+	console.log(arr);
+	// console.log(arr.toString());
+	var arr1 =arr.toString();//转换成字符串，用逗号分隔。逗号也算在长度上
+	console.log(arr1);
+	console.log(arr1.length);
+	// console.log(arr.toString().length);
+	
+	</script>
+</head>
+<body>
+
+</body>
+</html>

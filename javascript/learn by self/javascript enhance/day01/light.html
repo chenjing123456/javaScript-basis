@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>深拷贝</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+//对象属性内部没有引用类型时
+	var p={
+		name:'zs',
+		age:19,
+		lightCopy:function(){
+          //创建对象
+          var temp={};
+          // 复制属性
+          for(var k in this){
+          	temp[ k ]=this[ k ];
+          }
+          // 返回新对象
+          return temp;
+		}
+	};
+	var p1=p.lightCopy();//拷贝
+	p.name="ls";
+	p.age=13;
+	console.log(p1.name+" 和"+p1.age);
+
+	/*
+	功能：实现浅拷贝
+	参数：
+	*/
+	
+	var p = {
+		name:"ls",
+		age:12,
+		car:{
+			name:"ds",
+			color:"yellow"
+		},
+		lightC:function(){
+			var temp ={};
+			for(var key in this){
+				temp[key] = this[key];
+			}
+			return temp;
+		}
+	}
+	var result = p.lightC();
+	p.car["name"] = "pink";
+	console.log(result);
+</script>
+</body>
+</html>

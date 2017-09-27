@@ -1,0 +1,49 @@
+<table class="student_tbl">
+	<tbody>
+		<tr>
+			<th><input type="checkbox"></th>
+			<th>name</th>
+			<th>gender</th>
+			<th>tel</th>
+		</tr>
+		<!-- <tr>
+			<td><input type="checkbox"></td>
+			<td>zs</td>
+			<td>2</td>
+			<td>2214677</td>
+		</tr>
+		-->
+	</tbody>
+</table>
+<div class="options">
+	<button value="add">添加</button>
+	<button>modefied</button>
+	<button>delete</button>
+</div>
+
+<script type="text/javascript">
+	$(function(){
+		$("button:contains('添加')").on("click",function(){
+        $(".content").load("component/stuAdd.html")
+    	})
+		students.forEach(function(item){
+			var newTr = $("<tr>"
+			+"<td><input type='checkbox' value='"+item.id+"'></td>"
+			+"<td>"+item.name+"</td>"
+			+"<td>"+item.gender+"</td>"
+			+"<td>"+item.phone+"</td>"
+		+"</tr> ")
+		})
+		$("student_tbl>tbody").append(newTr);
+
+		$("button:contains('delete')").on("click",function(){
+			var ids = $("input:checkbox:checked").map(function(){
+				return item.value;//$(item).val();
+			}).toArray();
+			students = students.filter(function(){
+				return ids.indexOf(item.id)==-1;
+			})
+        $(".content").load("component/stuList.html")
+    	})
+	});
+</script>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>默认原型链结构</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+	function Person(){}
+    var p=new Person();
+    var a={};
+    var b=[];
+
+    function F(){};
+    F.prototype=[];
+    var a=new F();
+</script>
+</body>
+</html>

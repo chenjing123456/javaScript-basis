@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>改变颜色</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+      #divs{
+      	width: 200px;
+      	height: 100px;
+      	background-color: red;
+      }
+      #div2{
+        width: 200px;
+      	height: 100px;
+      	background-color: red;
+      }
+      #divo{
+		width: 100px;
+		height: 200px;
+		display: none;
+		background-color: red;
+	}
+	</style>
+</head>
+<script type="text/javascript">
+	function toColor (color) {
+		var div1=document.getElementById('divs');
+		div1.style.background=color;
+	}
+	function setAttr(name,value){
+		var div2=document.getElementById('div2');
+        div2.style[name]=value;
+	}
+	function showHide(){
+		var o=document.getElementById('divo');
+		if(o.style.display=="none"){
+			o.style.display="block";
+		}
+		else{
+			o.style.display="none";
+		}
+	}
+</script>
+<body>
+<input type="button" value="变黄" onclick="toColor('yellow');">
+<input type="button" value="变蓝" onclick="toColor('blue')">
+<input type="button" value="变紫" onclick="toColor('purple')">
+<div id="divs"></div>
+<hr>
+<input type="button" value="变宽" onclick="setAttr('width','400px')">
+<input type="button" value="变高" onclick="setAttr('height','300px')">
+<input type="button" value="变紫" onclick="setAttr('background','purple')">
+<div id="div2"></div>
+<hr>
+<input type="button" value="显示隐藏" onclick="showHide();">
+<div id="divo"></div>
+</body>
+</html>

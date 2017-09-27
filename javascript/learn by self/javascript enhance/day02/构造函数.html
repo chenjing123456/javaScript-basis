@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>构造函数</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+	function Person(){
+      this.name="zs";
+      this.age=12;
+      this.gender="男";
+	}
+	var p1=new Person();
+	var p2=new Object();//p2和p3都是Object类型
+	var p3={};
+	var p4=new Date();
+
+	function Person1(name,age,gender){
+		this.name=name;
+		this.age=age;
+		this.gender=gender;
+	}
+    var p=new Person1("zs",12,"男");
+</script>
+</body>
+</html>

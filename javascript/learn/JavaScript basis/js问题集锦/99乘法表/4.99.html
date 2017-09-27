@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>99乘法表</title>
+	<script type="text/javascript">
+	    document.write("<pre>");
+	    for(var i=9;i>=1;i--){
+	    	//此循环用于在每行之前加水平制表符，行数与制表符之间的关系
+	    	for(var k=8;k>=i;k--){
+	    		document.write("\t");
+	    	}
+	    	for(var j=1;j<=i;j++){
+	    		document.write(i+"*"+j+"="+i*j);
+	    		document.write("\t");
+	    	}
+	    	document.write("<br>");
+	    }
+	    document.write("</pre>");
+	</script>
+</head>
+<body>
+
+</body>
+</html>

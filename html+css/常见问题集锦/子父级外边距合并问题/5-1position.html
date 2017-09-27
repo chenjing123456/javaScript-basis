@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>position:absoolute方法</title>
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+        }
+        div.outer{
+            width: 200px;
+            height:200px;
+            background-color: pink;
+            /* position: absolute;方法一 父元素设置绝对定位 */
+            /*方法三 父元素和子元素都设置绝对定位*/
+            position: absolute;
+        }
+        div.inner{
+            width:100px;
+            height: 100px;
+            background-color: red;
+       
+            margin-top:10px;
+            /* position: absolute; 方法二 子元素设置绝对定位 */
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+</body>
+</html>

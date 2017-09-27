@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>闭包</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		/*
+		var x = 20;
+		function foo(){
+			console.log(x);
+		}
+		x = 10;
+		foo();//10
+		*/
+		function f(num){
+			if(num <=1 ){
+				return 1;
+			}else{
+				return num * f(num-1);
+			}
+		}
+
+		var factorial = f;
+		console.log(factorial(3));
+
+		
+		function personComparator(name){
+			var x = 10;
+		    return function(){
+				return x;
+		    }
+		}
+		var res = personComparator();
+		console.log(res());
+		//console.log(x);报错//只有在内部函数被返回到外部时，才可以通过内部函数调用取得函数内部的变量，并且只有当通过内部函数才可以，否则外部依然拿不到这个变量
+		
+	var name = "The Window";   
+　　var object = {   
+　　　　name : "My Object",   
+　　　　getNameFunc : function(){  
+			// this  --> obj
+			console.log(this.name);
+　　　　　　return function(){
+				//this --> 看函数调用时的this指向
+　　　　　　　　return this.name;   
+　　　　　};   
+　　　　}   
+	};   
+	console.log(object.getNameFunc()());//匿名函数的自执行function(){}()
+
+	var name = "The Window";   
+　　var object = {   
+　　　　name : "My Object",   
+　　　　getNameFunc : function(){  
+			// this  --> obj
+　　　　　　return function(){
+				//this --> 看函数调用时的this指向
+　　　　　　　　return this.name;   
+　　　　　};   
+　　　　}   
+	};   
+	console.log(object.getNameFunc().call(object));//匿名函数的自执行function(){}()
+	//通过call显示指定this
+	
+
+	var name = "The Window";   
+　　var object = {   
+　　　　name : "My Object",   
+　　　　getNameFunc : function(){  
+			// this  --> obj
+			var that = this;
+　　　　　　return function(){
+				//this --> 看函数调用时的this指向
+　　　　　　　　return that.name;   
+　　　　　};   
+　　　　}   
+	};   
+	// console.log(object.getNameFunc()());
+
+
+	/*function outerFun(){
+	 	var a=0;
+	 	function innerFun(){
+		  	a++;
+		  	console.log(a);
+	 	}
+	 	return innerFun;  
+	}
+	var obj=outerFun();
+	obj();  //结果为1
+	obj();  //结果为2
+	var obj2=outerFun();
+	obj2();  //结果为1
+	obj2();  //结果为2	*/
+	
+	/*
+	function a() { 
+		var i = 0; 
+		function b(){ 
+			console.log(++i); 
+		} 
+		return b;
+	}
+	var c = a();
+	c();
+	*/
+
+	/*
+	function test(){
+	        var arr = [];
+	        for(var i=0;i<3;i++){
+			    arr[i] = (function(num){
+					return function(){
+						alert(num);
+					}
+				})(i);
+	        }
+	        return  arr;
+        }  
+    */
+	</script>
+</head>
+<body>
+
+</body>
+</html>

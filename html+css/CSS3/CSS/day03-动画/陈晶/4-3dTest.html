@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3d</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        div.outer{
+            width: 70px;  
+            height:27px; 
+            margin:40px auto;
+        }
+        div.inner{
+            width: 52px;
+            height: 52px;
+            background-color: blue;
+            display: none;
+        }
+        div.outer:hover div.inner{
+            display: block;
+            animation-name: myFrames;
+            animation-duration: 3s;
+            animation-timing-function: ease-in-out;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;    
+        }
+        @keyframes myFrames{
+            form{
+                 margin-left:0px; 
+                 border-radius: 0%;
+  
+                 background-color: pink;
+                 /* transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); */
+                 transform: rotateX(0deg) skewX(0deg) scale(1,1);
+            }
+            to{
+                margin-left: 400px; 
+                border-radius: 50%;
+                background-color: red;
+                /* transform: rotateX(180deg) rotateY(200deg) rotateZ(150deg); */
+                transform: rotateX(360deg) skewX(60deg) scale(3,3);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <button>hover me</button>
+        <div class="inner"></div>
+    </div>
+</body>
+</html>

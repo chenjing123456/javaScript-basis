@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+<canvas id="myCanvas" width="300px" height="150px" style="border:1px solid #000;border-box:box-sizing"></canvas>
+<script type="text/javascript">    
+//绘制弧形线条
+    var c=document.getElementById('myCanvas');
+    var context=c.getContext('2d');
+	for(var i=0;i<=15;i++){
+    context.strokeStyle="red";
+    context.beginPath();
+    context.arc(0,150,i*10,0,Math.PI*3/2,true);
+    // context.closePath();会出现一条闭合线，把路径闭合起来
+    context.stroke();
+    }
+ //绘制三角形
+   //绘制实心三角形(不需要闭合线)
+    context.fillStyle="red";
+    context.beginPath();
+    context.moveTo(25,25);
+    context.lineTo(125,25);
+    context.lineTo(25,125);
+    context.fill();
+  //绘制空心三角形(需要闭合线)
+    context.strokeStyle="yellow";
+    context.beginPath();
+    context.moveTo(125,25);
+    context.lineTo(125,125);
+    context.lineTo(25,125);
+    context.closePath();//补上一条线使其闭合
+    context.stroke();
+</script>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>

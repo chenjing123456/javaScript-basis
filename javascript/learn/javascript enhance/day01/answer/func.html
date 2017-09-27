@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	function add(a,b){
+		return a+b;
+	}
+	function del(a,b){
+		return a-b;
+	}
+
+	function callMethod(method,arr){
+		return method(arr[0],arr[1]);	
+	}
+	var res = callMethod(add,[1,2]);	//result = 3
+	console.log(res);
+	var result = callMethod(del,[1,2]);	//result = -1
+	console.log(result);
+	
+	</script>
+</head>
+<body>
+
+</body>
+</html>

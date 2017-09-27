@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>node</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<div name="myDiv" class="myClass"></div>
+<ul id="ul">
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+<img src="#" name="myName">
+<img src="#" name="myName">
+<img src="#">
+<img src="#">
+<img src="#">
+<img src="#">
+<img src="#">
+<script type="text/javascript">
+	var ul = document.getElementById('ul');
+	var uld = ul.cloneNode(true);
+	console.log(uld.childNodes.length);
+
+	var uld = ul.cloneNode(false);
+	console.log(uld.childNodes.length);
+	var body = document.getElementsByTagName('body')[0];
+	console.log(body.childNodes);//NodeList[]
+
+
+	var images = document.getElementsByTagName('img');
+	console.log(images);//HTMLCollection[]对象，作为一个动态集合，和NodeList[]很像。
+	var image1 = images.namedItem('myName');
+	console.log(image1);
+	var all = document.getElementsByTagName('*');
+	console.log(all);
+	var div = document.getElementsByTagName('div')[0];
+	console.log(div);
+	console.log(div.getAttribute('class'));
+	div.setAttribute('title','nihao');
+	div.align = 'left';
+	console.log(div);
+	console.log(div.attributes);//NameNodeMap[],
+	console.log(div.attributes.getNamedItem('name').myName);//NameNodeMap[],
+</script>
+</body>
+</html>

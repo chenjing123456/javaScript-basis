@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>factorial fuction</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	//计算函数的阶乘(  n*(n-1)!  )
+   function factorial(n){
+     if (n<=1) {
+     return 1;
+     }
+     else{
+     	return n*factorial(n-1);
+     }
+   }
+	</script>
+</head>
+<body>
+<script type="text/javascript">
+  var value=factorial(1);
+  document.write("the total is:"+value)
+</script>
+</body>
+</html>

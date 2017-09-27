@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset='utf-8'>
+	<script type="text/javascript">
+		/*
+		下面这个ul，如何点击每一列的时候alert其index下标?（请使用两种方式实现）
+	
+		<ul id=”test”>
+			<li>这是第一条</li>
+			<li>这是第二条</li>
+			<li>这是第三条</li>
+		</ul>
+		*/
+
+	window.onload = function(){
+		/*方法一：使用自执行函数保留每次的i值，
+		var lis = document.getElementById('test').children;
+		for(var i = 0; i<lis.length;i++){
+			lis[i].onclick = (function(index){
+				return function(){
+					alert(index);
+				}
+			})(i);
+		}
+		*/
+
+		/*方法二：把lis变成数组，用forEach遍历*/
+		/*
+		var lis = document.getElementById('test').children;
+		Array.prototype.slice.call(lis,0).forEach(function(item,index){
+			item.onclick = function(){
+				alert(index);
+			}
+		})
+		*/
+
+		// 方法三：给每一个li一个index属性，并且每一项的index就是它的下标
+		var lis = document.getElementById('test').children;
+		for(var i=0;i<lis.length;i++){
+			lis[i].index = i;
+			lis[i].onclick = function(){
+				alert(this.index);
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+<ul id="test">
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+</ul>
+</body>
+
+</html>

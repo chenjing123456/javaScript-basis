@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>circle</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		*{
+			box-sizing:border-box;
+		}
+		div.container{
+			width: 230px;
+			height: 330px;
+			background-color: black;
+			margin:0 auto;
+		}
+		div.control{
+			height: 230px;
+			padding: 35px;
+			animation-name:outer;
+			animation-duration:4.5s;
+			animation-iteration-count:infinite;
+			/*animation-direction:alternate;*/
+			animation-timing-function:linear;
+		}
+		div.outer{
+			border:5px solid #9b9b9b;
+			height: 100%;
+			border-radius: 50%;
+			padding:10px;
+			animation-name:inner;
+			animation-duration:4.5s;
+			animation-iteration-count:infinite;
+			animation-timing-function:linear;
+		}
+		div.outer div.inner{
+			border:10px solid #fff;
+			border-radius: 50%;
+			height: 100%;
+		}
+		div.text{
+			text-align: center;
+			color: white;
+		}
+		@keyframes outer{
+			20%{
+				padding: 25px;
+			}
+			40%{
+				padding: 35px;/*适配inner动画，在40%的时候就已经回归到35px*/
+			}
+			100%{
+				padding: 35px;
+			}
+		}
+		@keyframes inner{
+			20%{
+				padding:20px; 
+			}
+			40%{
+				padding:10px;/*为了适应外圆的扩大它会使内圆也跟着扩大，因为padding设死了。*/
+			}
+			65%{
+				padding:22px;
+			}
+			100%{
+				padding:10px;
+			}
+		}
+	</style>
+</head>
+<body>
+    <div class="container">
+    	<div class="control">
+    		<div class="outer">
+    			<div class="inner"></div>
+    		</div>
+    	</div>
+    	<div class="text">Hi!</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>水仙花数</title>
+	<meta charset="UTF-8">
+	<script type="text/javascript">
+		/*
+		函数实现求固定数值区间的水仙花数
+		水仙花数的特点：水仙花数是指百位数的立方加上十位数的立方加上个位数的立方=自己的那些数
+		*/
+
+		//假设求1-1000的水仙花个数 234
+		
+		function isFlower(){
+			var num =0;//计数器
+			for(var i=1;i<=1000;i++){
+				var ge =i%10;
+				var shi =parseInt(i%100/10);
+				var bai =parseInt(i/100);
+				var sum =Math.pow(ge,3)+Math.pow(shi,3)+Math.pow(bai,3);
+				if(sum==i){
+					num++;
+					console.log(i);
+				}
+			}
+			return num;
+		}
+		var result =isFlower();
+		console.log(result);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

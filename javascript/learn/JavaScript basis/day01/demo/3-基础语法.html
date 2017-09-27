@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>基础语法</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+	<script type="text/javascript">
+		var a = 0;
+		alert(a);
+		var aa2 = "de";
+		console.log(aa2);
+
+
+		// var 2 = 2;出错
+		// var typeof = 0;关键字
+		var fullName = "ls";
+		console.log(fullName);
+		var a = "11";
+        console.log(1+a++);//12
+        console.log(1+ ++a);//14
+        // var o = null;
+        var o = {
+        	name:'ls',
+        	valueOf:function(){
+        		return '1';
+        	}
+        };
+        console.log(o++);//1
+        console.log(++o);//3
+        console.log(!!'');//false
+        console.log("a">"b");//false
+	</script>
+</head>
+<body>
+<noscript>浏览器不支持，请更新浏览器</noscript>
+<div></div>
+</body>
+</html>

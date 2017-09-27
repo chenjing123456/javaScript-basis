@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>student构造函数</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+	function Student(name,age,gender){
+      this.name=name;
+      this.age=age;
+      this.gender=gender;
+	}
+	Student.prototype.sayHello=function (){
+		console.log("你好！");
+	}
+	Student.prototype.study=function(){
+		console.log("学习");
+	}
+	var stu1=new Student("zs",23,"女");
+	stu1.sayHello();
+	var stu1=new Student("li",22,"男");
+
+	// function Student(){
+
+	// }
+	// Student.prototype.name="zs";
+	// var p1=new Student();
+	// p1.name="ls";
+	// var p2=new Student();
+	// console.log(p1.name);//ls,对象里面是ls,原型里面是zs
+	// console.log(p2.name);//zs,原型里面是zs,对象里面没有属性
+</script>
+</body>
+</html>

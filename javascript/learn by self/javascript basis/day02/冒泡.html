@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>冒泡排序</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+//冒泡排序
+// 思路：
+// 	假设数组为[34,45,24,3,4,8]，
+// 	第一趟  比较6次，找出最大数放在最后
+// 	第二趟  比较5次，找出最大数放在倒数第二
+// 	第三趟  比较4次，找出最大数放在倒数第三 ....
+
+
+  //方法一
+    //第一趟  比较6次，找出最大数放在最后
+	//第二趟  比较6次，找出最大数放在倒数第二
+	//第三趟  比较6次，找出最大数放在倒数第三
+  var array=[34,45,24,3,4,8];
+  var s=0;//内循环执行次数
+  var d=0;//外循环执行次数
+
+  // 外循环控制趟数 ，假设有n个数，则比较的趟数为n-1次
+  for(var i=0;i<array.length-1;i++) {
+  //内循环控制比较的次数
+    for(var j=0;j<array.length-1;j++){//j<array.length-1这个语句会使每次比较次数都为n-1次
+    	//两两比较大小 从小到大
+    	if(array[j]>array[j+1]){
+    		//交换两个数
+    		var tep=array[j];
+    		array[j]=array[j+1];
+    		array[j+1]=tep;
+    	}
+    	s++;
+    }  
+        d++;
+  }	
+  console.log(array);
+  console.log(s);
+  console.log(d);
+
+
+  //方法二
+    //第一趟  比较6次，找出最大数放在最后
+	//第二趟  比较5次，找出最大数放在倒数第二
+	//第三趟  比较4次，找出最大数放在倒数第三 ....
+  var array=[34,45,24,3,4,8];
+  var s=0;
+  var d=0;
+  //外循环控制趟数 ，假设有n个数，则比较的趟数为n-1次
+  for(var i=0;i<array.length-1;i++) {
+  //内循环控制比较的次数,此次内循环执行次数是array.length-1-i
+    for(var j=0;j<array.length-1-i;j++){
+    	//两两比较大小 从小到大
+    	if(array[j]>array[j+1]){
+    		//交换两个数
+    		var tep=array[j];
+    		array[j]=array[j+1];
+    		array[j+1]=tep;
+    	}
+    	s++;
+    }  
+    d++;
+  }	
+  console.log(array);
+  console.log(s);
+  console.log(d);  
+
+
+  //方法三
+
+  var array=[34,45,24,3,4,8];
+  var s=0;
+  var d=0;
+  //外循环控制趟数 ，假设有n个数，则比较的趟数为n-1次
+  for(var i=0;i<array.length-1;i++) {
+    var isSort=true;//假设已经排好序(每一趟)
+    //内循环控制比较的次数
+    for(var j=0;j<array.length-1-i;j++){
+    	//两两比较大小 从小到大
+    	if(array[j]>array[j+1]){//交换两个数
+    		var tep=array[j];
+    		array[j]=array[j+1];
+    		array[j+1]=tep;
+        isSort=false;//如果交换位置，则说明排序不ok
+    	}
+    	s++;
+    }  
+    d++;
+    if(isSort){
+    	break;//已经排序好，就跳出循环
+    }
+  }	
+  console.log(array);
+  console.log(s);
+  console.log(d); 
+
+</script>
+</body>
+</html>

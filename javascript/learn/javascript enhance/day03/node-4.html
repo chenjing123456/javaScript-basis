@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>node</title>
+	<meta charset="utf-8">
+	
+	<style type="text/css">
+	div{
+		width:100px;
+		height:100px;
+	}
+	div.one{
+		background-color: pink;
+	}
+	div.two{
+		background-color: red;
+	}
+	</style>
+</head>
+<body>
+	<div class="one">
+		<p>first</p>
+	</div>
+	<div class="two">second</div>
+	<script type="text/javascript">
+	//	console.log(document);
+	//	console.log(HTMLDocument.prototype instanceof Document);
+	//console.log(document.childNodes);//NodeList [ DocumentType, <html> ]
+	// console.log(document.children);//HTMLCollection [ <html> ]
+	var $div = document.getElementsByTagName('div')[0];
+	// console.log($div.childNodes);
+	// console.log($div.children);
+	// console.log($div.children.item(0));
+	// console.log($div.children[0]);
+	// console.log($div.parentNode);
+	// console.log($div.nextSibling);
+	// console.log($div.nextElementSibling);
+	// console.log($div.previousElementSibling);
+	// console.log($div.firstChild);//text
+	// console.log($div.lastChild);//text
+	// console.log($div.lastElementChild);//p
+	// console.log($div.firstElementChild);//p
+	console.log($div.ownerDocument);//[HTMLDocument]
+	// console.log($div.hasChildNodes());true
+
+	
+	</script>
+</body>
+</html>

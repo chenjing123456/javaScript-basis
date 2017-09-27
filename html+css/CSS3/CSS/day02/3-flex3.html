@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       .outer{
+            display: flex; 
+            /* justify-content: flex-start;默认 在开始位置对齐，此处为左对齐  */
+           /* justify-content: flex-end;与右浮动不一样 是整体向右对齐不改变位置 */
+              justify-content: center;   
+           /* justify-content: space-bettwen; */
+           /* justify-content: space-around; */
+           border:1px solid #ccc;
+            /* align-items: center;  */
+       }
+       div.outer>div{
+            width: 200px; 
+            height: 200px; 
+
+       }
+       .one{
+           /* flex: 1; */
+           background-color: rosybrown;
+       }
+       .two{
+           /* flex: 1; */
+           background-color: pink;
+       }
+       .three{
+           /* flex: 2; */
+           background-color: blue;
+       }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+    </div>
+</body>
+</html>

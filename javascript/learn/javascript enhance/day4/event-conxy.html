@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>event daili</title>
+	<meta charset="utf-8">
+	<style>
+	table{
+		border:1px solid #ccc;
+		border-collapse: collapse;
+	}
+	td,th{
+		border:1px solid #ccc;
+	}
+	.current{
+		background-color: #ccc;
+	}
+	</style>
+	<script type="text/javascript">
+	window.onload = function(){
+		var $tab = document.getElementsByTagName('table')[0];
+
+		var $btns = document.getElementsByTagName('button');
+		var $btn1 = $btns[0];
+		var $btn3 = $btns[2];
+
+		$btn1.onclick = function(){
+			var $tr = $tab.children[0].lastElementChild.cloneNode(true);
+			$tab.children[0].appendChild($tr);
+		}
+		$btn3.onclick = function(){
+			var $tr = $tab.children[0].lastElementChild;
+			$tab.children[0].removeChild($tr);
+		}
+		var $tbody = document.getElementsByTagName('tbody')[0];//index must be added
+		console.log($tbody);
+		$tbody.onmouseover = function(event){
+			var target = event.target;
+			// console.log(target);
+			if(target.nodeName == 'TD'){
+				target.parentNode.setAttribute('class','current');
+			}else if(target.nodeName == 'TR'){
+				target.setAttribute('class','current');
+			}else{
+				console.log('error');
+			}
+		}
+		$tbody.onmouseout = function(event){
+			var target = event.target;
+			if(target.nodeName == 'TD'){
+				target.parentNode.removeAttribute('class');
+			}
+		}
+		var $lis = document.getElementsByTagName('li');
+		for(var i=0;i<$lis.length;i++){
+			$lis[i].onclick = (function(index){
+				return function(){
+					alert(index+1); 
+				}
+			})(i);
+		}
+		alert('end bangding'+i);
+	}
+	</script>
+</head>
+<body>
+	<table>
+		<tbody>
+			<tr>
+				<th><input type="checkbox"></th>
+				<th>name</th>
+				<th>age</th>
+				<th>tel</th>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>zs</td>
+				<td>12</td>
+				<td>1224365832</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>ls</td>
+				<td>23</td>
+				<td>726544789</td>
+			</tr>			
+		</tbody>
+	</table>
+	<button>add</button>
+	<button>modefied</button>
+	<button>delete</button>
+	<ul>
+		<li>one</li>
+		<li>two</li>
+		<li>three</li>
+		<li>four</li>
+	</ul>
+</body>
+</html>

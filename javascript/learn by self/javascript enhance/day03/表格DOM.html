@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>表格</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+	var data=[
+       {name:"zs",age:19,gender:"female"},
+       {name:"ks",age:9,gender:"male"},
+       {name:"ma",age:19,gender:"female"},
+       {name:"wes",age:29,gender:"male"},
+       {name:"ls",age:39,gender:"female"},
+	];
+	//1.创建table,tbody,thead
+	//2.创建tr和th
+	//3.创建每一行tr和td
+	//4.加到页面中
+
+	//1.也可以封装一个创建元素的函数，调用函数创建元素
+	var table=document.createElement('table');
+	var thead=document.createElement('thead');
+	var tbody=document.createElement('tbody');
+	table.appendChild(thead);
+	table.appendChild(tbody);
+	//2.
+	var trHead=document.createElement('tr');
+	thead.appendChild(trHead);
+	for(var k in data[0]){//k就是th的内容
+		var th=document.createElement('th');
+        th.appendChild(document.createTextNode( k ));
+        trHead.appendChild(th);
+	}
+	//3.
+	for(var i=0;i<data.length;i++){
+		var tr=document.createElement('tr');
+		for(var k in data[i]){//k就是属性，data[i][k]就是属性值
+			var td=document.createElement('td');
+			td.appendChild(document.createTextNode(data[i][k]));
+			tr.appendChild(td);
+		}
+		tbody.appendChild(tr);
+	}
+	//4.
+	table.border=1;
+	document.body.appendChild(table);
+</script>
+</body>
+</html>

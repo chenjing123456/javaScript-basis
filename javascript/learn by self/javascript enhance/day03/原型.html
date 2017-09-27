@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>原型</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+	function Person(name,age,gender){
+		this.name=name;
+		this.age=age;
+		this.gender=gender;
+		this.sayHello=function (){
+			console.log(this.name +" "+ "say hello");
+		}
+	}
+	var p1=new Person("zs",12,"女");
+	var p2=new Person("li",18,"女");
+	console.log(p1.sayHello==p2.sayHello);//false
+	p1.sayHello();
+
+	function sayHello(){
+			console.log(" "+ "say hello");
+		}
+	function Person(name,age,gender){
+		this.name=name;
+		this.age=age;
+		this.gender=gender;
+		this.sayHello=sayHello;
+	}
+	var p1=new Person("zs",12,"女");
+	var p2=new Person("li",18,"女");
+	console.log(p1.sayHello==p2.sayHello);//true
+
+	function Foo(){
+
+	}
+	// console.log(Foo.prototype);//是一个对象
+	Foo.prototype.age=19;
+	var p=new Foo();
+	console.log(p.age);
+
+
+	function Foo(){};
+    Foo.prototype.say=function(){
+	   console.log("hello");
+    }
+    var p1=new Foo();
+    console.log(p1.say());
+    var p2=new Foo();
+    console.log(p2.say());
+</script>
+</body>
+</html>

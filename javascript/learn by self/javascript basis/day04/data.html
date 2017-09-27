@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>基本和复杂数据类型</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+//基本数据类型作为函数的参数
+//当基本数据类型作为函数的参数时；函数内部对参数的修改不会修改外部的变量
+	function f1(a){
+		a=100;
+	}
+	var x=1;
+	f1(x);
+	console.log(x);
+//复杂数据类型作为函数的参数
+//函数内部对参数的修改会影响外部变量
+   // function f2(stu){
+   // 	stu.name="chenjing";
+   // }
+   // var s={
+   // 	name:"abc",
+   // 	age:18,
+   // 	sex:"0"
+   // }
+   // f2(s);
+   // console.log(s.name);
+   //数组作为函数的参数
+   function f3(arr){
+   	arr[0]=-100;
+   }
+   var array=[2,4,6];
+   f3(array);
+   console.log(array[0]);
+   //对f2函数的改变
+   function f4(stu){
+      stu=new Object() ;     
+      stu.name="chenjing";
+   }
+   var s={
+      name:"abc",
+      age:18,
+      sex:"0"
+   }
+   f4(s);
+   console.log(s.name);  
+</script>
+</body>
+</html>

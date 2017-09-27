@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>递归和循环</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	// 使用递归和循环实现1!+2!+3!+4!+...+15!
+	function factory(n){
+		if(n<=1){
+			return 1;
+		}else{
+			// return n*factory(n-1);
+			return n*arguments.callee(n-1);
+		}
+	}
+	// console.log(factory(15));
+	var res = factory(15);
+	var sum = 0;
+	for(var i = 1;i<=15;i++){
+		sum+=factory(i);
+	}
+	console.log(sum);
+
+
+	//定义一个方法，传入一个string类型的参数，然后将string的每个字符间加个空格返回。
+	function func(str){
+		return str.split('').join(' ');
+	}
+	var str = 'hello wrold';
+	console.log(func(str));
+
+
+	var str1 = 'hello wrold';
+
+
+	//如果想按照以下方法来调用spacify,该方法改如何实现:'hello world'.spacify();  把该方法写在字符串构函的原型里面，那么字符串就可以调用这个方法了。
+	String.prototype.spacify=function(){
+		return this.split('').join(' ');
+	}
+	console.log(str1.spacify());
+	</script>
+</head>
+<body>
+
+</body>
+</html>

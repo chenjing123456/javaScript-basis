@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+	var o={name:"fjg"};
+	console.log('name' in o);
+    // var num=3;
+    // console.log(0 || (num=5));
+    // console.log(num);
+    var num=4;
+    console.log(123 && (num=5));
+    console.log(num);
+    var arr=[1,2,3];
+    console.log(delete o.name);
+    console.log(delete arr[1]);//长度没有改变 
+    var num1=123;//标准语法声明变量。删除不了
+    num2=456;//在代码执行到该执行的时候会在全局范围内增加该变量
+    console.log( delete num1);//false 删除不成功
+    console.log( delete num2);
+
+    // var s="fhugsihvffjsehgjtf";
+    // for(var i=0;i<s.length;i++){
+    // 	if(s.charAt(i)=="e"){
+    // 		console.log(i);
+    // 		break;
+    // 	}
+    // }
+    // if(i===s.length){//正常的循环完所有值，找不到e，返回-1；
+    // 	console.log(-1);
+    // }
+
+//封装函数
+    /*
+    封装一个函数实现查找字符串并输出
+    参数：一个字符串，要查找的字符
+    */
+    function indexO(s,char){
+    	for(var i=0;i<s.length;i++){
+    		if(s.charAt(i)===char){
+    			return i;
+    		}
+    	}
+   		return -1;
+    }
+    var str="hfgsirurhdfjej";
+    indexO(str,e);
+</script>
+</body>
+</html>

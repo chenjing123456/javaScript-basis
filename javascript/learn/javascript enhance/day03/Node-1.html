@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>node</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	div{
+		width: 100px;
+		height:100px;
+	}
+	div#one{
+		background-color: red;
+	}
+	div#two{
+		background-color: pink;
+	}
+	</style>
+</head>
+<body>
+	<div id="one">
+		<!-- 这是一个注释节点 -->
+		<p>one</p>
+	</div>
+	<div id="two">
+		<p>two</p>
+	</div>
+	<script type="text/javascript">
+	// console.log(document instanceof Document);
+	// console.log(document instanceof HTMLDocument);
+	console.log(HTMLDocument.prototype instanceof Document);
+	console.log(document);//HTMLDocument构函
+	console.log(document.nodeType);//9
+	var $div =document.getElementById('one');
+	console.log($div.nodeType);
+	</script>
+</body>
+</html>

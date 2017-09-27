@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>fuc</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		var Person=function(name,age,gender){
+			this.name=name;
+			this.age=age;
+			this.gender=gender
+		}
+		console.log(Person());
+		console.log(Person.prototype.constructor);
+		var p1 = new Person("ld",12,"female");
+
+		var a = 1;
+		run(a);
+		function run(foo){
+			console.log(foo); 
+			function foo(){
+				alert(123);
+			}
+			foo = 2;
+			console.log(foo); 
+		}
+		// console.log(foo);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

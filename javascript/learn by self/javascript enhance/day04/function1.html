@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>function</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<div id="code" style="display:none;">
+	var res=a > b ? a : b;
+	res=res > c ? res : c ;
+	return res;  
+
+</div>
+<script type="text/javascript">
+//写一个函数，实现输出三个数中的最大数
+//传统实现方法
+   function sum( a , b , c ){
+   	var reg = a > b ? a : b;
+   	reg = reg > c ? reg : c;
+   	return reg;
+   }
+   console.log(sum(123,234,4));
+//Function构函
+   var sum=new Function("a","b","c","var reg = a > b ? a : b;reg = reg > c ? reg : c;return reg;")
+   console.log(sum(123,234,4));
+   //代码冗长，下面提供解决方法
+
+//方法一：利用链接字符串符号
+   var sum1=new Function("a","b","c",
+    "var reg = a > b ? a : b;"+
+   	"reg = reg > c ? reg : c;"+
+   	"return reg;"
+   	)
+   console.log(sum1(123,345,5));
+//方法二：利用字符串特性
+   function sum( a , b , c ){
+   	var reg = a > b ? a : b;
+   	reg = reg > c ? reg : c;
+   	return reg;
+   }
+   var sum2=new Function("a","b","c","return sum(a,b,c)");
+   console.log(sum2(23,233,567));
+//方法三：es6,键盘左上角的左单引号表示可换行鉴定符，少有浏览器实现
+   var sum3=new Function("a","b","c",
+   	`var reg = a > b ? a : b;
+   	reg = reg > c ? reg : c;
+   	return reg;`)
+   console.log(sum(123,234,908));
+//方法四：利用Dom方法完成(DIV要先解析)
+    var txt=document.getElementById('code').lastChild.nodeValue;
+    var sum4=new Function("a","b","c",txt);
+    console.log(sum4(4,56,5));
+</script>
+</body>
+</html>

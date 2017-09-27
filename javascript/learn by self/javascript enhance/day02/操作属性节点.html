@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>属性节点</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+      onload=function(){
+      	//操作属性节点就是属性节点的增删改查
+      	var div=document.querySelectorAll("#dv")[0];
+    // 添加属性节点
+      	//使用setAttribute方法 添加属性
+      	// 添加自定义 非标准的属性（Dom-core）
+      	div.setAttribute('itcast','传送');
+      	//使用.xxx= vvv添加属性
+      	// 添加标准的属性（HTML-Dom）
+      	div.className="c1";
+      	//使用Dom节点的方法
+      	// 纯Dom做法
+      	var attr=document.createAttribute('text');
+      	attr.nodeValue="测试";
+      	div.setAttributeNode(attr);
+    // 删除属性
+       //
+       var ck=document.querySelectorAll('#ck')[0];
+       // var ck=document.getElementsByTagName('input')[0];
+       //approach 1
+       // ck.removeAttribute('checked');
+       //approach 2
+       // var attr1=ck.getAttributeNode('checked');
+       // ck.removeAttributeNode(attr1);
+       //approach 3
+       ck.checked=false;
+    //属性修改
+       // var div1=document.querySelectorAll('#dv1')[1];
+       // var div1=document.getElementById('dv1');
+       // div1.text="text1";
+       // div1.setAttribute("class","title");
+    // 属性查询
+}
+	</script>
+</head>
+<body>
+  <div id="dv"></div>
+  <input type="checkbox" checked="checked" id="ck">
+  <div id="dv1" class="a" text="text"></div>
+</body> 
+</html>

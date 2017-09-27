@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>reg</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	/*
+	var pattern = /hello/gi;
+	var pattern2 = new RegExp("hello","gi");
+	console.log(pattern.source);
+	console.log(pattern.global);
+	console.log(pattern.ignoreCase);
+	console.log(pattern.multiline);
+	console.log(pattern2);
+	var res = pattern.test("dgh hello fd hello");
+	console.log(res);
+	*/
+
+	var str = "javascript is good ,it is easy than java";
+	var pattern3 =/java/g;
+	/*
+	var result = pattern3.exec(str);
+	console.log(result);
+	console.log(pattern3);
+	console.log(pattern3.lastIndex);
+
+	var result = pattern3.exec(str);
+	console.log(result);
+	console.log(pattern3);
+	console.log(pattern3.lastIndex);
+	
+	var result = pattern3.exec(str);
+	console.log(result);//null
+	console.log(pattern3);// /java/gi
+	console.log(pattern3.lastIndex);//0
+	*/
+	var res;
+	var index=0;
+	while(res = pattern3.exec(str)){
+		index++;
+		console.log(res,index);
+		console.log(pattern3);
+		console.log(pattern3.lastIndex);	
+	}
+	console.log(pattern3);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

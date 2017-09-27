@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>驼峰命名法</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		// 已知有字符串foo=”get-element-by-id”,写一个function将其转化成驼峰表示法”getElementById”
+
+		//转换为数组
+		//拿到数组项中的每一项
+		//让每一项的第一个转换为大写，再将后面的进行字符串拼接
+		var foo = 'get-element-by-id';
+		function change(a){
+			var arr = a.split('-');
+			for(var i = 0;i<arr.length;i++){
+				if(i!=0){
+					arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].substring(1,arr[i].length);
+
+					// arr[i]=arr[i].charAt(0).toUpperCase()+arr[i].substr(1,arr[i].length-1);
+
+					// a[i] = a[i].slice(0,1).toUpperCase() + arr[i].slice(1);
+				}
+			}
+			var meg = arr.join('');
+			return meg;
+
+		}
+		var res = change(foo);
+		console.log(res);
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

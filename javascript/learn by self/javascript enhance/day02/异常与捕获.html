@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>try catch语法</title>
+	<meta charset="utf-8">
+
+</head>
+<body>
+<script type="text/javascript">
+    try{
+    console.log(456);
+	console.log(abc);
+	console.log(123);//出现错误的代码的后面的代码不会执行
+	}catch(e){
+		console.log("异常啦啦");
+        console.log(e);//e表示error或者exception
+	}
+	console.log("正常的代码");
+	console.log("正常的代码");
+	console.log("正常的代码");
+
+	console.log(1);
+	console.log(2);
+    var o1;
+    try{
+    	o1=new Error("出错了");
+    	throw o1;
+    }
+    catch(e){
+    	console.log(e===o1);
+    }
+    console.log(3);
+    console.log(4);
+    console.log(5);
+
+    function throwError(msg){
+    	if(msg!=="string"){
+    		throw new Error("出现错误,传入的不是string 类型");
+    	}
+    	console.log("咸亨");	
+    }
+    throwError(123);
+
+ //    function f1(){//f1是调用函数，f2是被调用函数
+	// f2();
+ //    }
+ //    function f2(){
+	// f3();
+ //    }
+ //    function f3(){
+	// throw new Error("出现错误");//f3抛出异常后没有处理，就一级一级往上传递，看是否有异常处理，直到给全局时，抛出错误。
+ //    }
+ //    f1();
+</script>
+</body>
+</html>

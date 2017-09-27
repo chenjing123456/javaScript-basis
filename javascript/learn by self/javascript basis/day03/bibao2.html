@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>闭包</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+	var fn=null;
+	function foo(){
+		var a=2;
+		function innerFoo(){
+			console.log(a);
+			console.log(c);//报错，该闭包作用域链中没有bar中的变量对象
+		}
+		fn=innerFoo;
+	}
+	function bar(){
+		var c=10;
+		fn();
+	}
+	foo();
+	bar();
+</script>
+</body>
+</html>

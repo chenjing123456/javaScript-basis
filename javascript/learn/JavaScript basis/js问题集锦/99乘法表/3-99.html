@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>99乘法表</title>
+	<script type="text/javascript">
+        document.write("<pre>");
+        for(var i=1;i<=9;i++){
+        	//此循环作用是：给每行加制表符，制表符是包含数字一起的，行数与制表符的个数关系是相差1
+        	for(var k=8;k>=i;k--){
+        		document.write("\t");//制表符（一个制表符8个格）
+        	}
+        	for(var j=1;j<=i;j++){
+        		document.write(j+"*"+i+"="+i*j);
+        		document.write("\t");
+        	}
+        	document.write("<br>");
+        }
+        document.write("<pre>");
+	</script>
+</head>
+<body>
+
+</body>
+</html>

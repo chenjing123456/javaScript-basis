@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>工厂模式</title>
+	<meta charset='utf-8'>
+	<script type="text/javascript">
+	//1.
+		function createPerson(name,age,num){//封装一个普通函数实现创建多个对象的函数
+			var p=new Object();
+			p.name=name;
+			p.age=age;
+			p.stuNum=num;
+			p.sayHello=function(){
+				console.log(this.name+" hello");
+			}
+			return p;
+		}
+		var p1=createPerson("ls",12,1);
+		// console.log(p1);
+    //2.
+    	/*
+		function createStudent(name,id,address){
+			
+			// var student={
+			// 	name:name,
+			// 	id:id,
+			// 	address:address,
+			// 	sayName:function(){
+			// 		console.log(this.name);
+			// 	}
+			// }
+			// return student;
+			
+
+			return {
+				name:name,
+				id:id,
+				address:address,
+				sayName:function(){
+					console.log(this.name);
+				}
+			}
+		}
+		var stu1=createStudent("ls",1,"jx");
+		var stu2=createStudent("zs",2,"lz");
+		console.log(stu1);
+		console.log(stu2);
+		console.log(stu1.sayName==stu2.sayName);//false
+		
+		*/
+		//3.
+			function sayName(){
+            console.log(this.name);
+            }
+
+            function factory (id,name,age){
+            return {
+                id : id,
+                name:name,
+                age:age,
+                sayName:sayName
+              }
+            }
+
+            var p1 = factory(1,'terry',12);
+            var p2 = factory(2,'larry',13);
+            console.log(p1.sayName==p2.sayName);//true 把函数放到外面，实现函数复用
+	</script>
+</head>
+<body>
+
+</body>
+</html>

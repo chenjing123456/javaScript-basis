@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset='utf-8'>
+	<style type="text/css">
+      .active{
+      	background-color: gray;
+      }
+      .table{
+      	margin: 0 auto;
+      	width: 200px;
+      	height: 400px;
+      	border: 1px solid #ccc;
+      }
+      .table .ts{
+      	width: 200px;
+      	height: 200px;
+      }
+      .table span{
+      	/*list-style-type: none;*/
+      	width: 50px;
+      	height: 50px;
+      	float: left;
+      	margin-left: 10px;
+      	text-align: center;
+      	line-height: 50px;
+      	border: 1px solid yellow;
+      }
+      .table .tx{
+      	background-color: yellow;
+      	width: 200px;
+      	height: 150px;
+      	margin: 0px auto;
+      }
+	</style>
+	<script type="text/javascript">
+       window.onload=function(){
+       	var odiv=document.getElementById('table');
+        var odiv0=odiv.getElementsByTagName('div')[0];
+       	var spans=odiv0.getElementsByTagName('span');
+       	var odiv1=odiv.getElementsByTagName('div')[1];
+       	for(var i=0;i<spans.length;i++){
+       		spans[i].onclick=function(){
+       			for(var i=0;i<spans.length;i++){
+       				spans[i].className='';
+       			}
+       			this.className='active';
+       		}
+       	}
+     }  
+	</script>
+</head>
+<body>
+<div class="table" style="background:#ccc;">
+	<div class="ts" id="tsd">
+		<span class="active">Jan</span>
+		<span>fer</span>
+		<span>fer</span>
+		<span>fer</span>
+		<span>fer</span>
+		<span>fer</span>
+		<span>fer</span>
+		<span>fer</span>
+		<span>fer</span>
+		<span>fer</span>
+		<span>fer</span>
+		<span>fer</span>
+	</div>
+	<div class="tx">
+		<h3>一月</h3>
+		<p>故意让大家才能个人与刚有人</p>
+	</div>
+</div>
+</body>
+</html>

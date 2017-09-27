@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>date</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	/*
+	var date = new Date(2012,3,22,12,3,4);//Sun Apr 22 2012 12:03:04 GMT+0800 (中国标准时间)
+	console.log(date.getDate());//22
+	console.log(date.getFullYear());//2012
+	console.log(date.getMonth());//3 真实月份=返回值+1
+	console.log(date.getHours());//12
+	console.log(date.getMinutes());//3
+	console.log(date.getSeconds());//4
+	console.log(date.getMilliseconds());//0
+	console.log(date.getDay());//0    真实星期 = 返回值 +1 =星期一
+	console.log(date.getTime());//0
+	*/
+	/*
+	var date = new Date();
+	date.setFullYear(2013);
+	date.setMonth(2,2);
+	// date.setDate(2);
+	date.setHours(2);
+	date.setMinutes(22);
+	date.setSeconds(22);
+	date.setMilliseconds(22);
+	console.log(date);
+	*/
+	// var date = new Date();
+	// console.log(Date.now());//Milliseconds
+	// console.log(Date.parse(''));//
+	// console.log(Date.parse('2011/11/2'));
+
+	function getDate(date){
+		var getDateDay = date - Date.now;
+		console.log(getDateDay);
+	}
+	// console.log(getDate(new Date('1202/1/23')));
+
+	function getDownTime(dt) {
+            // 1.获取倒计时
+            // console.log(dt);
+            var intervalMsec = dt - Date.now(); // 目的时间减去现在的时间，获取两者相差的毫秒数
+            // console.log(intervalMsec);
+            var intervalSec = intervalMsec / 1000; // 转换成秒数
+            var day = parseInt(intervalSec / 3600 / 24); // 天数
+            var hour = parseInt((intervalSec - day * 24 * 3600) / 3600); // 小时
+            var min = parseInt((intervalSec - day * 24 * 3600 - hour * 3600) / 60); // 分钟
+         
+            // 2.若相差的毫秒小于0 ,表示目的时间小于当前时间，这时的取的值都是负的：-X天-时-分，显示时，只显示天数前面为负的就行。
+            if (intervalMsec < 0) {
+                hour = 0 - hour;
+                min = 0 - min;
+            }
+         
+            // 3.拼接字符串并返回
+            var rs = day + '天' + hour + '时' + min + '分';
+            return rs;
+        }
+         
+        // 当前时间：2014/12/28 13:26
+        console.log(getDownTime(new Date('2015/06/01'))); // =154天10时33分
+        console.log(getDownTime(new Date('2014/01/01'))); // = -361天13时26分
+
+        var dt1 = new Date('2015/12/01');
+        var dt2 = new Date('2015/12/25');
+        console.log(dt1 > dt2);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

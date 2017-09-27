@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>node</title>
+	<meta charset = 'utf-8'>
+
+</head>
+<body>
+	<!--注释-->
+	<div class="myDiv">
+		<img src="#">
+		<p></p>
+		<img src="#">
+		<img src="#">
+		<img src="#">
+		<div></div>
+	</div>
+
+</body>
+<script type="text/javascript">
+	/*
+	var div = document.getElementsByTagName('div')[0];
+	var clas = div.getAttribute('class');
+	console.log(div.nodeType,div.nodeName,div.nodeValue);
+	// console.log(clas.nodeType,clas.nodeName,clas.nodeValue);
+	console.log(clas);
+	console.log(document.nodeType,document.nodeName,document.nodeValue);
+	var com = document.body.childNodes[2];
+	console.log(com.nodeType,com.nodeName,com.nodeValue);
+	console.log(div.childNodes[1]);
+	console.log(div.childNodes.item(1));
+	var nodes = Array.prototype.slice.call(div.childNodes,0);
+	console.log(nodes);
+	*/
+
+	var p = document.getElementsByTagName('p')[0];
+	var div = document.getElementsByTagName('div')[0];
+	// console.log(div);
+	// var res = div.appendChild(p);
+	var colP =p.cloneNode(true);
+	// var res = div.appendChild(colP);
+	// var res = div.insertBefore(colP,p);
+	var res = div.replaceChild(colP,div.childNodes[1]);
+	console.log(div.childNodes);
+
+
+</script>
+</html>

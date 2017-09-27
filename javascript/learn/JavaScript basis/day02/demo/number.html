@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>number</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	    var a =12;
+	    console.log(a);
+	    var b =025;
+	    console.log(b);//21
+	    var c =0xaf;
+	    console.log(c);//16的0次方*15+10*16的一次方 175
+
+	    var e=1.;
+	    var d=1.0;//去掉为0的小数点
+	    console.log(e);
+	    console.log(d);
+
+	    var f =0.0000003;
+	    console.log(f);//6个小数点以上的数值用科学计数法表示
+
+	    var g =5e-325;
+	    console.log(g);//0
+
+	    var h =1.7976931348623157e+309;
+	    console.log(h);
+	    console.log(isFinite(h));//false
+
+	    var df =NaN;
+	    var gh =3/"c";
+	    console.log(df);
+	    console.log(isNaN(gh));//true
+	    console.log(gh);//非数值
+
+	    // var p =0.1;
+	    // var o =0.2;
+	    // var result =p+o;
+	    // console.log(result);//失去精度 因为计算机解析的时候是32位的二进制数0和1  0.300000000004
+
+	    //解决方法
+	    var p =0.1*10;
+	    var o =0.2*10;
+	    var result =(p+o)/10;
+	    console.log(result);
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

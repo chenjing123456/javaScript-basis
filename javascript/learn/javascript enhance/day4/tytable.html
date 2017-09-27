@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tytable</title>
+    <style>
+        table{
+            width:400px;
+            border:1px solid #ccc;
+            border-collapse: collapse; 
+        }
+        td,th{
+            border:1px solid #ccc;
+        }
+        .current{
+            background-color: #ccc;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var $tables = document.getElementsByTagName('table');
+            
+            var $trs =document.getElementsByTagName('tr');
+
+            var $btns = document.getElementsByTagName('button');
+            var $btn1 = $btns[0];
+            var $btn3 = $btns[2];
+            $btn1.onclick = function(){
+                var $tr = $tables[0].children[0].lastElementChild.cloneNode(true);
+                // console.log($tr);
+                $tables[0].children[0].appendChild($tr);
+            }
+        
+            $btn3.onclick = function(){
+                var $trl = $tables[0].children[0].lastElementChild;
+                // console.log($trl);
+                $tables[0].children[0].removeChild($trl);
+            }
+            var $trs = Array.prototype.slice.call($trs,0);
+            $trs.forEach(function(item,index){
+                if(index!=0){
+                    item.onmouseover = function(){
+                        item.setAttribute('class','current');
+                    }
+                    item.onmouseout = function(){
+                        item.removeAttribute('class');
+                    }
+                }      
+            })
+        }
+        
+    </script>
+</head>
+<body>
+    <table>
+        <tbody>
+            <tr>
+                <th>选择</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>张三</td>
+                <td>男</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>李四</td>
+                <td>男</td>
+                <td>45</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <button value="添加">添加</button>
+    <button value="modefied">modefied</button>
+    <button value="删除">删除</button>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>fun exercise</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+//函数是一种数据类型
+   var myFun=function(n){
+     console.log("hello"); 
+   }
+   console.log(typeof myFun);
+//函数可以作为另一个函数的参数	
+  //求两个数的运算结果
+   function getResult(a,b,fn){
+   	return fn(a,b);
+   }
+   var result=getResult(3,4,function(a,b){
+   	return a+b;
+   	// console.log(a+b);用此result会输出undefined,因为没有返回一个值给getResult()函数的return
+   });
+   console.log(result);
+  //另一个运算函数 
+   function getResult(m,n,fn){
+   	return fn(m,n);
+   }
+   var f1=function(m,n){
+   	return m-n;
+   }
+   var result=getResult(45,5,f1);
+   console.log(result);
+</script>
+</body>
+</html>

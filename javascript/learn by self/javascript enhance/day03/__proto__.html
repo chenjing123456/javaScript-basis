@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>__proto__</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+	//标识符：名字
+	//使用数字，字母，下划线，美元符组成，不能用数字开头
+	function Person(){}
+	//神秘对象就是Person.prototype
+	//那么只有使用构函才可以访问它
+    var o=new Person();
+	//以前不能用o来访问神秘对象
+	//现在有了__proto__之后
+	//o.__proto__也可以直接访问神秘对象（两条下划线）
+	//即o.__proto__===Person.prototype
+
+	function Foo(){};
+	Foo.prototype.name="text";
+	var o1=new Foo();
+	var o2=new Foo();
+	o1.name='zs';
+	console.log(o1.name+"和"+o2.name);
+/*
+	var Person=function (){}
+	//混入方法，把o1的值遍历赋给o2
+	var extend=function(o1,o2){
+		for(var k in o2){
+			o1[ k ]=o2[ k ];
+		}
+	}
+	//调用混入方法，把方法全部赋给原型
+	extend(Person.prototype,{
+		eat:function(){console.log("eating")},
+		wear:function(){console.log('wearing')},
+		run:function(){console.log('running')}
+	})
+	var p1=new Person();
+	var p2=new Person();
+	p1.run();
+	p2.eat();
+*/
+    var Person=function(){}
+    Person.prototype.extend=function(o){
+    	for(var k in o){
+    		this[ k ]=o[ k ];
+    	}
+    }
+    Person.prototype.extend({
+    	eat:function(){console.log("eating")},
+		wear:function(){console.log('wearing')},
+		run:function(){console.log('running')}
+    })
+    var p1=new Person();
+	var p2=new Person();
+	p1.run();
+	p2.eat();
+</script>
+</body>
+</html>

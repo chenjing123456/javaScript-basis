@@ -1,0 +1,156 @@
+##常考点
+
+1.类数组转换为数组的方法
+	//本质是找一个数组来调用slice方法，但是this指向可以通过call等显示指向类数组对象。
+
+	1)Array.prototype.slice.call(类数组，0)
+	2)Array.prototype.slice.apply(类数组，[0]
+
+
+	Var arr=[];   //非空数组或者空数组都可以
+	3)arr.slice.call(类数组对象,0);
+	4)arr.slice.apply(类数组对象,[0]);
+
+	5)Array.from(类数组对象)
+	将类数组遍历在放在新数组里
+
+2.cloneNode()  
+	深复制(true)和浅复制(false)（绑定的事件不管是深复制还是浅复制都会被复制，但是它的子元素只有深复制才会被复制）
+
+3.Sort 方法
+	如果什么参数都不给，则按照ASCII码排序
+	如果放参数，给比较函数
+		Sort(function(a,b){
+		If(a>b){
+			return -1;//等于-1表示不交换位置  降序
+		}else if(a<b){
+			return 1;
+		}
+		})
+
+4.
+	var arr = new Array("terry","tom","vicky");
+	var a = arr.toString();  //terry,tom,vicky
+	var b = arr.hasOwnProperty("length");  //true 
+		
+
+
+	1) arr为什么可以调用toString()方法?
+		arr本身没有，但是在Array.prototypy中 继承并重写 了Object中的toString
+
+	2) arr为什么可以调用hasOwnProperty()方法
+		arr本身没有，父级Array.prototype中没有，继承Obejct中的方法
+
+	3)数组中的length属性是自有属性
+
+4.数组中的this常见题
+		length = 8;
+		function fn(){
+		    console.log(this.length)
+		};
+		var obj = {
+		    length: 2,
+		    method: function(fn) {
+				//this == obj
+		        fn() ;           //   this指向window
+		        arguments[0](); // arguments.0()  this指向arguments
+		        console.log(this.length);     // 2
+		    }
+		};
+
+		obj.method(fn);
+		var arr= [fn,fn,fn,fn];
+		arr[2]();  				//arr.2()  this指向arr
+		1) this的值在什么时候时候确定？由谁来决定？
+			函数调用的时候确定
+			调用者决定
+		2) 函数调用方法有几种？
+			三种
+			函数名()
+			函数名.call()
+			函数名.apply()
+		3) 以下代码执行后，在控制台中打印的结果为？
+				8   1   4   2
+
+
+5.函数提升，变量提升，函数执行
+	/*
+		function Foo() {
+			//在函数内部声明的局部变量是可以再函数内部被访问的一个变量，不可以通过Foo.getName();调用，在下面举例说明
+			getName = function () { console.log(1); };  //全局的函数 但是只有当函数Foo运行后，声明的全局函数才会被创建，或者覆盖原有的getName()
+		  	return this;
+	 	}
+		Foo.getName = function () { console.log(2);};
+		Foo.prototype.getName = function () { console.log(3);};
+		var getName = function () { console.log(4);};
+		function getName() { console.log(5);}
+		
+		Foo.getName();		//2
+		getName();			//4 
+		Foo().getName();	//1   
+		getName();			//1
+		new Foo.getName();	//1
+		new Foo().getName();	//3 
+		*/
+
+
+
+		function Foo() {
+			//在函数内部声明的局部变量是可以再函数内部被访问的一个变量，不可以通过Foo.getName();调用，在下面举例说明
+			
+			var getName = function () { console.log(1); }; //一个局部变量
+		  	return this;
+	 	}
+		Foo.getName = function () { console.log(2);};
+		Foo.prototype.getName = function () { console.log(3);};
+		var getName = function () { console.log(4);};
+		function getName() { console.log(5);}
+		
+		Foo.getName();		//2
+		getName();			//4 
+		Foo().getName();	//4   
+		getName();			//4
+		new Foo.getName();	//2
+		new Foo().getName();	//3 
+		
+
+		//测试代码
+		function test(){
+			var a =1;
+			var func = function(){
+
+			}
+		}
+		// test.func() ; 
+		// 显然是会报错的，只有函数的实例或者用一个对象去调用函数内部的变量
+		//函数内部的变量是不能通过函数调用的，而是通过对象来调用。
+
+6.使用递归和循环实现1!+2!+3!+4!+...+15!
+	function factory(n){
+		if(n<=1){
+			return 1;
+		}else{
+			// return n*factory(n-1);
+			return n*arguments.callee(n-1);
+		}
+	}
+	// console.log(factory(15));
+	var res = factory(15);
+	var sum = 0;
+	for(var i = 1;i<=15;i++){
+		sum+=factory(i);
+	}
+	console.log(sum);
+
+7.输出今天的日期，以YYYY-MM-DD的方式，比如今天是2017年9月7日，则输出2017-09-07
+		var d = new Date();
+		// 获取年，getFullYear()返回4位的数字
+		var year = d.getFullYear();
+		// 获取月，月份比较特殊，0是1月，11是12月
+		var month = d.getMonth() + 1;
+		// 变成两位
+		month = month < 10 ? '0' + month : month;
+		// 获取日
+		var day = d.getDate();
+		day = day < 10 ? '0' + day : day;
+		alert(year + '-' + month + '-' + day);

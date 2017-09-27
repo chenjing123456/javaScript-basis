@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>值类型和引用类型作为函数传递</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+// 值类型
+	function sort(num){
+	  num=5;
+      // console.log(num);
+      return num;
+	}
+	var a=123;
+	sort(a);
+    console.log(a);
+//引用类型
+	var o={
+		name:"zs",
+		age:29,
+}
+    o.copy=function(opt){
+        // opt={};如果重新把它指向另一个对象，则与p1无任何关系
+        for(var k in this){
+        	opt[ k ]=this[ k ];
+        }
+    }
+    var p1={};
+    p1.gender="male";
+    o.copy(p1);
+    console.log(o);
+    console.log(p1);
+</script>
+</body>
+</html>

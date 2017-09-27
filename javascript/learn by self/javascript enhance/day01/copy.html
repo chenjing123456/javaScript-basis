@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>深拷贝与浅拷贝</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+//实现浅拷贝,将当前对象的所有属性拷贝一份，内部属性的引用类型依然指向同一个数据
+	var car={ name:"法拉利" };
+	var person={
+		name:"李珍",
+		age:20,
+		car:car
+	}
+	//引用赋值，不是拷贝.只是把地址赋值给了P2.
+	// var p2=person;
+	// p2.car.name="兰博基尼";
+	// console.log(p2.car.name);
+//面向过程开发
+	// var p={};
+	// p.name = person.name;
+	// p.age = person.age;
+	// p.car = person.car;
+	// p.car.name="chenjing";
+	// console.log(p.car.name);
+//面向对象开发
+    var p={
+    	name:"zhangsan",
+    	age:19,
+    	copy:function(){
+    		//创建对象
+    		var temp={};
+    		//复制属性
+    		for(var k in this){
+		     temp[ k ]=this[ k ];//关联数组的方式动态添加属性
+	}
+    		//返回新对象
+    		return temp;
+    	}
+    }
+	var p1=p.copy();
+	p1.name="lisi";
+	p1.age=20;
+    console.log(p.name);//值为zhangsan，不影响原对象
+//实现深拷贝，将数据中所有的引用数据类型全部拷贝一份.
+ // 1.面向过程   
+	//var car={ name:"法拉利" };
+	// var person={
+	// 	name:"李珍",
+	// 	age:20,
+	// 	car:car
+	// }
+	// var p={};
+	// p.name=person.name;
+	// p.age=person.age;
+	// p.car={};
+	// p.car.name=person.car.name;
+	// p.car.name="jignf";
+	// console.log(person.car.name);
+
+//2.面向对象 
+    // 给每个对象一个copy方法，就可以实现深拷贝
+	function deepCopy(){
+			//1.创建对象
+        	var temp={};
+        	//2.复制属性，并判断是否是引用类型
+        	for(var k in this){
+		    if(typeof this[k]==="object"){
+            temp[k]=this[k].deepCopy();
+		}
+		else{
+			temp[k]=this[k];
+		}
+	}
+        	//3.返回新对象
+        	return temp;
+    }
+	var car={
+		name:"法拉利"		
+	}
+	var p={
+		name:"zs",
+        car:car    
+	}
+	p.deepCopy=deepCopy;//把函数deepCopy赋值给p的deepCopy方法，如果加()则返回返回值
+	car.deepCopy=deepCopy;
+
+	var p2=p.deepCopy();
+	p2.name="fhdd";
+	p2.car.name="fhgeigh";
+</script>
+</body>
+</html>

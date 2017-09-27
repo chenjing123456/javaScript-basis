@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+	//面向对象开发
+	function DivTag(){//构函
+       this.dom=document.createElement("div");
+       this.appendTO=function(node){
+       	node.appendChild(this.dom);
+       }
+       this.css=function (option){
+       	for(var k in option){//遍历属性
+       		this.dom.style[k]=option[k];//option[k]表示属性的值，k表示属性
+       	}
+       }
+	}
+	var div=new DivTag();//创建对象
+	div.appendTO(document.body);
+	div.css({
+		border:"1px solid green",
+		width:"400px",
+		height:"400px",
+	});
+	//中级面向对象
+	function DivTag(){
+       this.dom=document.createElement("div");
+       this.appendTO=function(node){
+       	node.appendChild(this.dom);
+       	return this;
+       }
+       this.css=function (option){
+       	for(var k in option){//遍历属性
+       		this.dom.style[k]=option[k];//option[k]表示属性的值，k表示属性
+       	}
+       	return this;
+       }
+	}	
+	new DivTag().css({
+		border:"1px solid red",
+		width:"40px",
+		height:"40px"}).appendTO(document.body);
+	new DivTag().appendTO(document.body).css({
+		border:"1px solid purple",
+		width:"40px",
+		height:"40px"});
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+/*      div{
+      	background-color: green;
+      	width: 200px;
+      	height: 200px;
+      	float: left;
+      	margin: 10px;
+      }*/
+	</style>
+	<script type="text/javascript">
+        // window.onload=function(){
+        // 	var divs=document.getElementsByTagName('div');
+        // 	for(var i=0;i<divs.length;i++){
+        // 		divs[i].style.background='red';
+        // 	}
+        // }
+         window.onload=function(){
+         	var but1=document.getElementById('but1');
+         	var but2=document.getElementById('but2');
+         	var but3=document.getElementById('but3');
+         	var div1=document.getElementById('div1');
+         	var inputs=div1.getElementsByTagName('input');
+         	but1.onclick=function(){
+         		for(var i=0;i<inputs.length;i++){
+         			inputs[i].checked=true;
+         		}
+         	}
+         	but2.onclick=function(){
+         		for(var i=0;i<inputs.length;i++){
+         			inputs[i].checked=false;
+         		}
+         	}
+         	but3.onclick=function(){
+         		for(var i=0;i<inputs.length;i++){
+	         	if(inputs[i].checked==true){
+	         		inputs[i].checked=false;
+	         	}
+	         	else{
+	         		inputs[i].checked=true;
+	         	}
+	        }
+          }
+         }
+	</script>
+</head>
+<body><!-- 
+<div></div>
+<div></div>
+<div></div> -->
+<hr>
+
+<input type="button"  id="but1" value="全选"><br>
+<input type="button" id="but2" value="不选"><br>
+<input type="button" id="but3" value="反选"><br>
+<div id="div1">
+	<input type="checkbox"><br>
+	<input type="checkbox"><br>
+	<input type="checkbox"><br>
+	<input type="checkbox"><br>
+	<input type="checkbox"><br>
+	<input type="checkbox"><br>
+	<input type="checkbox"><br>
+	<input type="checkbox"><br>
+	<input type="checkbox"><br>
+	<input type="checkbox"><br>
+	<input type="checkbox"><br>
+	<input type="checkbox"><br>
+	<input type="checkbox"><br>
+</div>	
+</body>
+</html>

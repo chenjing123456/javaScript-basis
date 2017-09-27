@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>素数</title>
+	<meta charset="UTF-8">
+	<script type="text/javascript">
+		/*
+		判断输入的数值是否是一个素数
+		素数的特点：只能被1和本身整除的数为素数
+		*/
+		function isPrame(n){
+			var prame;
+			for(var i=2;i<n;i++){
+				if(n%i==0){
+					prame="不是素数";
+					break;
+				}
+				prame="是素数";
+			}
+			return prame;
+		}
+		isPrame(12);
+
+		// 求101-200之间的素数个数
+		// var num=0;
+		for(var i=101;i<=200;i++){
+			for(var j=2;j<i;j++){
+				if(i%j==0){
+					break;
+				}	
+			}
+			if(i==j-1){//当最后结束的时候依然没有一个数能被整除，则这个数为素数（除了0和本身整除）
+				console.log("素数"+i);
+			}
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

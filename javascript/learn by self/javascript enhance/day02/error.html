@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>error</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+       window.onload=function(){
+       	// var div=document.querySelectorAll('#dv1')[1];
+       	var div=document.getElementsByTagName('div')[1];
+       	div.removeAttribute('name');
+        // var node=div.getAttributeNode('name');
+        // div.removeAttribute(node);
+        // div.text='text1';
+        // div.setAttribute("text","text1");
+
+       	var input=document.getElementsByTagName('input')[0];
+       	input.removeAttribute('checked');
+       }
+	</script>
+</head>
+<body>
+<div id="dv"></div>
+<div id="dv1" class="div1" name="divo" text="text"></div>
+<input type="checkbox" checked="checked" text="text">
+</body>
+</html>

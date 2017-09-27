@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>obj</title>
+	<meta charset="UTF-8">
+	<script type="text/javascript">
+	   var obj1 ={
+	   		name:"ls",
+	   		age:12,
+	   		gender:"female"
+	   }
+	   var obj2 =new Object();
+	   obj2.name="zs";
+	   obj2.age=13;
+
+	   console.log(obj1.name);
+	   console.log(obj1["name"]);
+	   var age="age";
+	   console.log(obj1[age]);
+
+	   console.log(obj2);
+	   delete obj2.age;
+	   console.log(obj2);
+	// console.log(obj1["name"]);
+
+	   for(var key in obj1){
+	   		console.log(key,obj1[key]); //打印的是字符串 以及 相应的属性值的类型
+	   		// console.log(key+" "+obj1[key]);字符串拼接 结果的字符串
+	   }
+
+	   console.log("name" in obj1);
+	   console.log("constructor" in obj1);//true
+	   console.log(obj1.hasOwnProperty("name"));
+	   console.log(obj1.hasOwnProperty("consturctor"));//false
+	   console.log(obj1.propertyIsEnumerable("name"));
+	   console.log(obj1.propertyIsEnumerable("constructor"));//false
+	   
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>reverse</title>
+	<meta charset="UTF-8">
+	<script type="text/javascript">
+	/*
+	功能：实现数组翻转
+	参数：原数组
+	返回值：翻转后的数组
+	*/
+
+	/*
+	var arr = [1,2,4,8,3,0];
+	function myReverse(arr){
+		var temp =[];
+		for(var i=arr.length-1;i>=0;i--){
+			temp[temp.length] = arr[i];
+		}
+		return temp;
+	}
+	var result = myReverse(arr);
+	console.log(result);
+	*/
+
+	/*
+	  功能：一样，但是把它添加到数组原型中
+	*/
+	Array.prototype.myReverse = function(){
+		var temp =[];
+		// var j=0;
+		for(var i=this.length-1;i>=0;i--){
+			//temp[i] = this[j++];//把原数组的第一项赋值给新数组的最后一项
+			temp[temp.length] = this[i];//把原数组的最后一项赋值给新数组的第一项
+		}
+		for(var j=0;j<this.length;j++){
+			this[j] = temp[j];//原方法reverse会改变原数组，所以通过需要改变原数组
+		}
+		// return temp;
+	}
+	var arr = [1,2,3];
+	arr.myReverse();
+	console.log(arr);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

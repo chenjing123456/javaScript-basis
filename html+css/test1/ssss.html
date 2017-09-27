@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>三生三世十里桃花</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+     *{
+     	padding: 0px;
+     	margin: 0px;
+     }
+     body{
+     	background: url(images/5.jpg) no-repeat;
+     	background-size:cover; 
+     }
+     a{
+        text-decoration: none;
+     }
+     a:hover{
+        background-color: rgba(255,255,255,0.5);
+        color: pink;
+     }
+     .image{
+     	width: 200px;
+     	height: 200px;
+     	position: absolute;
+     	bottom: 100px;
+     	/*background-color: red;*/
+     	left: 50%;
+     	margin-left: -100px;
+        transform-style:preserve-3d;
+        /*transform:rotateX(-10deg);*/
+        animation:move 7s linear 0s infinite normal;
+     }
+     @keyframes move{
+     	from{
+     		/*transform:rotateY(0deg) rotateX(-10deg);*/
+       		transform:rotateX(-10deg) rotateY(0deg) ;
+
+     	}
+     	to{
+     		/*transform:rotateY(360deg) rotateX(-10deg);会改变旋转的方式。所以固定的要写在前面，改变的属性值写在后面*/
+     		transform:rotateX(-10deg) rotateY(360deg) ;
+
+     	}
+     }
+     .image:hover{
+     	animation-play-state:paused;
+     }
+     .image:hover .images img{
+     	opacity: 0.5;
+     }
+     .image .images:hover img{
+     	opacity: 1;
+     }
+     .image .images{
+     	list-style: none;
+     	position: absolute;
+     	line-height: 200px;
+     	text-align: center;
+     	width: 200px;
+     	height: 200px;
+     	background-color: black;
+     }
+     .image .images:nth-child(1){
+    	/*background-color:yellow;*/
+    	transform:rotateY(60deg) translateZ(200px);
+    }
+     .image .images:nth-child(2){
+    	/*background-color:red;*/
+    	transform:rotateY(120deg) translateZ(200px);
+    }
+     .image .images:nth-child(3){
+    	/*background-color:pink;*/
+    	transform:rotateY(180deg) translateZ(200px);
+    }
+     .image .images:nth-child(4){
+    	/*background-color:green;*/
+    	transform:rotateY(240deg) translateZ(200px);
+    }
+     .image .images:nth-child(5){
+    	/*background-color:purple;*/
+    	transform:rotateY(300deg) translateZ(200px);
+    }
+     .image .images:nth-child(6){
+    	/*background-color:skyblue;*/
+    	transform:rotateY(360deg) translateZ(200px);
+    }
+    .dibu{
+    	position: absolute;
+    	bottom: 100px;
+    	left: 40px;
+    	opacity: 0.3;
+    	width: 50px;
+    	height: 50px;
+    	animation:spore 6s linear 0s infinite normal;
+    }
+    @keyframes spore{
+    	10%{
+    		bottom: 300px;
+    		left: 100px;
+    		opacity:0;
+    	}
+    	20%{
+    		bottom: 400px;
+    		left: 100px;
+    		opacity: 0.3;
+    	}
+    	40%{
+    		bottom: 450px;
+    		left: 300px;
+    		opacity: 0;
+    	}
+    	70%{
+    	bottom: 500px;
+    	left: 600px;
+    	opacity: 0.1;	
+    	}
+    	80%{
+    	bottom: 500px;
+    	left: 800px;
+    	opacity: 0;	
+    	}  
+    	90%{
+    	bottom: 300px;
+    	left: 900px;
+    	opacity: 0.3;	
+    	}  	
+    	92%{
+    	bottom: 50px;
+    	left: 1000px;
+    	opacity: 0.3;	
+    	}
+    	100%{
+    	bottom: 20px;
+    	left: 1240px;
+    	opacity: 0.1;   
+    	}
+    }
+    .dibu:hover{
+        animation-play-state:paused;
+    }
+    .nav{
+    width: 400px;
+    height: 40px;
+    /*background-color: skyblue;*/
+    background-color: rgba(255,255,255,0);
+    /*margin-top: 100px;*/
+    /*margin: 0 auto;*/
+    /*padding-left: 10px;*/
+  }
+  .nav>li{
+    list-style: none;
+    float: left;
+    width: 120px;
+    height: 40px;
+    background-color: rgba(255,255,255,0.5);
+    /*border: 1px solid red;*/
+    margin-left: 10px;
+    line-height: 40px;
+    text-align: center;
+    position: relative;
+    font-size: 12px;
+    color: pink;
+  }
+  .sub{
+    position: absolute;
+    left: 0px;
+    top: 40px;
+  }
+ .nav .sub li{
+    /*background-color: yellow;*/
+    background-color: rgba(255,255,255,0);
+    list-style: none;
+    width: 120px;
+    height: 40px;   
+    line-height: 40px;
+    text-align: center;
+    transform:rotateY(180deg);
+    transition:all 1s;
+    opacity: 0;
+ }
+ .nav>li:hover .sub li{
+    opacity: 1;
+    transform:none;
+ }
+.nav>li:hover .sub li:nth-child(1){
+    transition-delay:0ms;
+}
+.nav>li:hover .sub li:nth-child(2){
+    transition-delay:200ms;
+}.nav>li:hover .sub li:nth-child(3){
+    transition-delay:400ms;
+}.nav>li:hover .sub li:nth-child(4){
+    transition-delay:600ms;
+}
+.nav>li .sub li:nth-child(4){
+    transition-delay:0ms;
+}
+.nav>li .sub li:nth-child(3){
+    transition-delay:200ms;
+}
+.nav>li .sub li:nth-child(2){
+    transition-delay:400ms;
+}
+.nav>li .sub li:nth-child(1){
+    transition-delay:600ms;
+}
+/*.nav li{
+    font-size: 12px;
+    color: skyblue;
+
+}*/
+	</style>
+</head>
+<body>
+<ul class="nav">    
+    <li>
+        <details>
+            <surmary>
+             讲述了青丘帝姬白浅和九重天太子夜华的三生爱恨，三世纠葛的故事。 
+            </surmary>
+        </details>
+    </li>
+    <li>主演
+        <ul class="sub">    
+           <li><a href="http://baike.baidu.com/link?url=fxQLuGEJq6o_x8gxPjXGgC3ZYkdf33vNO39ndczSFO7OA9AMynrfAok1dKupVALsdjx-xde0qAnipvC5XuElJdm0JHebmEJLsvHVL0Gxpq3" target="_blank">杨幂</a></li>
+           <li><a href="#">赵又廷</a></li>
+           <li><a href="#">于朦胧</a></li>
+           <li><a href="#">张智尧</a></li>
+           <li><a href="#">迪丽热巴</a></li>
+           <li><a href="#">李伟光</a></li>
+        </ul>
+    </li>
+</ul>
+<ul class="image">
+	<li class="images"><img src="images/8.jpg"></li>
+	<li class="images"><img src="images/9.jpg"></li>
+	<li class="images"><img src="images/10.jpg"></li>
+	<li class="images"><img src="images/11.jpg"></li>
+	<li class="images"><img src="images/12.jpg"></li>
+	<li class="images"><img src="images/13.jpg"></li>
+</ul>
+<img class="dibu" src="images/0.jpg">
+</body>
+</html>

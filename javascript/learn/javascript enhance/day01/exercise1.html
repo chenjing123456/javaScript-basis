@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>sortStudent</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		/**
+	        param: 排序前的数组，排序规则,升序true/降序false
+	        return 排好序的数组
+	    */
+	    /*
+		假设是id 升序
+		先拿出id值比较  映射每个id值对应的对象
+		然后返回比较id后的数组
+	    */
+		var arr = [{
+	        id:1002,
+	        name:"terry",
+	        age:18
+	    },{
+	        id:1001,
+	        name:"larry",
+	        age:19
+	    },{
+	        id:1003,
+	        name:"jacku",
+	        age:16
+	    }];
+	    
+	    function sortStudent(arr,property,sx){
+	    	// var result=[];
+	     //    for(var i=0;i<arr.length;i++){
+	     //    	if(arr[i].id === "id"){
+	     //    		result = result.push();
+	     //    	}
+	     //    }
+	     //    return result;
+	    }
+
+	    function sortSx(a,b){
+	    	if(a>b){
+                return 1;//升序
+            }else if(a<b){
+                return -1;
+            }else{
+                return 0;
+            }
+		}
+		function sortJx(a,b){
+	        if(a>b){
+	            return -1;//降序
+	        }else if(a<b){
+	            return 1;
+	        }else{
+	            return 0;
+	        }    
+		}
+	    //按照id的升序排列
+	    // var res = sortStudent(arr,"id",true);
+	    // console.log(res);
+
+	    /*
+			switch(property){
+	        	case "id":
+	        		if(sx===true){
+	        			result = arr.sort(sortSx);
+	        		}else{
+	        			result =arr.sort(sortJx);
+	        		}
+	        		break;
+	        	case "name" :
+	        		if(sx===true){
+	        			result = arr.sort(sortSx);
+	        		}else{
+	        			result =arr.sort(sortJx);
+	        		}
+	        		break;
+	        	case "age" :
+	        		if(sx===true){
+	        			result = arr.sort(sortSx);
+	        		}else{
+	        			result =arr.sort(sortJx);
+	        		}
+	        		break;
+	        }
+	    */
+	    
+
+
+	    //1.把字符串转换成数组['get','element'..]
+	    var str = 'get-element-by-id';
+	    var res = str.split('-');
+	    //2.遍历数组的每一项'get' 'element'..
+	    var arr1 = res.map(function(item){
+	    	var temp =[];
+	    	for(var i=0;i<item.length;i++){
+	    		if(i ==0){
+	    			var p =item[i].toUpperCase();
+	    			temp.push(p);
+	    			// console.log(temp);
+	    		}else{
+	    			temp.push(item[i]);
+	    		}
+	    	}
+	    	// console.log(temp);
+	    	var t = temp.join('');
+	    	// console.log(typeof t);//string
+	    	return t;
+	    })
+	    //3.把数组转换为字符串
+	    var arr2 =arr1.join('');
+	    console.log(arr2);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

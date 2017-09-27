@@ -1,0 +1,52 @@
+前端开发
+    核心 html + css + js
+    框架
+        jQuery
+        mvvm(vue/react/angularJS)
+js框架
+    对原生js的封装
+    简化代码
+    兼容性
+    ...
+jQuery
+    1) 获取框架
+        jQuery.js(源文件)
+        jQuery.min.js(部署文件)
+    2) 框架使用
+        <head>
+            <script src="jQuery.min.js"></script>
+        </head>
+    3) 编写js文件
+        函数 jQuery 简写 $
+        1. jQuery函数
+            jQuery();
+            =>
+            $()
+            参数：
+                1) 匿名函数
+                $(function(){
+                    //等页面主体架构加载完毕后执行
+                });
+                2) 选择器
+                核心选择器
+                    *
+                    .
+                    #
+                    div
+                层次
+                    s1 s2
+                    s1>s2
+                    s1+s2
+                    ...
+                伪类
+                    :
+                $("div")
+                    jQuery对象，类数组对象，元素是dom对象
+
+                <div>one</div>
+                <div>two</div>
+                <div>three</div>
+                    $("div");
+                    jQuery[div,div,div]
+                
+            

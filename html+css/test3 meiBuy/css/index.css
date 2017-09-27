@@ -1,0 +1,467 @@
+@charset "utf-8"
+html{
+	font: 12px "宋体";
+}
+a{
+	color: #000;
+}
+.top {
+	height: 26px;
+	border: 1px solid #DBDBDB;
+	background-color: #F7F7F7;
+	font-size: 12px;
+}
+.top_page{
+	height: 26px;
+	/*background-color: red;*/
+	width: 970px;
+	margin:0 auto;
+}
+.top_page_l{
+    line-height: 26px;
+}
+.top_page_r ul li{
+	float: left;
+	padding-right: 10px;
+	line-height: 26px;
+	position: relative;
+}
+.top_page_r ul li s{
+	width:8px;
+	height:8px;
+	display: inline-block;
+	background: url(../image/sprint.png);
+	vertical-align: middle;
+	position: absolute;
+	top:10px;
+	vertical-align: middle;
+	/*left:60px;*/
+}
+.logo{
+	/*background-color: red;*/
+	width: 970px;
+	height:98px;
+	margin:0 auto;
+}
+.logo_l{
+	width: 200px;
+	height:55px;
+	/*background-color: pink;*/
+	background: url(../image/sprint.png) -20px 0;
+	margin: 24px 0 19px 9px;
+	text-indent: -1000em;
+}
+.logo_r{
+	width:530px;
+	/*background-color: red;*/
+	height:42px;
+	border: 1px solid #C9C9C9;
+	box-sizing:border-box;
+	margin-top:29px;
+}
+.logo_r_content{
+	margin:5px 5px 5px 4px;
+}
+.logo_r_serach{
+	width: 420px;
+	height:30px;
+	color: #999;
+	border: 1px solid #C9C9C9;
+	box-sizing:border-box; /*增加border会增加盒子宽高，用此属性可以使之不变*/
+}
+.logo_r_button{
+	width: 99px;
+	height: 30px;
+	color: white;
+	background-color: #2F70D0;
+}
+.nav{
+	height:25px;
+	width: 970px;
+	/*background-color: pink;*/
+	margin: 0 auto;
+	border-bottom: 2px solid #0266A3;
+}
+.nav li{
+	float: left;
+	padding:0px 15px 0px 15px;
+	line-height: 25px;
+	font-weight: bold;
+	font-size: 14px;
+}
+.nav li:hover{
+	background-color: #0266A3;
+}
+.nav li:hover a{
+	color: white;
+}
+.nav li a{
+	color: #0266A3;
+}
+.banner{
+	width: 970px;
+	height:210px;
+	margin: 0 auto;
+	/*background-color: pink;*/
+	margin-top:10px;
+}
+.subNav{
+	width: 200px;
+	height: 210px;
+	/*background-color: red;*/
+	margin-right: 11px;
+}
+.ad{
+	width: 520px;
+	height:210px;
+	background-color: #EBF0F6;
+}
+.message{
+	width: 230px;
+	height:210px;
+	/*background-color: purple;*/
+}
+.subNav h2{
+	line-height: 30px;
+	height:30px;
+	font-size: 14px;
+	font-weight: bold;
+	color:white;
+	background-color: #0266A3;
+	padding-left: 20px;
+	box-sizing:border-box;
+}
+.subNav ul{
+	background-color:#EBF0F6;
+	height: 180px;
+}
+.subNav span{
+	display: inline-block;
+    width: 20px;
+    height: 20px;
+    background:url(../image/sprint.png) -270px 0px;
+}
+.subNav li{
+	/*height:28px;*/
+	font-size: 15px;
+	padding-top: 5px;
+	margin-left: 9px;
+}
+.subNav li a{
+	padding-left: 15px;
+}
+.message_top{
+    background-color:#F7FAFF;
+    height: 95px;
+    border:1px solid #DDDDDD;
+    margin-bottom: 21px;
+}
+.message_top s{
+	display:inline-block;
+	height: 36px;
+	width: 37px;
+	background: url(../image/sprint.png) 0 -70px;
+	margin:20px 10px 0 10px;
+}
+.message_top p{
+	font-size: 12px;
+}
+.message_top .fw{
+	font-weight: bold;
+	padding:7px 0 0 18px;
+}
+.message-top .cheap{
+    margin-top: 25px;
+}
+.message_bottom{
+    background-color: #F7F7F7;
+    height:92px;
+}
+.message_bottom .findMessage{
+	text-align: center;
+	font-size: 14px;
+	padding-top: 11px;
+}
+.message_bottom .phone{
+	text-align: center;
+	font-size: 14px;
+	color: #3F9CE0;
+    margin-top: 10px;
+}
+.message_bottom .phone s{
+	width: 12px;
+	height: 19px;
+	display: inline-block;
+	background: url(../image/sprint.png) 0 -10px;
+}
+.message_bottom .btn{
+	width: 40px;
+	height: 10px;
+	background: url(../image/sprint.png) 0px 90px;
+	margin-top:9px;
+	margin-left: 100px;
+}
+.material{
+	width: 970px;
+	height: 34px;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 0 auto;
+	line-height: 34px;
+	border-top: 2px solid #C3D7E4;
+	background-color: #ECF1F7;
+	margin-top: 14px;
+	padding-left: 20px;
+	box-sizing:border-box;
+}
+.product{
+	width: 970px;
+	height: 345px;
+	/*background-color: red;*/
+	margin: 0 auto;
+	margin-top:12px;
+}
+.product .product_l{
+	width:738px;
+	height:345px;
+	border:1px solid #D8D8D8;
+	box-sizing:border-box;
+}
+.product .product_l_top{
+	width: 738px;
+	height:172px;
+	padding:17px 0 0 26px;
+	box-sizing:border-box;
+}
+.product .p_l_t_product1{
+    width:350px;
+    height:146px;
+}
+.product .buy{
+	width: 99px;
+	height: 143px;
+}
+.product .buy .img{
+	border:1px solid #cacaca;
+	height:100px;
+}
+.product .buy .img s{
+	display: inline-block;
+	width: 40px;
+	height:30px;
+	margin:30px 24px 20px 30px;
+	background: url(../image/sprint.png) 0 -120px;
+}
+.product .buy .btn{
+	background-color: #0A84E3;
+	color: white;
+	width: 99px;
+	height:26px;
+	font-size: 14px;
+	margin-top: 15px;
+}
+.product .explain{
+	width:250px;
+	height:143px;
+}
+.product .explain p {
+    font-size: 14px;
+}
+.product .explain .goodWife{
+	padding:5px 0 0 10px;
+}
+.product .explain .auto{
+	color: #863e01;
+	padding: 13px 0 0 15px;
+}
+.product .explain .money{
+	padding: 23px 0 0 11px;
+}
+.product .explain .money span{
+	color: red;
+	padding-right: 10px;
+}
+.product .explain .money s{
+	text-decoration: line-through;
+}
+.product .explain .buyed{
+	padding:8px 0 0 8px;
+}
+.product_l_line{
+	border-top:1px solid #ccc;
+	margin:0px 4px 0px 4px;
+    /*background-color: red;*/
+    /*height: 20px;*/
+}
+.product .product_l_bottom{
+    padding:17px 0 0 26px;
+}
+.product .product_r{
+	width:230px;
+	height:348px;
+	/*background-color:green;*/
+}
+.product_r h2{
+	height:28px;
+	line-height: 28px;
+	padding-left: 15px;
+	border:1px solid #E0E6F0;
+}
+.product_r ul{
+	padding-top: 11px;
+	border:2px solid #E0E6F0;
+}
+.product_r li{
+	line-height: 23px;
+	padding-left: 26px;
+	font-size: 12px;
+	/*list-style: circle;*/
+}
+.protect{
+	width: 970px;
+	height: 34px;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 0 auto;
+	line-height: 34px;
+	border-top: 2px solid #C3D7E4;
+	background-color: #ECF1F7;
+	margin-top: 14px;
+	padding-left: 20px;
+	box-sizing:border-box;
+}
+.kid{
+	width: 970px;
+	height:345px;
+	margin:0 auto;
+	/*background-color: #ECF1F7;*/
+	margin-top: 10px;
+}
+.kid_l{
+	width:738px;
+	height:345px;
+	border:1px solid #D8D8D8;
+	box-sizing:border-box;
+}
+.kid_l h2{
+	width: 728px;
+	height: 40px;
+	/*background-color: red;*/
+	margin-bottom: 10px;
+	border-bottom:2px solid rgba(0,0,240,0.4);
+}
+.kid_l h2 .k_l_l{
+	width: 120px;
+	height: 40px;
+	background-color: rgba(0,0,240,0.4);
+	border-radius: 10px 180px 0 0;
+}
+.kid_l h2 .k_l_r{
+	width: 140px;
+	height: 40px;
+	font-size: 16px;
+	line-height: 40px;
+	/*background-color: rgba(0,0,240,0.4);*/
+}
+.kid ul{
+    width: 728px;
+    height: 265px;
+    margin-top:30px;
+}
+.kid ul li{
+	width: 160px;
+	height:265px;
+	/*border: 1px solid #DDDDDD;*/
+	/*box-sizing:border-box;*/
+	margin-left: 12px;
+}
+.kid ul li .kid_li_top{
+	width: 160px;
+	height: 135px;
+	box-sizing:border-box;
+	background-color: #ccc;
+	/*background-color: pink;*/
+	/*border: 1px solid #DDDDDD;*/
+}
+.kid ul li .kid_li_top .img{
+	display: inline-block;
+	width: 75px;
+	height: 75px;
+	/*margin: 0 auto;*/
+	margin:30px 34px 34px 45px;
+	background: url(../image/sprint.png) -50px -70px;
+}
+.kid ul li .kid_li_bottom{
+	width: 160px;
+	height: 110px;
+	/*border: 1px solid #DDDDDD;*/
+	box-sizing:border-box;
+	/*background-color: green;*/
+	margin-top: 10px;
+}
+.kid ul li .kid_li_bottom p{
+   font-size: 14px;
+}
+.kid ul li .kid_li_bottom .one{
+	font-weight: bold;
+	padding:5px 0 0 10px; 
+}
+.kid ul li .kid_li_bottom .two{
+	color: orange;
+	padding: 5px 0 0 15px;
+}
+.kid ul li .kid_li_bottom .three{
+	padding: 10px 0px 0 10px;
+}
+.kid ul li .kid_li_bottom p span{
+	color: red;
+	font-size: 18px;
+	margin-right: 9px;
+}
+.kid ul li .kid_li_bottom p s{
+	text-decoration: line-through;
+}
+.kid_r{
+	width:220px;
+	height:345px;
+	/*background-color:green;*/
+	margin-left:10px; 
+}
+.kid_r_top{
+	width: 220px;
+	height: 145px;
+	background-color:  #ECF1F7;
+}
+.kid_r_bottom{
+	width: 220px;
+	height: 180px;
+	background-color:  #ECF1F7;
+	margin-top: 20px;
+}
+.link{
+	width: 970px;
+	height: 103px;
+	margin:0 auto;
+	margin-top:11px;
+	border-top:1px solid #DDDDDD;
+	color: #666;
+	font-size: 14px;
+	border-bottom: 3px solid #007EC3;
+}
+.link_p1{
+	margin-top:30px; 
+}
+.link_p2{
+	margin-top: 14px;
+	margin-left: 69px;
+}
+.aboutMe{
+	width: 970px;
+	height:91px;
+	margin:0 auto;
+}
+.aboutMe p{
+	text-align: center;
+	margin-top: 14px;
+	font-size: 14px;
+}

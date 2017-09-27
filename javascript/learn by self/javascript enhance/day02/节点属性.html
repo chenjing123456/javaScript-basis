@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>节点属性</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		window.onload=function(){
+// 常见节点属性
+	// 1.nodeValue 表示节点的值，一般文本节点才使用该属性
+    var txt=document.body.lastChild.nodeValue;
+    // alert("|"+txt+"|");
+    // alert(document.body.nodeValue);返回null，因为body是一个元素节点不是文本节点
+    document.body.lastChild.nodeValue="我是唯一的节点";
+    //2.nodeName 表示节点名字，虽然所有节点都有该属性，但是一般元素节点才使用
+    // 元素节点打印的元素均为大写字母
+    alert(document.body.nodeName);
+    //文本节点和属性节点使用该属性会得到什么
+    var attr=document.body.getAttributeNode('itcast');
+    var attr1=document.body.attributes[0];//得到字符串“itcast”
+    alert(document.body.lastChild.nodeName);//只会得到#text
+    //3.nodeType 节点类型
+    // 1 表示元素节点
+    // 2 表示属性节点
+    // 3 表示文本节点
+    // 9 表示document节点
+   var attr2=document.body.getAttributeNode('itcast') ;
+   var body=document.body;
+   var text=document.body.lastChild;
+   alert("属性："+attr2.nodeType+"\n"+
+   	"标签"+body.nodeType+"\n"+
+   	"文本"+text.nodeType);
+}
+    </script>
+
+</head>
+<body itcast="穿这倒是">
+  你好。我是一个文本节点
+</body>
+</html>

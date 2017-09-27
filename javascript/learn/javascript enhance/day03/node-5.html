@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>node</title>
+	<meta charset="utf-8">
+	
+	<style type="text/css">
+	div{
+		width:100px;
+		/*height:100px;*/
+	}
+	div.one{
+		background-color: pink;
+	}
+	div.two{
+		background-color: red;
+	}
+	</style>
+</head>
+<body>
+	<div class="one">
+		<p>first</p>
+		<p>two</p>
+		<p>three</p>
+	</div>
+	<div class="two">second</div>
+	<!-- <div class="three">second</div> -->
+	<script type="text/javascript">
+	
+	var $div = document.getElementsByTagName('div')[0];
+	// var $one1 = document.getElementsByTagName('p')[0];
+	// console.log($div.firstElementChild);
+	// var $one_new = $div.firstElementChild.cloneNode(true);
+	var $p = document.createElement('p');
+	$p.style ='background-color:blue;height:100px;';
+	setTimeout(function(){
+		// $div.appendChild($p);
+		$div.insertBefore($p,$div.firstChild);
+		// $div.insertBefore($p,null);
+		// $div.insertBefore($p,$div.lastElementChild);
+		// $div.replaceChild($p,$div.lastElementChild);
+		// $div.removeChild($div.lastElementChild);
+	console.log($div.lastChild);
+	// console.log($div.lastElementChild);
+	},1000);
+	// console.log($div.lastChild);
+	</script>
+</body>
+</html>

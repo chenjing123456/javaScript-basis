@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>obj高级特性</title>
+	<meta charset="UTF-8">
+	<script type="text/javascript">
+	//对象序列化
+		var obj={
+			name:"ls",
+			age:12,
+			gender:"female"
+		}
+		//将对象转换为字符串
+		var json =JSON.stringify(obj);
+		console.log(json);
+		//将字符串转换为对象
+		var str='{"name":"zs","age":13}';
+		var json2 =JSON.parse(str);
+		console.log(json2);
+
+		//对象的高级特性
+		var o={
+			name:"ls",
+			age:12,
+			weight:"80kg"
+		}
+		Object.defineProperty(o,"weight",{
+			// value:"80kg",
+			enumerable:false,
+			writable:true
+		})
+		Object.defineProperties(o,{
+			height:{
+				value:175,
+				enumerable:false
+			},
+			tel:{
+				value:"123456778",
+				enumerable:true
+			}
+		})
+		for(var key in o){
+			console.log(key,o[key]);
+		}
+
+		var arr=[1,2,3];
+		console.log(Object.getOwnPropertyDescriptor(arr,"length"));
+
+		var a=1;
+		run(a);
+		function run(foo){
+
+			console.log(foo);
+			function foo(){
+				alret(123);
+			}
+			foo=2;
+			console.log(foo);
+		}
+		// console.log(foo);
+		var stu=new Object();
+		stu.study=function(){
+			// alert("开始学习了");
+		}
+		stu.study();
+
+		(function(){
+			var x=y=1;
+		})();
+		console.log(y);//1
+		// console.log(x);//出错
+
+		// var a=parseInt(3,8);
+		var b=parseInt(3,2);
+		var c=parseInt(3,0);
+		// console.log(a);
+		console.log(b);
+		console.log(c);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

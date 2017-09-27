@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>date 对象</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+    console.log(typeof Date());//string类型
+    console.log(Date("12/2/14"));//它将忽略所有传入的参数
+
+    console.log(typeof new Date());//object类型
+	var now=new Date();
+	console.log(now);
+	console.log(typeof now);
+	var day=new Date("2017/01/01 12:12:12");
+	console.log(day);
+	var date=new Date(12,3,4,14,4,5);
+	console.log(date);
+
+	//静态方法一 Date.now()
+	console.log(Date.now());
+	console.log(Date.now("2017/12/12 13:13:13"));//无效 此方法不支持传参
+	//此方法常用于分析代码的工作
+	var start=Date.now();
+	console.log(start);
+	
+	//运行代码块
+	var date=new Date(12,3,4,14,4,5);
+	console.log(date);
+	console.log(Date.now());
+	console.log(Date.now("2017/12/12 13:13:13"));//无效 此方法不支持传参
+
+
+	var end=Date.now();
+	console.log(start);
+	console.log(start-end);
+
+	//静态方法二 Date.parse()
+	console.log(Date.parse("2018/2/23"));
+	console.log(Date.parse("2018/02/23"));
+	console.log(Date.parse("2018-2-23"));
+	console.log(Date.parse("2018-02-23"));
+	console.log(Date.parse("fdf"));
+
+	//静态方法三 Date.UTC()
+	console.log(Date.UTC(17,2,3,14,2,4));
+</script>
+</body>
+</html>

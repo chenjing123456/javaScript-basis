@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>static</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		function Student(name,age,num,gender){
+			this.name=name;
+			this.age=age;
+			this.stuNum=num;
+			this.gender=gender;
+			//维持学生的个数
+			Student.prototype.number++;
+			console.log(this);
+		}
+		// console.log(Student.prototype);//原型对象Object  里面有一个constructor属性指向构造函数
+		/*
+		Student.prototype.sayName = function(){
+			console.log(this.name);
+		}
+		Student.prototype.sayHello=function(){
+			console.log(this.name+"hello");
+		}
+		Student.prototype.number = 0;
+		*/
+		var stu1 = new Student("ls",12,1001,1);//原来默认的原型对象
+
+		Student.prototype = {
+			constructor : Student,
+			sayName : function(){
+				console.log(this.name);
+			},
+			number :0,
+			gender:1,//属性搜索原则，当实例对象有时，则不会去原型中找，当给实例对象添加了同名属性时，也会覆盖原型中的同名属性（重写）
+			sayHello : function(){
+				console.log(this.name+"hello");
+			}
+		}
+
+
+		// var stu1 = new Student("ls",12,1001);//每创建一个对象，构造函数就会执行一次
+		var stu2 = new Student("zs",14,1002,2);//新原型对象
+		var stu3 = new Student("ss",14,1003,1);
+		console.log(stu2.number);
+		var stu4 = new Student("fs",14,1004,1);
+		console.log(stu1.constructor);
+		console.log(stu2.constructor);
+		console.log(Student.prototype.number);
+		//number是原型中的属性 属于公共变量或者类变量，谁访问它值都是一样的。而保存在实例中的变量属于实例变量
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

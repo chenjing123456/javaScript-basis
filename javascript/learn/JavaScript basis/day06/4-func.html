@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>fuc</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		function test(a,b){
+			console.log(a,b);
+		}
+		test(1,2);
+		test.call(this,1,2);
+		test.apply(this,[1,2]);
+		//函数的运用
+		//函数作为返回值
+		function test2(){
+			var a="ls";
+			return function(){
+				console.log(a);
+			}
+		}
+		// var result=test2();
+		// result();
+		test2()();
+		//函数作为参数
+		var arr=[1,2,3];
+		var hander=function(item,index){
+			console.log(item,index);
+		};
+		arr.forEach(hander);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

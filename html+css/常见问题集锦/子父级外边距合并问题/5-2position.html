@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>position:absolute方法</title>
+    <style>
+        /*方法三和四都属于绝对定位相对于最近有定位属性的祖先元素定位的方法*/
+        *{
+            padding:0;
+            margin: 0;
+        }
+        div.outer{
+            width: 200px;
+            height:200px;
+            background-color: pink;
+            /* position: absolute;  绝对定位属性 方法三 父子都设置绝对定位*/
+            position: relative;/*相对定位属性*/
+        }
+        div.inner{
+            width:100px;
+            height: 100px;
+            background-color: red;
+            
+            margin-top:10px;
+            position: absolute;/*子元素绝对定位   方法四 父相子绝*/
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+</body>
+</html>

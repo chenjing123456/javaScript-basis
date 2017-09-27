@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>变量</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+	var a=123;
+	var b="123";
+	console.log(a+a+a+b);//369123
+	console.log(b+a+a+a);//123123123123
+	//逻辑运算符的优先级
+	var a=true||false&&true;
+	var b=true&&false||true;
+    var c=false&&true||false&&false;
+	console.log(a,b,c);
+	//不管用户输入什么值，接受的都是字符串类型
+	var a=prompt("请输入一个数");
+	var c=Number(a);
+	var b=c+1;
+	console.log(b);
+	var h=false;
+	h=Boolean(h);
+	console.log(h);
+	</script>
+</body>
+</html>

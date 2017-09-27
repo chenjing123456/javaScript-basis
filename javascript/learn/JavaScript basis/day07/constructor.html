@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>构造函数模式</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	function Student(name,age,num){
+		//默认会有如下操作
+		//var obj;this=obj;
+		this.name=name;
+		this.age=age;
+		this.stuNum=num;
+		this.sayName=function(){
+            console.log(this.name);
+        }
+        //return this;
+	}
+
+	var stu = Student("ls",12,1001);
+	console.log(stu);//函数没有返回值 stu为空
+
+	var stu1 = new Student("ls",12,1001);
+	var stu2 = new Student("zs",14,1002);
+	console.log(stu1);
+	console.log(stu2);
+	console.log(stu1.sayName==stu2.sayName);
+
+	console.log(stu1 instanceof Student);//是不是谁的实例
+	// console.log(Student instanceof Function);
+	// console.log(sayName instanceof Function);
+	// console.log(stu1 instanceof Object);
+	// console.log(Function instanceof Object);
+	
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>exerc</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	var str ="23445676543223456x sgaf \n23445676543223456x gfuy \n23445676543223456x";
+	var pattern =/[1-9]\d{16}(x|X)/gi; //不加边界符^时，会循环输出3个匹配到的
+	//var pattern =/^[1-9]\d{16}(x|X)/gi;//但加^后只会循环后输出第一个匹配到的字符 为什么？
+	var res;
+	while(res = pattern.exec(str)){
+		console.log(res);
+	}
+
+
+
+	var str ="aaab as";
+
+	// var pattern = /a+b/g;   //Array [ "aaab" ]
+
+	var pattern = /a+?b/g;   //Array [ "aaab" ]
+	//为什么改为非贪婪模式匹配的还是Array["aaab"]，而不是Array [ "ab" ]
+	
+	var result = pattern.exec(str);
+	console.log(result);// Array [ "aaab" ]
+	</script>
+</head>
+<body>
+
+</body>
+</html>

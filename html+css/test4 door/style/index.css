@@ -1,0 +1,15 @@
+.div1{
+	width: 500px;
+	height: 200px;
+	margin:0 auto;
+	border: 1px solid red;
+	overflow: hidden;
+	position: relative;
+
+}
+.div1 img{
+	left:0;
+	display: block;
+	border: 1px solid #ccc;
+    position: absolute;
+}

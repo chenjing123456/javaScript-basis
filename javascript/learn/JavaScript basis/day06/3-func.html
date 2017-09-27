@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>fuc</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	/*
+		function add(a,b,c,d){
+			return a+b+c+d;
+		}
+		var result=add(1,2,3);//d=undefined  
+		console.log(result);//NaN
+
+	*/
+	//arguments
+	function add(a,b,c,d){
+		// console.log(arguments.length);//实际接收的参数
+		// console.log(arguments.callee);
+		var result=0;
+		/*
+		for(var key in arguments){
+			result+=arguments[key];
+		}
+		*/
+		for(var i=0;i<arguments.length;i++){
+			result+=arguments[i];
+		}
+		return result;
+	}
+	console.log(add.length);//函数期望得到的参数 形参
+	var res=add(1,2,3);
+	console.log(res);
+
+	//callee
+	//递归算法：反复调用自身函数直到结束
+	function recursion(n){
+		if(n<=1){
+			return 1;//终止条件
+		}else{
+			return n*arguments.callee(n-1);
+		}//callee属性表示当前函数recursion。
+	}
+	var result=recursion(5);
+	console.log(result);
+	
+	</script>
+</head>
+<body>
+
+</body>
+</html>

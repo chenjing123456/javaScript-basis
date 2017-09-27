@@ -1,0 +1,147 @@
+1.闭包(浅识)
+
+  * 简单的理解是定义在函数内部的函数
+  
+  * 闭包是能够读取其它函数内部变量的函数，而在js中，只有函数内部的子函数才能读取局部变量。所以可以理解为闭包是函数中的函数
+  
+  * 变量作用域：全局变量和局部变量
+    
+      * js中，函数内部可以直接读取全局变量
+      * 在函数外部无法自然读取函数内部的局部变量
+      * 那么如何解决从函数外部读取函数内部的局部变量
+      
+		      解决方法：在函数内部再定义一个函数
+		      function f1(){
+		        var n=2093;
+		        function f2(){
+		          alert(n);//定义一个内部函数拿到函数内部变量
+		        }
+		        return f2;//把内部函数返回给外部
+		      }
+		      var result = f1();//把内部函数赋给一个外部的变量，当这个变量被调用时，函数外部就可以访问到n，形成闭包并且保存了变量对象n
+		      result();
+
+      
+  * 闭包的产生：函数的内部函数被返回到外部，只有函数外部通过返回的内部函数调用并且访问函数内部的变量时，才会形成闭包。闭包保存的是这个变量对象，它是不能在函数外部直接被访问到的。
+
+  		function personComparator(name){
+			var x = 10;
+		    return function(){
+				return x;
+		    }
+		}
+		var res = personComparator();//返回了内部函数并且赋给了一个变量，只有当你调用这个变量,并且访问函数personComparator的内部变量x时就会形成闭包，也就可以访问x
+
+		console.log(res());//10
+
+		console.log(x);//只有在内部函数被返回到外部时，才可以通过内部函数调用取得函数内部的变量，并且只有当通过内部函数这种特定情况才可以拿到这个变量，否则外部其他地方依然拿不到这个变量，并且当你访问它时会报错
+  
+  * 闭包的用途：可以读取函数内部的变量；让这些变量的值始终在内存中。
+  		举例：
+  		1.
+  			var name = "The Window";   
+		　　var object = {   
+		　　　　name : "My Object",   
+		　　　　getNameFunc : function(){  
+					// this  --> obj
+					console.log(this.name);
+		　　　　　　return function(){
+						//this --> 看函数调用时的this指向
+		　　　　　　　　return this.name;   
+		　　　　　};   
+		　　　　}   
+			};   
+			console.log(object.getNameFunc()());//匿名函数的自执行function(){}()
+				解析：
+				//object.getNameFunc() == function(){return this.name}
+				//object.getNameFunc()()== function(){return this.name}()-->匿名函数自调用，this指向window
+		
+		2.如何把例1中返回object.name?
+			方法一：
+			var name = "The Window";   
+		　　var object = {   
+		　　　　name : "My Object",   
+		　　　　getNameFunc : function(){  
+					// this  --> obj
+		　　　　　　return function(){
+						//this --> 看函数调用时的this指向
+		　　　　　　　　return this.name;   
+		　　　　　};   
+		　　　　}   
+			};   
+			console.log(object.getNameFunc().call(object));
+			//匿名函数的自执行function(){}()
+			//通过call显示指定this
+
+			方法二：
+			var name = "The Window";   
+		　　var object = {   
+		　　　　name : "My Object",   
+		　　　　getNameFunc : function(){  
+					// this  --> object
+
+					var that = this;
+		　　　　　　return function(){
+						//this --> 看函数调用时的this指向 依然是window
+		　　　　　　　　return that.name;   //但是that保留了object
+		　　　　　};   
+		　　　　}   
+			};   
+			// console.log(object.getNameFunc()());
+		
+		3.
+		function outerFun(){
+		 	var a=0;
+		 	function innerFun(){
+			  	a++;
+			  	console.log(a);
+		 	}
+		 	return innerFun;  
+		}
+		var obj=outerFun();
+		obj();  //结果为1
+		obj();  //结果为2
+		
+		var obj2=outerFun();
+		obj2();  //结果为1
+		obj2();  //结果为2	*/
+
+  * 闭包的应用场景：
+    
+      * 延迟函数setTimeout
+      
+      ```
+      for(var i = 1;i <=5; i++){
+          setTimeout(function(){
+            console.log(i);
+          },1000*i);//5个setTimeout会依次在队列中，当for循环执行完成之后才会执行这个setTimeout的队列。所有结果是 6 6 6 6 6 6
+      }
+
+      页面中所有由setTimeout定义的操作，都将存放在同一个队列(先进先出)中依次执行。这些操作进入队列的顺序，由设定的延迟时间来确定。
+      这个队列执行的时间，需要等到循环结束之后再执行。
+
+
+      解决方法1：自执行函数
+      for(var i = 1;i <= 5;i++){
+        (function(i){
+            setTimeout(function(){
+              console.log(i);
+            },i*5000)
+        })(i);
+      }//输出结果1 2 3 4 5 
+      使用自执行函数提供闭包条件。
+      
+      解决方法2.可以在setTimeout的第一个参数处利用闭包
+      for(var i = 1;i <= 5;i++){
+        setTimeout((function(i){
+          console.log(i);
+        })(i),
+        i*1000)
+      }
+
+      ```
+
+      * 函数柯里化
+      * 模块化
+
+

@@ -1,0 +1,42 @@
+<form action="#" method="post">
+    姓名:<input type="text" name="name"><br/>
+    性别:
+        <label for="gender-male">
+            男<input type="radio" value="男" id="gender-male" name="gender"/>
+        </label>
+        <label for="gender-female">
+            女<input type="radio" value="女" id="gender-female" name="gender"/>
+        </label><br/>
+    联系方式:
+        <input type="text" name="phone"/><br/>
+        <input type="button" value="取消"/>
+        <input type="submit" value="保存"/>
+</form>
+
+<script>
+$(function(){
+    $("input:button").on("click",function(){
+        $(".content").load("component/studentList.html");
+
+    });
+    //给表单添加提交事件，把表单中获取的值保存到students数组中
+    $("form").on("submit",function(event){
+        var name = $("input[name='name']").val();
+        var gender = $("input[name='gender']:checked").val();
+        var phone = $("input[name='phone']").val();
+
+        var s = new Student(Student.prototype.index,name,gender,phone);
+        // ajax $.post("saveStudent",s);
+        students.push(s);
+        //跳转到列表页面
+        $(".content").load("component/studentList.html");
+        
+        event.preventDefault();//取消默认提交事件
+    });
+});
+
+</script>
+
+<style>
+
+</style>

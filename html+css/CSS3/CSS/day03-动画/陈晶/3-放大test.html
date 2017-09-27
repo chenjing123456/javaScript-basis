@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>scale</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        div.outer{
+            width: 70px;  
+            height:27px; 
+            margin:40px auto;
+        }
+        div.inner{
+            width: 52px;
+            height: 52px;
+            background-color: blue;
+            display: none;
+        }
+        div.outer:hover div.inner{
+            display: block;
+            animation-name: myFrames;
+            animation-duration: 3s;
+            animation-timing-function: ease-in-out;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+            
+        }
+        @keyframes myFrames{
+            form{
+                 margin-left:0px; 
+                 background-color: pink;
+                 transform: scale(1,1);
+            }
+            to{
+                 margin-left: 200px; 
+                 background-color: yellow;
+                 transform:scale(3,3); 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <button>hover me</button>
+        <div class="inner"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>sortStudent</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+  	var arr=[{
+            id:2,
+            name:"larry",
+            age:19
+        },{
+            id:1,
+            name:"terry",
+            age:20
+        },{
+            id:3,
+            name:"jacky",
+            age:18
+        }];
+        function sortStudent(arr,property,boo){
+            //1.如果boo为true ，按升序排列，this是arr,arr[key][property] 比较  比较结果换位置
+            //如果boo为false,按降序排列，
+            if(boo == true){
+                arr.sort(function(v1,v2){
+                    if(v1[property]+"" < v2[property]+""){
+                        return -1;
+                    }else if(v1[property]+"" > v2[property]+""){
+                        return 1;
+                    }else{
+                        return 0;
+                    }
+                });     
+            }else{
+                arr.sort(function(v1,v2){
+                    if(v1[property] > v2[property]){
+                        return -1;
+                    }else if(v1[property]+"" < v2[property]+""){
+                        return 1;
+                    }else{
+                        return 0;
+                    }
+                });
+            }
+        }
+        sortStudent(arr,"age",true);
+        console.log(arr);
+
+
+
+        var stus = [{
+            name:"terry",
+            age:12,
+            salary:3500,
+            toString:function(){
+                return 2;
+            }
+        },{
+            name:"larry",
+            age:17,
+            salary:14500,
+            toString:function(){
+                return 21;
+            }
+        },{
+            name:"tom",
+            age:19,
+            salary:5500,
+            toString:function(){
+                return 11;
+            }
+        }];
+
+        // 1) 根据以下代码体现完成getComparator方法
+            function getComparator(key){
+            
+            }
+            stus.sort(getComparator("name"));   //按照姓名排序
+            stus.sort(getComparator("age"));    //按照年龄排序
+            stus.sort(getComparator("salary")); //按照薪资排序
+
+
+        function getComparator(key){
+            return function(obj1,obj2){
+                if(obj1[key]<obj2[key]){
+                return -1;
+            }else if(obj1[key]>obj2[key]){
+                return 1;
+                }
+            }
+        };
+            
+
+        console.log(stus.sort(getComparator("age")));
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

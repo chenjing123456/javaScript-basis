@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>overflow</title>
+    <style>
+        /* div{
+            width:200px;
+            height:200px;
+            background-color: blue;
+             overflow: hidden; 
+             overflow:scroll; 
+             overflow: auto;
+            margin: 30px;
+        } */
+        div.outer{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            overflow: hidden;
+        }
+        div.outer div.inner{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin-top:50px;
+            /* 设置margin-top会把外面的盒子顶下来 */
+            margin-left:50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div>
+        startstartstartstart
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        end end end
+    </div> -->
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+</body>
+</html>

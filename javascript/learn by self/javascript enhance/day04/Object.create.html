@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Object.create</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+	var o={
+		sayHello:function(){
+			console.log('hello');
+		}
+	}
+	var o1=Object.create(o);//创建一个新对象O1,该对象的原型是o
+    
+    // 创建一个对象，有数组的方法，添加值并遍历
+	var arr=Object.create([]);
+	arr.push('3','4','5','3');
+	for(var i=0;i<arr.length;i++){
+		console.log('['+i+']'+'='+arr[i]);
+	}
+	//如果；浏览器不支持Object.create,如何兼容浏览器
+	//不能改变系统内置的对象
+	// if(!Object.create){
+	// 	Object.create=function(){};
+	// }
+	//兼容浏览器,函数要实现原型继承，返回的对象应该继承obj
+	function inherit(obj){
+	  if(Object.create){
+        return Object.create(obj);
+	  }else{
+        function F(){};
+        F.prototype=obj;
+        return new F();
+	}	
+    }
+    var arr=inherit([]);
+</script>
+</body>
+</html>

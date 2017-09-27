@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>自定义继承1-原型链继承</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		function Animal(id,name){
+			this.id = id;
+			this.name = name;
+		}
+		Animal.prototype.sayName = function(){
+			console.log(this.name);
+		}
+
+		function Dog(id,name,color){
+			this.id = id;
+			this.name = name;
+			this.color = color;
+		}
+		var d1 = new Dog(1001,"dollar","blue");
+		Dog.prototype = new Animal();
+		Dog.prototype.constructor = Dog;
+
+		Dog.prototype.sayColor = function(){
+			console.log(this.color);
+		}
+		var d2 = new Dog(1002,"一休","yellow");
+		// d2.sayName();当没有继承的时候会报错
+		d2.sayName();//实现继承之后可以调用
+		// d1.sayColor();报错
+		// d1.sayName();报错
+	</script>
+</head>
+<body>
+
+</body>
+</html>

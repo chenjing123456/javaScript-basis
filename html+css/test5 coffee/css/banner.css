@@ -1,0 +1,35 @@
+body{
+	background: url(../images/03.jpg);
+	background-size:cover; 
+	position: relative;
+}
+.small {
+	width: 520px;
+	height:380px;
+	background-size:cover; 
+	background: url(../images/04.jpg);
+	border:1px solid rgb(200,200,200);
+	box-sizing:border-box;
+    position: absolute;
+    left:50%;
+    margin-left: -250px;
+    top:150px;
+    background-size:cover; 
+}
+.btn{
+	background-color: #A2CEB7;
+	width: 100px;
+	height: 40px;
+	border: 1px solid rgb(200,200,200);
+	text-align: center;
+	line-height: 40px;
+	position: absolute;
+	top: 580px;
+	left:50%;
+	margin-left: -50px;
+	background-color: rgba(156, 110, 86, 0.8);
+}
+.btn a{
+	text-decoration: none;
+	color: white;
+}

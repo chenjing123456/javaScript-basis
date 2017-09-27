@@ -1,0 +1,42 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+.container{
+	width: 850px;
+	height: 320px;
+	margin:0px auto;
+	border: 1px solid #000;
+	box-sizing:border-box;
+}
+.container li{
+	width:160px;
+	height: 320px;
+	float: left;
+	list-style-type: none;
+    position: relative;
+    overflow: hidden;
+    border-left: 2px solid rgba(255,255,255,0.8);
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.8);
+    transition:all 2s;
+}
+.container ul:hover li{
+    width: 40px;
+}
+.container ul li:hover{
+	width: 640px;
+}
+.container ul li img{
+	width: 640px;
+	height: 315px;
+}
+.container li .image_title{
+	position: absolute;
+	width: 100%;
+    height: 50px;
+    left:0;
+    bottom: 0;
+    line-height: 50px;
+    text-indent: 2em;
+    background-color: rgba(0,0,0,0.5);
+}

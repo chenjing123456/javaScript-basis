@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>factorial function</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+   //求n个数的和（累加） 假设n为5 5+4+3+2+1
+
+  //递归过程
+   // getSum(5);              函数调用执行完成
+   //    5+getSum(4);         getSum(4)执行完毕后就回到getSum(5)；
+   //    5+4+getSum(3);       getSum(3)执行完毕后就回到getSum(4)；
+   //        3+getSum(2);     getSum(2)执行完毕后就回到getSum(3)；
+   //          2+getSum(1);   getSum(1)执行完毕后就回到getSum(2)；
+   //            1
+   function getSum(n){ 
+      if(n<=0){
+      	return 0;
+      }
+   	//结束的条件
+   	  if(n===1){
+   	  	return 1;
+   	  }
+   	  //返回值
+      return n+getSum(n-1);
+   }
+   console.log(getSum(5));
+   //输入一个数，求这个数的各个位数之和
+   //123%10=3 123/10=12.3
+   //12%10=2  12/10=1.2
+   //1%10=1   1/10=0.1
+
+
+   // getSum(123);       函数调用完成
+   //   3 +getSum(12);   getSum(12)执行完毕后回到getSum(123)
+   //      2 +getSum(1); getSum(1)执行完毕后回到getSum(12)
+   //          1
+   function getSum(n){
+    //结束的条件
+    if(n<10){
+    	return n;
+    }
+    //返回值
+    return n%10+getSum(parseInt(n/10));
+   }
+   console.log(getSum(123));
+//求斐波那契中的第n个数是多少1 1 2 3 5 8 13 ...
+
+   // getF(4);
+   //    getF(3)+getF(2);
+   //      getF(2)+getF(1) + 1;
+   function getF(n){//参数n表示第几个数
+   	if(n<=0){
+   		return -1;
+   	}
+   	if(n===1||n===2){
+   		return 1;
+   	}
+   	return getF(n-1)+getF(n-2);//前两个数之和
+   }
+   console.log(getF(4));
+</script>
+</body>
+</html>

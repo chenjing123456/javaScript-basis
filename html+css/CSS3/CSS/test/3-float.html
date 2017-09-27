@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>float 外部大盒子固定，内部自适应子元素宽度，可采取</title>
+    <style>
+        .center{
+            width: 800px;
+            height: 800px;
+            margin:0 auto;
+        }
+        .header{
+            width: 100%;
+            height: 100px;
+            background-color: blueviolet;
+        }
+        .article{
+            width: 100%;
+            height: 600px;
+            background-color: green;
+        }
+        .article>div{
+            height: 400px;
+        }
+        .one{
+            width: 30%;
+            background-color: red;
+            float:left;
+        }
+        .two{
+            width:30%;
+            background-color: blue;
+            float: left;
+            margin-left: 5%;
+        }
+        .three{
+            width:30%;
+            float: right;
+            background-color: bisque;
+        }
+        .footer{
+            width: 100%;
+            height: 100px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+        <div class="header">
+
+        </div>
+        <div class="article">
+            <div class="one"></div>
+            <div class="two"></div>
+            <div class="three"></div>
+        </div>
+        <div class="footer"></div>
+    </div>
+    
+</body>
+</html>

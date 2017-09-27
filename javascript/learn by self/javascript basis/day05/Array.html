@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>array method</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+	//instanceof 关键字 是否是谁的实例对象
+	var arr=new Array();
+	console.log(arr instanceof Array);
+	console.log(arr instanceof Object);
+	//可以用于检测数组
+	function f1(arr){
+		//检测参数是否合法
+		arr=arr||[];
+		//检测参数是否是一个数组
+		if(!(arr instanceof Array)){
+			return -1;
+		}
+	}
+	var a=f1("abf");
+	//instanceof 和 typeof 的区别
+	//typeof 可以获取任意变量的类型 但如果是对象的话只能判断为Object
+	//instanceof 可以判断对象的具体类型
+	var o=[];
+	console.log(typeof o);
+	console.log(o instanceof Array);
+</script>
+</body>
+</html>

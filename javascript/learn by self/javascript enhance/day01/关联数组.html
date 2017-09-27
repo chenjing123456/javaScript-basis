@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>关联数组</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+	var o={};
+	o.name="li";
+	console.log(o[name]);//未定义，关联数组[]内部必须是字符串
+	console.log(o["name"]);
+	var name="name";
+	console.log(o[name]);//把name当成变量，这个变量里面存了一个字符串（对象的属性）
+	 function mix(o1,o2){
+       for(var k in o2){
+       	o1[ k ]=o2[ k ];
+       }
+	 }
+	 var o1={
+	 	name:"jf",
+	 }
+	 var o2={
+	 	name:"jf",
+	 	age:12
+	 }
+	// var o;
+	mix(o1,o2);
+    // o.mix(o1,o2);
+	console.log(o1);
+
+//
+  var p={
+  	name:"zs",
+  	age:19,
+  	sayHello:function(){
+  		console.log("你好：我叫"+this.name);
+  	}
+  }
+  // console.log(p.name);
+  // console.log(p['name']);
+  // console.log(p.sayHello());
+  // console.log(p['sayHello']());
+  for(var k in p){
+  	if(typeof p[k]==="function"){
+  		p[k]();
+  	}
+  	else{
+  		console.log(p[k]);
+  	}
+  }
+</script>
+</body>
+</html>

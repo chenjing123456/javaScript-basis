@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>leap year</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+
+	//define a fuc about caculrate leap year(闰年)
+     function leap(year){
+     	if ((year%4==0&&year%100!==0)||year%400==0)//能被4整除并不能被100整除的  或者能被400整除的年份
+     	 {
+     		alert("the year is leap year!");
+     	}
+     	else{
+     		alert("the year is not leap year!");
+     	}
+     }
+     var putin=prompt("please enter the year","")
+     if (isNaN(putin)) {
+     	alert("please enter a number!");
+     }
+     else{
+      leap(putin);	//调用函数
+     }
+   
+    /*
+    //编写一个计算行驶距离的匿名函数
+    var distance=function(rate,time){ 
+    return rate*time;
+    }
+    var text=distance;
+    var value=text(20,30);
+    document.write("the diatance is :"+value);
+     */
+	</script>
+</head>
+<body>
+</body>
+</html>

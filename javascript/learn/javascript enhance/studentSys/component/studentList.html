@@ -1,0 +1,52 @@
+    <table class="students_tbl">
+        <tbody>
+            <tr>
+                <th><input type="checkbox"></th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>手机号</th>
+            </tr>
+           
+        </tbody>
+    </table>
+    <div class="options">
+        <button>添加</button>
+        <button>修改</button>
+        <button>删除</button>
+    </div>
+    <script>
+$(function(){
+
+    $("button:contains('添加')").on("click",function(){
+        $(".content").load("component/studentAdd.html")
+    })
+    
+    //把数组中保存的学生对象反映到List页面上。
+    students.forEach(function(item){
+        var newTr = $("<tr>"
+                +"<td><input type='checkbox' value='"+item.id+"'></td>"
+                +"<td>"+item.name+"</td>"
+                +"<td>"+item.gender+"</td>"
+                +"<td>"+item.phone+"</td>"
+            +"</tr>");
+        $(".students_tbl>tbody").append(newTr);
+    })
+
+    //拿到删除按钮，添加事件
+    $("button:contains('删除')").on("click",function(){
+        //拿到每个被选中的checkbox按钮，并拿到他们的value值（id）,用toArray把拿到的由id组成的JQuery对象转换为数组
+        var ids = $("input:checkbox:checked").map(function(index,item){
+            return +item.value;//$(item).val();
+        }).toArray();
+
+        //删除数组中的学生
+        students = students.filter(function(item){
+            //过滤掉被选中的id，并把留下来的id保留在students数组
+            return ids.indexOf(item.id) == -1;//被选中的id里面没有的则返回
+        });
+        //console.log(result);
+        $(".content").load("component/studentList.html");//再重新加载List页面进行刷新
+    })
+    
+});
+</script>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>reg-toString</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	/*
+	var pattern = /^\d{3,}/g;
+	// var res =pattern.test('234 df');
+	// var res =pattern.exec('234 df');
+	var res = pattern.toString();
+	console.log(res);//  '/^\d{3,}/g'
+	// console.log(res.split(""));
+	var arr = res.split("").map(function(item){
+		return item;
+	});
+	// console.log(arr);
+
+	*/
+	console.log('javascript'.search(/script/i));//4
+	// console.log('javascript'.search('script'));
+
+	var txt = 'javascript is good,java is more';
+    // var res = txt.replace(/java/gi,'Java');
+    var res = txt.replace('java','Java');//Javascript is good,java is more
+    // console.log(res);
+    // console.log(txt);
+
+    console.log('1 pius 2 equals 3'.match(/\d+/));
+    console.log('1 pius 2 equals 3'.match(/\d+/));
+    console.log('1 pius 2 equals 3'.match(/\d+/));//["1",...(子串) index: 0, input: "1 pius 2 equals 3"]
+    console.log('1 pius 2 equals 3'.match(/\d+/g));//["1", "2", "3"]
+
+    var res = '1.2.3.4.5'.split(/\./g);
+    console.log(res);
+
+    var arr = [1,2,3,4,5];
+    console.log(arr.join('$$'));//1$$2$$3$$4$$5
+    console.log(arr.join(''));//12345
+
+    console.log('1226'.split(','));//['1226']
+    console.log('1226'.split('e'));//['1226']
+    console.log('1226'.split(''));//['1226']
+    console.log('1236'.split(''));//["1","2","3","6"]
+
+
+    var arr = '12434'.split("");
+    arr.forEach(function(item,index,arr){
+    	// +arr[index];
+    	arr[index]+1;
+    })
+
+    console.log(arr);
+    var a ='23';
+    console.log(+a);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

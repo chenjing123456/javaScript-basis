@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dom</title>
+	<meta charset="utf-8">
+</head>
+<!-- dom树 -->
+<body>
+	<div>你好，我是一个
+	   <span style="color:red;" name="dom">div</span>标签
+	</div>
+<script type="text/javascript">
+	var div=document.getElementsByTagName('div')[0];
+	var parent=div.parentNode;
+	document.write(div.parentNode);
+</script>
+</body>
+</html>

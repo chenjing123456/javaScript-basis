@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>piant bucket fee function</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+   function fee(num,price,color){
+   	// color=color;
+    return  num*price;
+   }
+	</script>
+</head>
+<body>
+<script type="text/javascript">
+//询问用户拿到油漆桶的数量
+	var thisNum=prompt("the number of piant bucket that you hand on","" );
+	//检测用户输入的数量是不是非法的，数值为空，数值小于0和输入的为非数值类型
+    try{
+	   	if(thisNum==""){
+	      throw "error1";
+	   	}
+	   	else if(isNaN(thisNum))
+	   	{
+	      throw "error2";
+	   	}
+	   	else if(thisNum<0){
+	   		throw "error3";
+	   	}
+   }
+   catch(err){
+   	if(err=="error1"){//*  ==等于号，=赋值运算符，中途遇到的bug
+   		alert("please enter!");
+   	}
+   	if(err=="error2"){
+   		alert("please enter number!");
+   	}
+   	if (err=="error3") {
+   	alert("please enter positive integer!");
+   	}
+   }
+   //询问用户拿到油漆桶的数量，价格和颜色
+   var thisPrice=prompt("the price of piant bucket that you hand on","" );
+   var thisColor=prompt("the color of piant bucket that you hand on","" );
+   //调用函数，传递三个实参（通过prompt()获取的值）给函数的形参，并赋值给变量value显示出来
+   var value=fee(thisNum,thisPrice,thisColor);
+   document.write("the fee is:"+value);
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>rotate</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        div.outer{
+            width: 52px;
+            height:27px;
+            background-color: blue;
+        }
+        div.inner{
+            width: 52px;
+            height: 52px;
+            background-color: blue;
+        }
+        div.outer:hover div.inner{
+            animation-name: myFrames;
+            animation-duration: 5s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+        }
+        @keyframes myFrames{
+            0%{
+                margin-left:0px;
+                transform: rotate(0deg);
+            }
+            10%{
+                margin-left:20px;
+                transform: rotate(30deg);
+            }
+            20%{
+                margin-left:40px;
+                transform: rotate(60deg);
+            }
+            30%{
+                margin-left:60px;
+                transform: rotate(90deg);
+            }
+            40%{
+                margin-left:80px;
+                transform: rotate(120deg);
+            }
+            50%{
+                margin-left:100px;
+                transform: rotate(150deg);
+            }
+            60%{
+                margin-left:120px;
+                transform: rotate(180deg);
+            }
+            70%{
+                margin-left:140px;
+                transform: rotate(240deg);
+            }
+            80%{
+                margin-left: 160px;
+                transform: rotate(280deg);
+            }
+            100%{
+                margin-left:180px;
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <button>滑过我</button>
+        <div class="inner"></div>
+    </div>
+</body>
+</html>

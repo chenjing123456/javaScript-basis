@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>node</title>
+	<meta charset="utf-8">
+
+</head>
+<body>
+<div class="nae" name="hs" title="sddd"></div>
+<form></form>
+<form></form>
+<form></form>
+<img src="#" title="fdh">
+<img src="#">
+<img src="#">
+<img src="#">
+<a href="#">ayfe</a>
+<a href="#">ayfe</a>
+<a href="#">ayfe</a>
+<a href="#">ayfe</a>
+<a href="#">ayfe</a>
+<p><strong>hello</strong> wrold</p>
+<h1>hello</h1>
+<script type="text/javascript">
+	var te =document.createTextNode('hello');//文本节点
+	// var $s = document.body.lastElementChild;
+	var $h = document.getElementsByTagName('h1')[0];
+	// console.log($h.innerText);
+	var $txt = $h.childNodes[0];
+	$txt.appendData('hello');
+	// $h.appendData('hello');//无效
+
+	// var $h =$s.previousSibling;
+	/*
+	console.log(document.documentElement);
+	console.log(document.body);
+	// console.log(document.doctype);
+	console.log(document.title);
+	console.log(document.url);
+	console.log(document.domain);
+	console.log(document.childNodes);
+	console.log(document.children);
+	console.log(document.links);
+	console.log(document.forms);
+	console.log(document.images);
+	*/
+
+	// var $link = document.getElementsByTagName('a');
+	
+	/*var $links = document.links;
+	console.log($links);
+	var $a = document.createElement('a');
+	$a.innerText = 'baidu';
+	// $a.href ='#';
+	$a.setAttribute('href','#');
+	$links.appendChild($a);
+	console.log($a);
+	*/
+	var $div = document.getElementsByTagName('div');
+	//不加下标表示的是类数组对象，后面要选中就需要加索引
+	var $img = document.getElementsByTagName('img')[0];//加下标表示的是类数组中的第几个
+	console.log($div[0].attributes[0].nodeName);
+	console.log($div[0].attributes[0].nodeValue);
+	/*
+	console.log($img.src);
+	// console.log($div.id);
+	// console.log($div.name);
+	console.log($div[0].className);
+	console.log($div[0].title);
+	console.log($img.title);
+	*/
+	/*
+	console.log($attrs);//NamedNodeMap [ class="nae", name="hs", title="sddd" ]  
+	var nama = $div[0].getAttribute('name');
+	console.log(nama);
+	$div[0].setAttribute('title','nihao');
+	// $div[0].setAttribute('title','nihao');
+	// $div[0].innerText = 'sge';
+	$div[0].innerHTML = 'sge';
+	// $div.title = 'nihao ';
+	console.log($div[0].title);
+	$div.removeAttribute('title');
+	var $attrs = $div[0].attributes;
+	console.log($attrs);
+	
+
+	console.log(document.children);
+	console.log(document.firstElementChild);
+	console.log(document.lastElementChild);
+	*/
+	var $p = document.getElementsByTagName('p')[0];
+	// console.log($p.innerText);//hello wrold  
+	// console.log($p.innerHTML);//<strong>hello</strong> wrold
+	$p.innerHTML = '<strong>你<strong>好'; //标签会被解析出来。"你"会被加粗
+	$p.innerText = '<strong>你<strong>好';//标签会被直接当成字符串打印出来，//<strong>你<strong>好
+</script>
+</body>
+</html>

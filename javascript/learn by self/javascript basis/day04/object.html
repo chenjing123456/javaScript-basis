@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>object </title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+//对象的作用：封装一些数据
+  //1.创建一个对象
+    //构造函数的命名要大写
+    //new Object() 在内存中开辟空间 创建对象
+    //boyFriend=new Object() （把对象赋值给变量）返回刚刚创建的对象
+  var boyFriend=new Object();
+  //属性--特征（名词）
+  boyFriend.name="于小奕";
+  boyFriend.height="182";
+  boyFriend.weight="65kg";
+  //方法--行为（动词）
+  boyFriend.attack=function (name){
+  	//this在此指的是当前对象，只有在当前boyFriend对象中，this才指的是当前对象
+  	console.log(this.name+"攻击"+name);
+  };
+  boyFriend.blandish=function(name){
+  	console.log(this.name+"哄"+name);
+  };
+  console.log(boyFriend.name);
+  console.log(boyFriend.weight);
+  //调用对象的方法
+  boyFriend.attack("坏蛋");
+  boyFriend.blandish("李珍");
+  //2.创建多个对象 通过自定义构造函数
+  function Student(name,age,sex,score){
+  	this.name=name;
+  	this.age=age;
+    this.sex=sex;
+    this.score=score;
+    this.sayHi=function (){
+    	console.log("hello,我是"+this.name);
+    };
+  }
+  //new Student()做了如下事情
+  //内存开辟空间 储存新创建的对象
+  //会把this设置为当前对象
+  //执行函数内部的代码，设置对象的属性和方法
+  //返回新创建的对象
+  var s1=new Student("lz",22,1,10);
+  var s2=new Student("lzj",22,0,100);
+  s1.sayHi();
+  s2.sayHi();
+  //动态的给对象添加属性
+  var o=new Object();
+  for(var i=0;i<10;i++){
+  	o["n"+i]=i;
+  }
+  console.log(o.n2);
+  //对象字面量
+  var o={
+  	name:"yy",
+  	age:18,
+  	dog:{},
+  	cats:[],
+  	sayHi:function(){
+  		console.log("hello");
+  	}//最后一个不用逗号
+  };
+  //json (javascript object navition)js对象表现形式,是描述数据的一种标准规范
+  //与对象字面量的区别是 属性必须用引号括起来
+   var o={
+  	"name":"yy",
+  	"age":18,
+  	"dog":{},
+  	"cats":[],
+  	"sayHi":function(){
+  		console.log("hello");
+  	}
+  };
+  //输出对象的属性（遍历）
+  for(var key in o){
+  	console.log(key+"==="+o[key]);//输出对象的属性名和属性值
+  }
+
+</script>
+</body>
+</html>

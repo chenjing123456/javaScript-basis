@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>array fuction</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+   var names=new Array("den","feng","shui","hu");
+   var names1=new Array("nan","he","jiang","jing");
+   var names2=new Array("neng","heng");
+   </script>
+</head>
+<body>
+<script type="text/javascript">
+	names.splice(1,2,"jin","ndn");//从下标为1开始，删除2个元素，再添加元素
+	document.write("the names is:"+names+"<br>");
+
+	names1=names1.concat(names2);//拼接数组
+	document.write("the names1 is:"+names1+"<br>");
+
+	var value=names1.slice(2,4);//复制从下标为2的元素开始，到下标为4结束但是不包括4
+	document.write("the copy is:"+value+"<br>");
+
+	var string=value.pop();
+	document.write("the string is:"+string+"<br>");//删除并返回最后一个元素
+	document.write("the value is:"+value+"<br>");//value经过删除之后的值
+	
+	value.push("copy","djf");//从最后开始添加元素
+	document.write("the value is:"+value+"<br>");
+
+	value.unshift("jing","hfg","fjh");//从开始添加元素
+	document.write("the value is:"+value+"<br>");
+	
+	var shol=value.shift();//移除第一个元素并返回
+	document.write("the value is:"+shol+"<br>");
+	//移除之后的值
+	document.write("the value is:"+value+"<br>");
+</script>
+</body>
+</html>

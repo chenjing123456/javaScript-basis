@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dom</title>
+	<meta charset="utf-8">
+    
+</head>
+<body>
+<div id="code" style="display:none;">
+	var res=a>b?a:b;
+	res=res>c?res:c;
+	return res;
+</div>
+    <script type="text/javascript">
+      var txt=document.getElementById('code').innerHTML+"";
+      var sum=new Function("a","b","c",txt);
+    </script>
+</body>
+</html>

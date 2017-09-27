@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>默认继承extends</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		function Person(id,name){
+			this.id = id;
+			this.name = name;
+		}
+		Person.prototype.sayName = function(){
+			console.log(this.name);
+		}
+		var p1 = new Person(1001,"ls");
+		
+		console.log(p1 instanceof Person);
+		console.log(p1 instanceof Object);
+		console.log(Person.prototype instanceof Object);//所有函数的默认原型都是Object的实例
+		var result = p1.toString();//可以到Object.prototype中去找这个方法
+		console.log(result);
+		console.log(Person.prototype);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

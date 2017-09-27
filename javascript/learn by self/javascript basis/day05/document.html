@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>docunment object</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<a id="link" href="http://baidu.com">百度</a>
+<script type="text/javascript">
+//要等着标签生成之后，再来获取对应的dom对象
+//找到id是Link的dom对象（a标签）
+	var link1=document.getElementById('link');
+	//给link注册单击事件
+	//事件三要素
+	   //事件源--事件的触发者 link
+       //事件名称 click
+       //事件的处理程序（响应）onclick匿名函数
+	link1.onclick=function (){
+		alert("haha");
+		//取消a标签的默认行为
+		return false;
+	}
+</script>
+
+<a  href="http://baidu.com">百度</a>
+<a  href="http://baidu.com">搜狐</a>
+<a  href="http://baidu.com">360</a>
+<a  href="http://baidu.com">谷歌</a>
+<script type="text/javascript">
+//给多个link注册单击事件
+	var links=document.getElementsByTagName("a");
+    for(var i=0;i<links.length;i++){
+    	var link=links[i];  //获取页面上的每一个a标签
+    	link.onclick=function (){//给link对象注册单击事件
+    		alert("fjgsddfs");
+    		return false;
+    	}
+    }
+</script>
+</body>
+</html>

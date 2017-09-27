@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>callback</title>
+	<meta charset="UTF-8">
+	<script type="text/javascript">
+		var arr = [1,2,3,4,7,8];
+		function forEach(arr,hander){
+			/*
+			for(var key in arr){
+				var item = arr[key];
+				hander.call(this,item,key);//实参
+			}//key表示下标，此题中输出为引号的下标值
+			*/
+			for(var i=0;i<arr.length;i++){
+				var item =arr[i];
+				hander.call(this,item,i);//函数调用，传实参
+			}
+		}
+		//函数声明
+		function hander(item,index){//形参 
+			console.log(item,index);
+		}
+		forEach(arr,hander);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

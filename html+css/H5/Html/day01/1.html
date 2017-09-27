@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>轮播图</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	*{
+		padding: 0;
+		margin: 0;
+		text-decoration: none;
+	}
+	ul{
+		list-style: none;
+	}
+	.container{
+	width: 400px;
+	height: 200px;
+	position: relative;
+	overflow: hidden;
+}
+    .container .pic{
+	width:1600px;
+	position: absolute;
+	left: 0;
+	animation-name:focusmap;
+	animation-duration:5s;
+	animation-iteration-count:infinite;
+
+}
+@keyframes focusmap{
+	0%,30%{
+		left: 0;
+	}
+	35%,65%{
+		left: -400px;
+	}
+	70%,90%{
+		left: -800px;
+	}
+	100%{
+		left:-1200px;
+	}
+}
+.container .pic li{
+	float: right;
+	background-color: #5dd94e;
+}
+.container .pic li img{
+	width:400px;
+	height: 200px;
+}</style>
+</head>
+<body>
+<div class="container">
+	<ul class="pic">
+		<li><a href="#"><img src="123.jpg"></a></li>
+		<li><a href="#"><img src="456.jpg"></a></li>
+		<li><a href="#"><img src="123.jpg"></a></li>
+		<li><a href="#"><img src="456.jpg"></a></li>
+	</ul>
+</div>
+</body>
+</html>

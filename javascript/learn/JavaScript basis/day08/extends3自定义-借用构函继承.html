@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>借用构造函数继承和原型链继承</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		function Animal(id,name){
+			this.id = id;
+			this.name =name;
+		}
+		Animal.prototype.sayName = function(){
+			console.log(this.name);
+		}
+		function Dog(id,name,color){
+			// Animal(id,name);进入Animal构函时，构函中的this指向window
+			Animal.call(this,id,name);//用call调用函数时，Dog构函中的this指向赋值给了new这个新对象，所以call方法中的this保存的就是这个在内存中的新对象。
+
+			this.color = color;
+		}
+		Dog.prototype = new Animal();
+		Dog.prototype.constructor = Dog;
+		Dog.prototype.sayColor = function(){
+			console.log(this.color);
+		}
+
+		function Bird(id,name,type){
+			Animal.call(this,id,name);
+
+			this.type = type;
+		}
+		Bird.prototype = new Animal();
+		Bird.prototype.constructor = Bird;
+		Bird.prototype.sayType = function(){
+			console.log(this.type);
+		}
+		var b1 = new Bird(1001,"yixiu","八哥");
+		var d1 = new Dog(1002,"bd","yellow");
+		b1.sayName();
+		b1.sayType();
+		d1.sayName();
+		d1.sayColor();
+		console.log(Bird.prototype.isPrototypeOf(b1));
+		console.log(Animal.prototype.isPrototypeOf(b1));
+		console.log(Object.prototype.isPrototypeOf(b1));
+
+		console.log(d1 instanceof Object);
+		console.log(d1 instanceof Dog);
+		console.log(d1 instanceof Animal);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

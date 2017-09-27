@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>prototype</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		function Student(name,age,num){
+			this.name=name;
+			this.age=age;
+			this.stuNum=num;
+		}
+		console.log(Student.prototype);//原型对象Object  里面有一个constructor属性指向构造函数
+		Student.prototype.sayName=function(){
+			console.log(this.name);
+		}
+		var stu1 =new Student("ls",12,1001);
+		var stu2 =new Student("zs",14,1002);
+		console.log(stu1);
+		console.log(stu2);
+		console.log(stu1.sayName==stu2.sayName);
+		for(var key in stu1){
+			console.log(key,stu1[key]);
+		}
+		console.log(Object.getOwnPropertyDescriptor(Student.prototype,"constructor"));//特性值中不可遍历的特性
+	</script>
+</head>
+<body>
+
+</body>
+</html>

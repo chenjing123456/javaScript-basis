@@ -1,0 +1,36 @@
+<form action="" method="post">
+	username : <input type="text"><br>
+	gender: <label>
+				<input type="radio" name="gender" value="female">female
+			</label>
+			<label>
+				<input type="radio" name="gender" value="male">male
+			</label><br>
+	tel : <input type="text" name="phone"><br>
+	<input type="submit" value="保存">
+	<input type="button" value="取消">
+</form>
+
+<script type="text/javascript">
+	$(function(){
+    $("input:button").on("click",function(){
+        $(".content").load("component/studentList.html");
+
+    });
+    $("form").on("submit",function(event){
+        var name = $("input[name='name']").val();
+        var gender = $("input[name='gender']:checked").val();
+        var phone = $("input[name='phone']").val();
+        var s = new Student(Student.prototype.index,name,gender,phone);
+        // ajax $.post("saveStudent",s);
+        students.push(s);
+        //跳转到列表页面
+        $(".content").load("component/studentList.html");
+        event.preventDefault();
+    });
+});
+</script>
+
+<style type="text/css">
+	
+</style>
