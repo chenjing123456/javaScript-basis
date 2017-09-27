@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<script type="text/javascript" src="./js/jquery.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<form method="get">
+			<fieldset>
+				<legend>用户登录</legend>
+				<div class="form-group">
+					<label>登录账户</label>
+					<input type="text" class="form-control" value="请输入用户名">
+				</div>
+				<div class="form-group">
+					<label>密码</label>
+					<input type="password" class="form-control" placeholder="请输入密码">
+				</div>
+				<div class="form-group">
+					<label><input type="radio" name="gender" value="男">男</label>
+					<label><input type="radio" name="gender" value="女">女</label>
+				</div>
+				<select class="form-control">
+					<option value="上海">上海</option>
+					<option value="上海">上海</option>
+					<option value="上海">上海</option>
+					<option value="上海">上海</option>
+				</select>
+				<a class="btn btn-info" href="./student.html">登录</a>
+			</fieldset>
+		</form>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			$("input[type=text]").val("我是张三");
+		})
+	</script>
+</body>
+</html>

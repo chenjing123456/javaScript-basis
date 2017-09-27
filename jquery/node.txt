@@ -1,0 +1,60 @@
+1.gender提交都为on解决，给input空间加value属性，一般写性别时都这样书写
+	<label><input type="radio" name="gender" value="男">男</label>
+	<label><input type="radio" name="gender" value="女">女</label>	
+	【注】label标签用来指定整个标签，点击男的时候也会选中radio控件
+2.form表单提交和ajax提交区别
+	1)提交方式
+	2)页面刷新
+		form提交，更新数据完成之后，需要转到另一个空白页对原页面进行提交后处理，局限性比较大
+		ajax可以进行页面的局部刷新，整个页面不会刷新
+	3)文件上传
+		ajax不可以进行文件的上传
+3.jquery中需要掌握的内容
+	$(function(){
+		alert()
+	})
+	1)选择器(会用即可)
+		基本选择器
+		层次选择器
+		兄弟选择器
+		部分过滤器：表单过滤器
+		input:checked
+	2)对DOM的增删改查
+		$("<p></p>")
+		$("").append();
+		$().remove();
+		$().empty();
+		$("p")
+		$("").replaceWith()
+	3)事件
+		$("").click(function(){
+			$.get(url,callback)
+		})
+		$("").on()
+		$("").change()
+		$("").blur()
+		$("").select(function(){
+
+		})
+		$("").submit()
+	4)获取元素中的内容
+		$("某表单").val()
+		$("").html()
+		$("").text()
+	5)修改css
+		$("").css("","")
+	6)jquery中的ajax
+		$.get(url,[data],[callback]);
+		$.getJSON(url,[data],[callback]);
+		$.post(url,[data],[callback]);
+	7)其他
+
+		$("").addClass()
+		$("").removeClass()
+		$("").attr()
+
+		$("").text()
+		$("").html()
+
+
+		找bootstrop一个项目，在node中

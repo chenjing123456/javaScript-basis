@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+	<script type="text/javascript" src="./js/jquery.min.js"></script>
+</head>
+<body>
+	<div class="container" id="container">
+		<table class="table table-borderd table-hover table-striped">
+			<tr>
+				<td>编号</td>
+				<td>姓名</td>
+				<td>性别</td>
+				<td>出生年月</td>
+			</tr>
+		</table>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			$.get("./data.json",function(data){ 
+				var data = JSON.parse(data);
+				data.forEach(function(item){
+					var newTr = "<tr><td>"+item.id+"</td>"+"<td>"+item.name+"</td>"+"<td>"+item.gender+"</td>"+"<td>"+item.birth+"</td></tr>";
+					$("tbody").append(newTr);
+				})
+			})
+			var a = $("tr").text()
+			console.log(a);
+
+		})
+	</script>
+</body>
+</html>
